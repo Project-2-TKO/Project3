@@ -10,11 +10,11 @@
      <!-- JDBC -->
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.connection.url"></property>
+        <property name="hibernate.connection.url">jdbc:postgresql://34.68.47.242:5432/postgres?currentSchema=project2</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <!-- Hibernate Properties -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.default_schema">hibernate</property>
+        <property name="hibernate.default_schema">project2</property>
         <!-- Hibernate console output -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
@@ -23,8 +23,9 @@
         <!-- Anyone remember what setting our hbm2ddl.auto to create will do? -->
 
         <!-- We will map our classes here -->
-        <mapping class="com.revature.models."/>
-        <mapping class="com.revature.models."/>
+        <mapping class="com.revature.models.User"/>
+        <mapping class="com.revature.models.PokeDex"/>
+        
 
      </session-factory>
  </hibernate-configuration>

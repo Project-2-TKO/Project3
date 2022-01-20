@@ -11,7 +11,7 @@ public class Launcher {
 		try (Session ses = HibernateUtil.getSession()){
 			System.out.println("Connection Seccessful");
 		}
-		catch (Exception e) {
+		catch (HibernateException e) {
 			System.out.println("Connection Failed");
 			e.printStackTrace();
 		}

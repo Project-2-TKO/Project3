@@ -10,7 +10,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
-import { ExampleComponent } from './components/example/example.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { ExampleComponent } from './components/example/example.component';
     RegisterComponent,
     SearchbarComponent,
     UserprofileComponent,
-    ExampleComponent
   ],
   imports: [
     BrowserModule,

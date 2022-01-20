@@ -10,17 +10,6 @@ import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
 public class UserDAO {
-	public int insertUser(User user) {
-		try(Session ses = HibernateUtil.getSession()){
-			ses.save(user);
-			HibernateUtil.closeSession();
-			return 1;
-		}
-		catch(HibernateException e) {
-			System.out.println("There was an error inserting the User");
-			return 0;
-		}
-	}
 	public List<User> getAllUsers(){
 		try(Session ses = HibernateUtil.getSession()){
 			List<User> userList = ses.createQuery("From User").list();
@@ -54,6 +43,17 @@ public class UserDAO {
 		catch(HibernateException e) {
 			System.out.println("There was an error getting User by Username");
 			return null;
+		}
+	}
+	public int insertUser(User user) {
+		try(Session ses = HibernateUtil.getSession()){
+			ses.save(user);
+			HibernateUtil.closeSession();
+			return 1;
+		}
+		catch(HibernateException e) {
+			System.out.println("There was an error inserting the User");
+			return 0;
 		}
 	}
 	public int updateUser(User user) {

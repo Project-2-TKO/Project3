@@ -13,17 +13,6 @@ import com.revature.models.PokeDex;
 import com.revature.utils.HibernateUtil;
 
 public class PokeDexDAO {
-	public int insertpokeDex(PokeDex pokedex) {
-		try(Session ses = HibernateUtil.getSession()){
-			ses.save(pokedex);
-			HibernateUtil.closeSession();
-			return 1;
-		}
-		catch(HibernateException e) {
-			System.out.println("There was an error inserting into the PokeDex");
-			return 0;
-		}
-	}
 	public List<PokeDex> getAllPokeDexs(){
 		try(Session ses = HibernateUtil.getSession()){
 			List<PokeDex> movieList = ses.createQuery("FROM PokeDex").list();
@@ -71,6 +60,17 @@ public class PokeDexDAO {
 		catch(HibernateException e) {
 			System.out.println("There was an error getting PokeDex by Pokemon Id");
 			return null;
+		}
+	}
+	public int insertpokeDex(PokeDex pokedex) {
+		try(Session ses = HibernateUtil.getSession()){
+			ses.save(pokedex);
+			HibernateUtil.closeSession();
+			return 1;
+		}
+		catch(HibernateException e) {
+			System.out.println("There was an error inserting into the PokeDex");
+			return 0;
 		}
 	}
 	public int updatePokeDex(PokeDex pokedex) {

@@ -9,7 +9,7 @@ import com.revature.repositories.PokeDexDAO;
 public class PokeDexServices {
 	PokeDexDAO pd = new PokeDexDAO();
 	
-	public List<PokeDex> getAllPokeDexs() throws Exception {
+	public List<PokeDex> getAllPokeDex() throws Exception {
 		List<PokeDex> result = pd.getAllPokeDexs();
 		if(result.get(0).getPokedex_id() != 0) {
 			return result;
@@ -45,7 +45,7 @@ public class PokeDexServices {
 			throw new Exception();
 		}
 	}
-	public void insertpokeDex(PokeDex pokedex) throws Exception {
+	public void insertPokeDex(PokeDex pokedex) throws Exception {
 		int result = pd.insertpokeDex(pokedex);
 		if(result == 0) {
 			throw new Exception();

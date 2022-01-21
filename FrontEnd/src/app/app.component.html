@@ -1,5 +1,25 @@
 <app-cart></app-cart>
 <app-register></app-register>
-<div class="container">
-  <app-login></app-login>
-</div>
+<app-frontpage></app-frontpage>
+<app-login></app-login>
+<app-searchbar></app-searchbar>
+
+
+<!-- JUST NOTES  -->
+<h1>{{title}}</h1> <!-- Gets the title from the app.component.ts (typescript file) with data binding [interpoolation] in Angular 
+                        There is also property binding with [] or event binding (click)-->
+
+<!-- <button (click)="handleEvent()">Click me</button> -->
+<!-- <input placeholder="hello" (click)="handleEvent()"/> -->
+
+<!-- property binding -->
+<!-- <input placeholder="property binding" [ngModel]="title" /> -->
+
+<!-- Two-way data binding, mainly used in template-driven forms to grab data from the user -->
+<!-- <input placeholder="hello" [(ngModel)]="title" /> need form modules, which would extend app functionality -->
+
+<!-- pipes : allows you to declare display-value transformations in your template HTML
+     Can be found on docs Reference / API -->
+<h2>{{title | uppercase }}</h2>
+<!-- <h1>{{jsonValue | json}}</h1> without the json pipe this would display as [Object][object] -->
+

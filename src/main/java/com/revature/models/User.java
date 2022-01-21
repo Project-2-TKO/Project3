@@ -1,13 +1,11 @@
 package com.revature.models;
 
 import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -43,6 +41,19 @@ public class User {
 			String credit_card_name) {
 		super();
 		this.user_id = user_id;
+		this.username = username;
+		this.password = password;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email_address = email_address;
+		this.phone_number = phone_number;
+		this.physical_address = physical_address;
+		this.credit_card_number = credit_card_number;
+		this.credit_card_name = credit_card_name;
+	}
+	public User(String username, String password, String first_name, String last_name, String email_address,
+			String phone_number, String physical_address, String credit_card_number, String credit_card_name) {
+		super();
 		this.username = username;
 		this.password = password;
 		this.first_name = first_name;
@@ -147,6 +158,4 @@ public class User {
 				&& Objects.equals(physical_address, other.physical_address) && user_id == other.user_id
 				&& Objects.equals(username, other.username);
 	}
-	
-	
 }

@@ -1,12 +1,15 @@
 package com.revature.models;
+
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +20,9 @@ public class PokeDex {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pokedex_id;
 	private int pokemon_id;
-	@OneToOne(targetEntity = User.class)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	private int user_id;
+	private User user;
 	
 	
 	//(Boiler Plate Code)===============================================================================================
@@ -27,17 +30,20 @@ public class PokeDex {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public PokeDex(int pokedex_id, int pokemon_id, int user_id) {
+	public PokeDex(int pokedex_id, int pokemon_id, User user) {
 		super();
 		this.pokedex_id = pokedex_id;
 		this.pokemon_id = pokemon_id;
-		this.user_id = user_id;
+		this.user = user;
+	}
+	public PokeDex(int pokemon_id, User user) {
+		super();
+		this.pokemon_id = pokemon_id;
+		this.user = user;
 	}
 	public int getPokedex_id() {
 		return pokedex_id;
 	}
-
 	public void setPokedex_id(int pokedex_id) {
 		this.pokedex_id = pokedex_id;
 	}
@@ -47,19 +53,19 @@ public class PokeDex {
 	public void setPokemon_id(int pokemon_id) {
 		this.pokemon_id = pokemon_id;
 	}
-	public int getUser_id() {
-		return user_id;
+	public User getUser() {
+		return user;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	@Override
 	public String toString() {
-		return "PokeDex [pokedex_id=" + pokedex_id + ", pokemon_id=" + pokemon_id + ", user_id=" + user_id + "]";
+		return "PokeDex [pokedex_id=" + pokedex_id + ", pokemon_id=" + pokemon_id + ", user=" + user + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(pokedex_id, pokemon_id, user_id);
+		return Objects.hash(pokedex_id, pokemon_id, user);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -70,10 +76,7 @@ public class PokeDex {
 		if (getClass() != obj.getClass())
 			return false;
 		PokeDex other = (PokeDex) obj;
-		return pokedex_id == other.pokedex_id && pokemon_id == other.pokemon_id && user_id == other.user_id;
+		return pokedex_id == other.pokedex_id && pokemon_id == other.pokemon_id && Objects.equals(user, other.user);
 	}
-	
-	
-	
-	
 }
+

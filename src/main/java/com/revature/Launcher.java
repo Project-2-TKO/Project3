@@ -35,20 +35,20 @@ public class Launcher {
 
 	       
 	        app.get("/user", uc.getAllUsers);
-	        app.post("/user", uc.insertuser);
+	        app.post("/user", uc.insertUser);
 	        
-	        app.put("/user/{user_id}", uc.updateusers);
-	        app.get("/user/{user_id}", uc.getuserbyid);
-	        app.get("/user/{username}", uc.getuserbyname);
+	        app.put("/user/{user_id}", uc.updateUser);
+	        app.get("/user/{user_id}", uc.getUserByUserId);
+	        app.get("/user/{username}", uc.getUserByUsername);
 	        
 	        app.get("/pokeDex", pc.getAllPokeDex);
-	        app.post("/pokeDex", pc.insertpokeDexs);
+	        app.post("/pokeDex", pc.insertPokeDex);
 	        
-	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexsByPokeDexId);
-	        app.put("/pokeDex/{Pokedex_id}",pc.UpdatePokeDex);
-	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexsByPokemonId);
+	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexByPokeDexId);
+	        app.put("/pokeDex/{Pokedex_id}",pc.updatePokeDex);
+	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexByPokemonId);
 	        
-	        app.get("/pokeDex/{user_id}", pc.getPokeDexsByUserId);
+	        app.get("/pokeDex/{user_id}", pc.getPokeDexByUserId);
 	        app.post("/login", ac.loginHandler);
 	 }
 	

@@ -79,3 +79,4 @@ public class PokeDex {
 		return pokedex_id == other.pokedex_id && pokemon_id == other.pokemon_id && Objects.equals(user, other.user);
 	}
 }
+

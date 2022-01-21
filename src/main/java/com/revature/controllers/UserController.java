@@ -45,15 +45,15 @@ public class UserController {
 				
 				us.insertUser(user);
 				
-				ctx.result("Employee was successfully added!");
+				ctx.result("user was successfully added!");
 				ctx.status(201);
 			}catch(Exception e){
-				ctx.result(" You failed to insert an employee!!!!");
+				ctx.result(" failed to insert an user!!!!");
 				ctx.status(404);
 				
 			}
 			} else {
-				ctx.result(" You failed to insert an employee!!!!");
+				ctx.result(" failed to insert an user!!!!");
 				ctx.status(404);
 			}
 			
@@ -96,11 +96,11 @@ public class UserController {
 	            ctx.result(JSONuser);
 	            ctx.status(200);
 	        	}catch(Exception e) {
-	        		ctx.result("You failed to get the user!! ");
+	        		ctx.result(" failed to get the user!! ");
 		            ctx.status(404);
 	        	}
 	        }else {
-	            ctx.result("You failed to get the user!! ");
+	            ctx.result(" failed to get the user!! ");
 	            ctx.status(404);
 	        }
 	    };

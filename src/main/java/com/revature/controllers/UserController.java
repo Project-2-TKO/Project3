@@ -77,11 +77,11 @@ public class UserController {
 				Gson gson = new Gson();
 				User user = gson.fromJson(body, User.class);
 				us.insertUser(user);
-				ctx.result("user was successfully added!");
+				ctx.result("User was successfully added");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("User not found");
+				ctx.result("User not successfully created");
 				ctx.status(404);	
 			}
 		} 
@@ -97,11 +97,11 @@ public class UserController {
 				Gson gson = new Gson();
 				User user = gson.fromJson(body, User.class);
 				us. updateUser(user);
-				ctx.result("user was update added!");
+				ctx.result("User was updated successfully");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("User not found");
+				ctx.result("User not successfully updated");
 				ctx.status(404);	
 			}
 		} 	

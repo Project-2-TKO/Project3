@@ -17,39 +17,36 @@ public class Launcher {
 		PokeDexController pc = new PokeDexController();
 		UserController uc = new UserController();
 		
-		try (Session ses = HibernateUtil.getSession()){
-			System.out.println("Connection Seccessful");
-		}
-		catch (HibernateException e) {
-			System.out.println("Connection Failed");
-			e.printStackTrace();
-		}
-		
-		
+//		try (Session ses = HibernateUtil.getSession()){
+//			System.out.println("Connection Successful");
+//		}
+//		catch (HibernateException e) {
+//			System.out.println("Connection Failed");
+//			e.printStackTrace();
+//		}
 		
 	        Javalin app = Javalin.create(
 			config -> {
 				config.enableCorsForAllOrigins();
 			}
 			).start(3000);
-
-	       
+	        app.post("/login", ac.loginHandler);
+	        
 	        app.get("/user", uc.getAllUsers);
 	        app.post("/user", uc.insertUser);
-	        
 	        app.put("/user/{user_id}", uc.updateUser);
 	        app.get("/user/{user_id}", uc.getUserByUserId);
-	        app.get("/user/{username}", uc.getUserByUsername);
+	        app.get("/user/username/{username}", uc.getUserByUsername);
+	       
+	        app.get("/pokedex", pc.getAllPokeDex);
+	        app.post("/pokedex", pc.insertPokeDex);
 	        
-	        app.get("/pokeDex", pc.getAllPokeDex);
-	        app.post("/pokeDex", pc.insertPokeDex);
+	        app.get("/pokedex/{pokedex_id}",pc.getPokeDexByPokeDexId);
+	        app.put("/pokedex/{pokedex_id}",pc.updatePokeDex);
+	        app.get("/pokedex/pokemon/{pokemon_id}",pc.getPokeDexByPokemonId);
 	        
-	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexByPokeDexId);
-	        app.put("/pokeDex/{Pokedex_id}",pc.updatePokeDex);
-	        app.get("/pokeDex/{Pokedex_id}",pc.getPokeDexByPokemonId);
-	        
-	        app.get("/pokeDex/{user_id}", pc.getPokeDexByUserId);
-	        app.post("/login", ac.loginHandler);
+	        app.get("/pokedex/user/{user_id}", pc.getPokeDexByUserId);
+	     
 	 }
 	
 	}

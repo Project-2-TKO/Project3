@@ -11,12 +11,12 @@ import com.revature.services.UserServices;
 import io.javalin.http.Handler;
 
 public class PokeDexController {
-	PokeDexServices pd = new PokeDexServices();
+	PokeDexServices ps = new PokeDexServices();
 
 	public Handler getAllPokeDex = ctx -> {
 		if(ctx.req.getSession(true) != null) { 
 			try {	
-				List<PokeDex> allpokeDex = pd.getAllPokeDex();
+				List<PokeDex> allpokeDex = ps.getAllPokeDex();
 				Gson gson = new Gson();
 				String JSONpokeDex = gson.toJson(allpokeDex);
 				ctx.result(JSONpokeDex);
@@ -35,8 +35,8 @@ public class PokeDexController {
 	public Handler getPokeDexByPokeDexId = ctx -> {
         if(ctx.req.getSession() != null) {
         	try {
-	            int id = Integer.parseInt(ctx.pathParam("Pokedex_id")) ;
-	            PokeDex pokeDex = pd.getPokeDexByPokeDexId(id);
+	            int id = Integer.parseInt(ctx.pathParam("pokedex_id")) ;
+	            PokeDex pokeDex = ps.getPokeDexByPokeDexId(id);
 	            Gson gson = new Gson();
 	            String JSONpokeDex = gson.toJson(pokeDex);
 	            ctx.result(JSONpokeDex);
@@ -56,7 +56,7 @@ public class PokeDexController {
 		if(ctx.req.getSession() != null) {
 	        try {	
 	            int user_id =Integer.parseInt(ctx.pathParam("user_id")) ;
-	            List<PokeDex> pokeDex = pd.getPokeDexByUserId(user_id);
+	            List<PokeDex> pokeDex = ps.getPokeDexByUserId(user_id);
 	            Gson gson = new Gson();
 	            String JSONPokeDox = gson.toJson(pokeDex);
 	            ctx.result(JSONPokeDox);
@@ -75,8 +75,9 @@ public class PokeDexController {
     public Handler getPokeDexByPokemonId = ctx -> {
         if(ctx.req.getSession() != null) {
         	try {
-	            int id = Integer.parseInt(ctx.pathParam("pokemon_id")) ;   
-	            List<PokeDex> pokeDex = pd.getPokeDexByPokemonId(id);
+	            int id = Integer.parseInt(ctx.pathParam("pokemon_id"));
+	            System.out.println(id);
+	            List<PokeDex> pokeDex = ps.getPokeDexByPokemonId(id);
 	            Gson gson = new Gson();
 	            String JSONpokeDex = gson.toJson(pokeDex);
 	            ctx.result(JSONpokeDex);
@@ -98,12 +99,12 @@ public class PokeDexController {
 				String body = ctx.body();
 				Gson gson = new Gson();
 				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
-				pd.insertPokeDex(pokeDex);
+				ps.insertPokeDex(pokeDex);
 				ctx.result("PokeDex successfully added");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("PokeDex not found");
+				ctx.result("PokeDex was not successfully added");
 				ctx.status(404);	
 			}
 		} 
@@ -118,12 +119,12 @@ public class PokeDexController {
 				String body = ctx.body();
 				Gson gson = new Gson();
 				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
-				pd. updatePokeDex(pokeDex);
+				ps. updatePokeDex(pokeDex);
 				ctx.result("PokeDex was update added!");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("PokeDex not found");
+				ctx.result("PokeDex was not successfully updated");
 				ctx.status(404);	
 			}
 		} 

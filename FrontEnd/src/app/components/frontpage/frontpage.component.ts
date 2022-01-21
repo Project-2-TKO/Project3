@@ -10,10 +10,14 @@ import { PokeDataService } from 'src/app/poke-data.service';
 export class FrontpageComponent implements OnInit {
 
   constructor(private pokeService: PokeDataService) {}
+  
+ 
 
   handleEvent() {
     this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon/?limit=100")
-    .subscribe((response) => console.log(response));
+    .subscribe((response) =>
+     console.log(response.results));
+  
     this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon/charmander")
     .subscribe((response) => console.log(response));
   }

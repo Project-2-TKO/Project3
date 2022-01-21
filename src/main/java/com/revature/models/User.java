@@ -158,6 +158,4 @@ public class User {
 				&& Objects.equals(physical_address, other.physical_address) && user_id == other.user_id
 				&& Objects.equals(username, other.username);
 	}
-	
-	
 }

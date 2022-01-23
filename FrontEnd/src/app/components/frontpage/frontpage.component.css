@@ -1,0 +1,10 @@
+.navigationBar ul {
+    display:flex;
+    flex-direction: row;
+    align-items:right;
+}
+
+.navigationBar ul li {
+    text-decoration:none;
+    padding:50px;
+}

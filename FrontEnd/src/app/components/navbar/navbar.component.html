@@ -1,0 +1,38 @@
+
+<mat-toolbar color='primary' class="nav">
+
+    <div> Pokemon Black Market </div>
+    <div class='navbar'>
+            <ul>
+                <li class='nav-item active'>
+                    <mat-icon>home</mat-icon>
+                    <a>
+                        Home
+                    </a>
+                </li>
+            <li>
+                <mat-icon>person</mat-icon>
+                <a routerLink="/userprofile-component" routerLinkActive="active">
+                    User Profile
+                </a>
+            </li>
+    
+            <li>
+                <mat-icon>shopping_cart</mat-icon>
+                <a routerLink="/cart-component" routerLinkActive="active">
+                Cart
+                </a>
+            </li>
+
+            
+            <!-- redirect back to login component | need a way to end session  -->
+            <li>
+                <mat-icon>logout</mat-icon>
+                <a routerLink="/login-component" routerLinkActive="active">
+                    Sign out
+                </a>    
+            </li>
+        </ul>
+    </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>

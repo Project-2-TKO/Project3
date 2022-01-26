@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  //uname:string;
-  //upass:string;
+  let uname:string;
+  let upass:string;
   constructor() { }
 
   ngOnInit(): void {
   }
-  /*
-  Loginusr(){
+  
+  Loginusr(): void {
     if (this.uname =="GRAGRA" && this.upass =="GRAGRA")
     {
       console.log("You can Pass")
@@ -22,5 +22,5 @@ export class LoginComponent implements OnInit {
     {
       console.log("You are Unwelcome")
     }
-  }*/
+  }
 }

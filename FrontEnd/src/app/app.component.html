@@ -1,17 +1,14 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel='stylesheet'>
 <link href='https://fonts.googlespis.com/icon?family=Material+Icons' rel='stylesheet'>
 
-<app-navbar></app-navbar>
-<app-searchbar></app-searchbar>
-<app-frontpage></app-frontpage>
-<app-cart></app-cart>
-<app-register></app-register>
-<app-login></app-login>
-<app-userprofile></app-userprofile>
+
+
+<router-outlet></router-outlet>
 
 <!-- JUST NOTES  -->
-<h1>{{title}}</h1> <!-- Gets the title from the app.component.ts (typescript file) with data binding [interpoolation] in Angular 
-                        There is also property binding with [] or event binding (click)-->
+<!-- <h1>{{title}}</h1> -->
+ <!-- Gets the title from the app.component.ts (typescript file) with data binding [interpoolation] in Angular  -->
+                        <!-- There is also property binding with [] or event binding (click)-->
 
 <!-- <button (click)="handleEvent()">Click me</button> -->
 <!-- <input placeholder="hello" (click)="handleEvent()"/> -->
@@ -24,6 +21,6 @@
 
 <!-- pipes : allows you to declare display-value transformations in your template HTML
      Can be found on docs Reference / API -->
-<h2>{{title | uppercase }}</h2>
+<!-- <h2>{{title | uppercase }}</h2> -->
 <!-- <h1>{{jsonValue | json}}</h1> without the json pipe this would display as [Object][object] -->
 

@@ -19,10 +19,10 @@ export class AppComponent {
   // }
 
   // testing http get pokemon
-  constructor(private pokeService: PokeDataService) {}
+  // constructor(private pokeService: PokeDataService) {}
 
-  handleEvent() {
-    this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon");
-  }
+  // handleEvent() {
+  //   this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon");
+  // }
 }
 

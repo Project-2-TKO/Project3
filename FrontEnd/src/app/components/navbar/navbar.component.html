@@ -9,7 +9,7 @@
                 <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
                 Home
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/cart']">
                 <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
                 Cart
             </button>
@@ -17,7 +17,7 @@
                 <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
                 User
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['']">
                 <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
                 Sign Out
             </button>
@@ -28,49 +28,11 @@
             <button mat-menu-item>
                 Order History
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/userprofile']">
                 User Settings
             </button>
         </mat-menu>
-
-        <!-- <mat-menu>
-            <button mat-menu-item>
-                <mat-icon>home</mat-icon>
-                <a>
-                    Home
-                </a>
-            </button>
-        </mat-menu>
-            <ul>
-                <li class='nav-item active'>
-                    <mat-icon>home</mat-icon>
-                    <a>
-                        Home
-                    </a>
-                </li>
-            <li>
-                <mat-icon>person</mat-icon>
-                <a routerLink="/userprofile-component" routerLinkActive="active">
-                    User Profile
-                </a>
-            </li>
-    
-            <li>
-                <mat-icon>shopping_cart</mat-icon>
-                <a routerLink="/cart-component" routerLinkActive="active">
-                Cart
-                </a>
-            </li> -->
-
-            
-            <!-- redirect back to login component | need a way to end session  -->
-            <!-- <li>
-                <mat-icon>logout</mat-icon>
-                <a routerLink="/login-component" routerLinkActive="active">
-                    Sign out
-                </a>    
-            </li>
-        </ul> -->
+        
     </div>
     </mat-toolbar>
     <router-outlet></router-outlet>

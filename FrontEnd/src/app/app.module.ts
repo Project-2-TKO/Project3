@@ -17,6 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PokeDataService } from './poke-data.service';
+
+// Services (may delete)
+import { HttpErrorHandler } from './http-error-handler.service';
+import { MessageService } from './message.service';
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -45,7 +50,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   //exports: [],
   //providers: creators of services that this NgModule contributes to the global collection of services, they become accessible
   //in all parts of the app
-  providers: [],
+  providers: [PokeDataService, HttpErrorHandler, MessageService],
   //bootstrap: the main application view, called the root component which hosts all other app views. Only the root NgModule should set the
   //boostrap property
   bootstrap: [AppComponent],

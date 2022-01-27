@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PokeDataService } from 'src/app/poke-data.service';
 import { FrontpageComponent } from './frontpage.component';
 
 describe('FrontpageComponent', () => {

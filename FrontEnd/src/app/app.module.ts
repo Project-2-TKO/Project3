@@ -14,7 +14,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// AngularMaterialModule 
+// AngularMaterialModule
 import { AngularMaterialModule } from './angular-material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 

@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+
 })
 export class LoginComponent implements OnInit {
-  let uname:string;
-  let upass:string;
-  constructor() { }
+
+  username!: String;
+  pssword!:String
+
+
+  constructor( ) {
+
+   }
 
   ngOnInit(): void {
+
   }
-  
+
   Loginusr(): void {
-    if (this.uname =="GRAGRA" && this.upass =="GRAGRA")
+    if (this.username =="GRAGRA" && this.pssword =="GRAGRA")
     {
       console.log("You can Pass")
     }

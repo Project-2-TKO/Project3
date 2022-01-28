@@ -52,7 +52,10 @@ import { PokemonContainerComponent } from './components/pokemon-container/pokemo
   //exports: [],
   //providers: creators of services that this NgModule contributes to the global collection of services, they become accessible
   //in all parts of the app
-  providers: [PokeDataService, HttpErrorHandler, MessageService],
+  providers: [
+    PokeDataService, 
+    HttpErrorHandler, 
+    MessageService],
   //bootstrap: the main application view, called the root component which hosts all other app views. Only the root NgModule should set the
   //boostrap property
   bootstrap: [AppComponent],

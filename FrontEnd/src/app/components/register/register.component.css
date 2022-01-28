@@ -17,13 +17,13 @@
     border:2px solid black;
     border-radius:20px;
     opacity:0.9;
-    width:600px;
+    width:400px;
     padding:20px;
     
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 25px;
     padding:20px;
     margin:20px;
 }
@@ -36,7 +36,7 @@ h2 {
     width:auto;
     align-items:center;
     color:black !important;
-    font-size:18px;
+    font-size:13px;
 }
 
 .signup {

@@ -22,6 +22,7 @@ import { PokeDataService } from './poke-data.service';
 // Services (may delete)
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
+import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -35,6 +36,7 @@ import { MessageService } from './message.service';
     SearchbarComponent,
     UserprofileComponent,
     NavbarComponent,
+    PokemonContainerComponent,
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

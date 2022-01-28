@@ -1,0 +1,44 @@
+.container {
+    background-image: url('../../../assets/moltres.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    /* height: 500px; */
+    display:flex;
+    justify-content:center;
+    height:100vh;
+    text-align:center;
+    font-family:monospace;
+}
+
+.login_container {
+    color:white;
+    margin:auto;
+    background-color:darkslategray;
+    border:2px solid black;
+    border-radius:20px;
+    opacity:0.9;
+    width:600px;
+    padding:20px;
+    
+}
+
+h2 {
+    font-size: 40px;
+    padding:20px;
+    margin:20px;
+}
+
+.mat_container {
+    text-align:center;
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    width:auto;
+    align-items:center;
+    color:black !important;
+    font-size:18px;
+}
+
+.signup {
+    margin:18px;
+}

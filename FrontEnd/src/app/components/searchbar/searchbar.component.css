@@ -22,9 +22,9 @@
 }
 
 .searchContainer {
-    background-image: url('../../../assets/pokemon.jpg');
+    background-image: url('../../../assets/zaptos.jpg');
     background-size:cover;
     background-repeat:no-repeat;
-    height: 500px;
+    height: 660px;
     justify-content:center;
 }

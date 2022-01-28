@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokeDataService } from 'src/app/poke-data.service';
-import { Pokemon } from '../../pokemon';
-import { map } from 'rxjs';
+// import { PokeDataService } from 'src/app/poke-data.service';
+// import { Pokemon } from '../../pokemon';
+// import { map } from 'rxjs';
 // import { concat, Subscription } from 'rxjs';
 // import { NgForm } from '@angular/forms';
 
@@ -9,29 +9,38 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',
-  providers: [PokeDataService],
+  // providers: [PokeDataService],
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
 
-  pokemons: Pokemon[] = [];
+  // poke:any;
+  // pokemons: Pokemon[] = [];
 
-  constructor(private pokeService: PokeDataService) {}
-  
+  // constructor(private pokeService: PokeDataService) {}
+  constructor() {
+
+  }
   ngOnInit() {
-    this.getPokemons();
+    // this.getPokemons();
   }
 
-  getPokemons(): void {
-    this.pokeService.getPokemons()
-    .subscribe(pokemons => {
-      this.pokemons = pokemons;
-      console.log(pokemons);
+  // getPokemons(): void {
+  //   this.pokeService.getPokemons()
+  //   .subscribe(pokemons => {
+  //     this.pokemons = pokemons;
+  //     console.log(pokemons);
+
+
       
 
-      // pokemons.map(response => console.log(response));
-    })
-  }
+  //     // pokemons.map(response => console.log(response));
+  //   })
+  // }
+
+
+
+
 //   get pokemons(): any[] {
 //     console.log(this.pokeDataService.pokemons)
 //     return this.pokeDataService.pokemons;

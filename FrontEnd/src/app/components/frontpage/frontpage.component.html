@@ -1,7 +1,11 @@
-<button (click)="handleEvent()">Click me</button>
-<!-- This button returns pokemon response back to us in the console -->
 
+<app-navbar></app-navbar>
+<app-searchbar></app-searchbar>
+<app-pokemon-container></app-pokemon-container>
+<!-- <button (click)="handleEvent()">Click me</button> -->
+<!-- This button returns pokemon response back to us in the console -->
 <!-- card body for each pokemon -->
+<<<<<<< HEAD
 <div class='card_body'>
     <mat-card class='pokemon_cards'>
         <mat-card-title>
@@ -156,3 +160,22 @@
         </mat-card-actions>
     </mat-card>
 </div>
+=======
+
+<!-- TESTING -->
+<!-- <div> -->
+    <!-- <ul class='pokemons'> -->
+        <!-- <li *ngFor="let pokemon of pokemons"> add index maybe? -->
+            <!-- <span class="badge">{{ pokemon.id || -1 }}</span> -->
+            <!-- <span>{{ pokemon.name }}</span> -->
+            <!-- <span>{{ pokemon.url }}</span> -->
+        <!-- </li> -->
+    <!-- </ul> -->
+<!-- </div> -->
+
+    <!-- whenever ngFor is used, for some reason the navmenu doesn't work -->
+    <!-- <div *ngFor = 'let pokemon of pokemons'>
+        <p>{{pokemon.name}}</p>
+    </div> -->
+<!-- </div> -->
+>>>>>>> e0349ac1a3386e2edcc7a3079a4124ae60e75346

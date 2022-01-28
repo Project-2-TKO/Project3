@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PokeDataService } from 'src/app/poke-data.service';
-import { FrontpageComponent } from './frontpage.component';
 
-describe('FrontpageComponent', () => {
-  let component: FrontpageComponent;
-  let fixture: ComponentFixture<FrontpageComponent>;
+import { PokemonContainerComponent } from './pokemon-container.component';
+
+describe('PokemonContainerComponent', () => {
+  let component: PokemonContainerComponent;
+  let fixture: ComponentFixture<PokemonContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FrontpageComponent ]
+      declarations: [ PokemonContainerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrontpageComponent);
+    fixture = TestBed.createComponent(PokemonContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

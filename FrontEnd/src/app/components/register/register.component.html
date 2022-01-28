@@ -1,1 +1,40 @@
-<p>register works!</p>
+<div class = "container">
+    
+    <div class = 'login_container'>
+        <h2>Pokemon Black Market</h2>
+
+        <form>
+            <div>
+                <mat-card class='mat_container'>
+        
+                    <mat-form-field appearance="outline" id='field'>
+                        <input matInput placeholder='Username' formController="username">
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="outline" id='field'>
+                        <input matInput placeholder='Password' formController="password">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" id='field'>
+                        <input matInput placeholder='Confirm Password' formController="password">
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="outline" id='field'>
+                        <input matInput placeholder='Address' formController="address">
+                    </mat-form-field>
+        
+                    <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']"> Register </button>
+                </mat-card>
+            </div>
+        </form>
+        
+        <div class='signup'>
+            <p>Already have an account? Sign in instead.</p>
+        <br/>
+        <button mat-raised-button color='primary' [routerLink]="['']">Back to Login</button>
+        </div>
+
+    </div>
+    <!-- <button [routerLink]="['/frontpage']">Sign in</button> -->
+
+</div>

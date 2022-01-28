@@ -1,7 +1,35 @@
 
 <div class = "container">
-    <h1> This is the login Page </h1>
-    <p>Testing git branch</p>
+    
+    <div class = 'login_container'>
+        <h2>Pokemon Black Market</h2>
+
+        <form>
+            <div>
+                <mat-card class='mat_container'>
+        
+                    <mat-form-field appearance='outline' id='field'>
+                        <input matInput placeholder='Username' formController="username">
+                    </mat-form-field>
+        
+                    <mat-form-field appearance='outline' id='field'>
+                        <input matInput placeholder='Password' formController="password">
+                    </mat-form-field>
+        
+                    <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']"> Login </button>
+                </mat-card>
+            </div>
+        </form>
+        
+        <div class='signup'>
+            <p>Don't have an account? Sign up.</p>
+        <br/>
+        <button mat-raised-button color='primary' [routerLink]="['/register']">Register New Account</button>
+        </div>
+
+    </div>
+    <!-- <button [routerLink]="['/frontpage']">Sign in</button> -->
+
 </div>
 <form>
   <div class="input">

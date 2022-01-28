@@ -42,3 +42,7 @@ h2 {
 .signup {
     margin:18px;
 }
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color:black;
+}

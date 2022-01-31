@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs';
 
 import { Pokemon } from './pokemon';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
+
+//new
+import { Inject, Injectable, OnInit } from '@angular/core';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -20,27 +24,51 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PokeDataService {
-  pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
-  private handleError: HandleError;
-
+export class PokeDataService implements OnInit{
+  // pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
+  // private handleError: HandleError;
+  display = new BehaviorSubject<boolean>(false)
   constructor(
     private http: HttpClient,
-    httpErrorHandler: HttpErrorHandler) {
-      this.handleError = httpErrorHandler.createHandleError('PokeDataService');
-    }
+    @Inject('pokemonListApi') private pokemonListApi: string,
+  ) {
+    // console.log(this.pokemonListApi);
+  }
+  //   httpErrorHandler: HttpErrorHandler) {
+  //     this.handleError = httpErrorHandler.createHandleError('PokeDataService');
+  //   }
 
-  /* GET POKEMON FROM THE API HOPEFULLY */
-  getPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(this.pokeUrl)
-    .pipe(
-      catchError(this.handleError('getPokemons', []))
+  // /* GET POKEMON FROM THE API HOPEFULLY */
+  // getPokemons(): Observable<Pokemon[]> {
+  //   return this.http.get<any[]>(this.pokeUrl)
+  //   .pipe(
+  //     catchError(this.handleError('getPokemons', []))
+  //   );
+  // }
+
+  ngOnInit() {} //new
+
+  getPokemons(): Observable <any> { //any or unknown?
+    return this.http.get<Pokemon>(this.pokemonListApi).pipe (
+      map((x) => x.results),
+      switchMap(x => forkJoin(this.nameUrl(x))),
+      map(x => x.map(x => {
+        return {name:x.name, sprites:x.sprites}
+      })),
+      tap((x) => console.log(x))
     );
   }
 
+  nameUrl(arr: Pokemon[]): Observable<Pokemon>[] {
+    const res = <any>[];
+    arr.forEach((x: Pokemon) => {
+      res.push(this.http.get(`${this.pokemonListApi}/${x.name}`));
+    });
+    return res;
+  }
 }
 
-
+// WON't NEED THE CODE underneath, may delete later
 // Testing another method
 // export class PokeDataService {
 //   private url: string = "https://pokeapi.co/api/v2/pokemon/";

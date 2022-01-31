@@ -5,7 +5,7 @@
     <div class='navbar'>
         <!-- menu -->
         <mat-menu #appMenu='matMenu' class='customize'>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/frontpage']">
                 <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
                 Home
             </button>
@@ -32,7 +32,7 @@
                 User Settings
             </button>
         </mat-menu>
-        
+
     </div>
     </mat-toolbar>
     <router-outlet></router-outlet>

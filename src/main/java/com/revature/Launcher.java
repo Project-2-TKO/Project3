@@ -28,6 +28,7 @@ public class Launcher {
 	        Javalin app = Javalin.create(
 			config -> {
 				config.enableCorsForAllOrigins();
+				//config.enableCorsForOrigin("http://localhost:4200/");
 			}
 			).start(3000);
 	        app.post("/login", ac.loginHandler);

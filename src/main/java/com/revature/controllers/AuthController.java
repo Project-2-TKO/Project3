@@ -16,11 +16,12 @@ public class AuthController {
 		if(as.login(user.getUsername(),user.getPassword()) == 1) {
 			ctx.req.getSession();
 			ctx.status(202);
-			ctx.result("Login Successful!");
+			
+			//ctx.result("Login Successful!");
 		}
 		else {
 			ctx.status(401);
-			ctx.result("Login Failed");
+			//ctx.result("Login Failed");
 		}
 	};
 }

@@ -1,33 +1,59 @@
-<p>pokemon-container works!</p>
+<div class ="container-fluid body-container">
+    
+    
+    <div class="row" style="margin-left:50%">
+        <!--Two way binding this input field to a variable called input in pokedex.component.ts-->
+        <input class="col-lg-3" type="string" [(ngModel)] = "name"/>
+        <!--Event binding on this button to call the getPoke() function in pokedex.component.ts-->
+        <button class=" btn btn-dark col-lg-2" (click)= "getPokemon()">Choose Pokemon</button>
+    </div>
 
-<!-- <div class='card_body'>
-    <mat-card class='pokemon_cards'>
-        <mat-card-title>
-            <h3>hello</h3>
-        </mat-card-title>
-        <mat-card-content>
-            Pokemon Details
-        </mat-card-content>
-        <img mat-card-image>
-            <img mat-card-lg-image src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png">
-        <mat-card-subtitle>
-            $180.99
-        </mat-card-subtitle>
-        <mat-card-actions>
-            <button mat-raised-button>Add to Cart</button>
-        </mat-card-actions>
-    </mat-card>
+    <!--I want to make a table to hold the information of the Pokemon Observable that I GET-->
+    <!-- <table class="table table-striped table-hover" *ngIf="pokemon"> -->
+        <!-- <thead>
+            <th scope="col-lg-3">Name</th>
+            <th scope="col-lg-3">Type</th>
+            <th scope="col-lg-3">Sprite</th>
+        </thead> -->
+
+        <div class='card_body' *ngIf="pokemon">
+            <mat-card class='pokemon_cards'>
+                <mat-card-title>
+                    {{pokemon.name}}
+                </mat-card-title>
+                <mat-card-content>
+                    {{pokemon.type}}
+                </mat-card-content>
+                <img mat-card-image src="{{pokemon.sprites.front_default}}">
+                <mat-card-subtitle>
+                    $180.99
+                </mat-card-subtitle>
+                <mat-card-actions>
+                    <button mat-raised-button>Add to Cart</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <!--This data will be based on the Pokemon observable that we get-->
+        <!-- <tbody> -->
+
+            <!-- <tr> -->
+                
+                <!--We will be string interpolating the values of the Pokemon object-->
+               
+                <!--We are also using pipes to format the data coming in to make them TitleCase-->
+                <!-- <td>{{pokemon.name | titlecase}}</td>
+                <td>
+                    {{pokemon.types[0].type.name | titlecase}}   
+                    <span *ngIf="pokemon.types.length>1">{{pokemon.types[1].type.name | titlecase}}</span>
+                </td>
+
+                <td><img src="{{pokemon.sprites.front_default}}"></td>
+            </tr>
+           
+        </tbody>
+
+    </table>
+
 </div> -->
-<div>
-    <h1>Output</h1>
-    <ul *ngFor = 'let poke of pokemonList | async; let i = index'>
-        <strong>index is {{i}}</strong>
-        <li>Pokemon Name: {{poke.name}}</li>
-        <!-- <li *ngFor = 'let pokeData of Object.keys(pokemon)'>My Poke Data{{pokeData}}</li> -->
-        <!-- my pokemon: {{pokemon}} -->
-        <!-- <li>my pokemon: {{pokemon}}</li> -->
-        <!-- my object : {{pokemons | json}} -->
-        <!-- <p>{{pokemon}}</p> -->
-    </ul>
-    <h1>Nothing</h1>
-</div> 
+

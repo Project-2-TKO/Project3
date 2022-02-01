@@ -14,7 +14,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// AngularMaterialModule
+// AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokeDataService } from './poke-data.service';
@@ -53,9 +53,11 @@ import { PokemonContainerComponent } from './components/pokemon-container/pokemo
   //providers: creators of services that this NgModule contributes to the global collection of services, they become accessible
   //in all parts of the app
   providers: [
-    PokeDataService, 
+    {provide: 'pokemonListApi', useValue: 'https://pokeapi.co/api/v2/pokemon'}, //new
+    // PokeDataService, 
     HttpErrorHandler, 
     MessageService],
+    
   //bootstrap: the main application view, called the root component which hosts all other app views. Only the root NgModule should set the
   //boostrap property
   bootstrap: [AppComponent],

@@ -24,7 +24,7 @@
 .searchContainer {
     background-image: url('../../../assets/zaptos.jpg');
     background-size:cover;
-    background-repeat:no-repeat;
-    height: 660px;
+    background-repeat:repeat;
+    height: 200px;
     justify-content:center;
 }

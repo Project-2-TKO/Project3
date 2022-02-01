@@ -23,12 +23,10 @@ public class PokeDexController {
 				ctx.status(200);
 			}
 			catch(Exception e) {
-				ctx.result("PokeDex not found");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
 	};
@@ -43,12 +41,10 @@ public class PokeDexController {
 	            ctx.status(200);
         	}	
         	catch(Exception e) {
-				ctx.result("PokeDex not found");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
     };
@@ -63,12 +59,10 @@ public class PokeDexController {
 	            ctx.status(200);
 	        }
 	        catch(Exception e) {
-				ctx.result("PokeDex not found");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
     };
@@ -84,12 +78,10 @@ public class PokeDexController {
 	            ctx.status(200);
         	}
         	catch(Exception e) {
-				ctx.result("PokeDex not found");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
     };    
@@ -100,16 +92,13 @@ public class PokeDexController {
 				Gson gson = new Gson();
 				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
 				ps.insertPokeDex(pokeDex);
-				ctx.result("PokeDex successfully added");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("PokeDex was not successfully added");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
 	};
@@ -120,16 +109,13 @@ public class PokeDexController {
 				Gson gson = new Gson();
 				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
 				ps. updatePokeDex(pokeDex);
-				ctx.result("PokeDex was update added!");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("PokeDex was not successfully updated");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
 			ctx.status(403);
 		}	
 	};

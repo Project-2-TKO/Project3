@@ -1,17 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 Built-By: Desktop
-=======
-Built-By: shail
->>>>>>> b179292aadfd6e3eef9d00ba30b8b1ad0505b313
-=======
-Built-By: 19899
->>>>>>> 9081fd1e994a57356131932db269d315363e8cc2
-=======
-Built-By: shail
->>>>>>> 4084d66ca2b871e70f9e160a7ccda24fb64c9d9b
 Build-Jdk: 15
 Created-By: Maven Integration for Eclipse
 

@@ -11,35 +11,33 @@ import { map } from 'rxjs';
 })
 export class PokemonContainerComponent implements OnInit {
   
-  display: boolean = false;
-  // poke:any;
-  pokemons: Pokemon[] = [];
-  // Object = Object;
-  // values = Object.values(this.arrayOfObjects);
-  pokemonList: any=[];
-  constructor(private pokeService: PokeDataService) {}
+  public name: string = '';
+  public pokemon: any = "placeholder";
+
+  constructor(private ps: PokeDataService) {}
   
   ngOnInit(): void{
-    this.pokeService.getPokemons().subscribe((x) => {
-      this.pokemonList.push(x)
-      console.log(this.pokemonList);
-      console.log(this.pokemonList);
-      console.log(this.pokemonList);
-    })
-    // this.checks();
+    
   }
-  // checks(): any {
-  //   console.log(this.pokemonList);
-  // }
-  // getPokemons(): any{
-  //   this.pokeService.getPokemons()
-  //   .subscribe(pokemons => {
-  //     this.pokemons = pokemons;
-  //     return pokemons;
-      // console.log(pokemons);
-      // pokemons.map(response => console.log(response));
-    // })
+getPokemon():void{
+  this.ps.getPokemonFromApi(this.name).subscribe(
 
-//   }
-//     )}
+    //get the data out of the observable that we subscribe to, and put it into a Pokemon object
+    (data:any) => {
+      let response:String = data.status;//gets the status code
+      console.log(response);
+      //assign it to our pokemon variable above
+      this.pokemon = data.body;
+      //we may have to do something with sprites
+      console.log(this.pokemon) //will be helpful for debugs
+    },
+
+    () => { //incase of errors, set pokemon object to null since we didn't get anything back
+      this.pokemon = null
+      console.log("It got away!!!")
+    }
+
+
+  )
+}
 }

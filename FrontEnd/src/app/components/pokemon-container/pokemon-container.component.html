@@ -1,6 +1,6 @@
 <p>pokemon-container works!</p>
 
-<div class='card_body'>
+<!-- <div class='card_body'>
     <mat-card class='pokemon_cards'>
         <mat-card-title>
             <h3>hello</h3>
@@ -17,12 +17,17 @@
             <button mat-raised-button>Add to Cart</button>
         </mat-card-actions>
     </mat-card>
-</div>
+</div> -->
 <div>
-    <ul *ngFor = 'let pokemon of Object.keys(pokemons)' >
+    <h1>Output</h1>
+    <ul *ngFor = 'let poke of pokemonList | async; let i = index'>
+        <strong>index is {{i}}</strong>
+        <li>Pokemon Name: {{poke.name}}</li>
         <!-- <li *ngFor = 'let pokeData of Object.keys(pokemon)'>My Poke Data{{pokeData}}</li> -->
-        my pokemon: {{pokemon}}
-        my object : {{pokemons | json}}
+        <!-- my pokemon: {{pokemon}} -->
+        <!-- <li>my pokemon: {{pokemon}}</li> -->
+        <!-- my object : {{pokemons | json}} -->
         <!-- <p>{{pokemon}}</p> -->
     </ul>
-</div>
+    <h1>Nothing</h1>
+</div> 

@@ -77,16 +77,16 @@ public class UserController {
 				Gson gson = new Gson();
 				User user = gson.fromJson(body, User.class);
 				us.insertUser(user);
-				ctx.result("User was successfully added");
+				//ctx.result("User was successfully added");
 				ctx.status(201);
 			}
 			catch(Exception e) {
-				ctx.result("User not successfully created");
+				//ctx.result("User not successfully created");
 				ctx.status(404);	
 			}
 		} 
 		else {
-			ctx.result("Unauthorized User");
+			//ctx.result("Unauthorized User");
 			ctx.status(403);
 		}
 	};

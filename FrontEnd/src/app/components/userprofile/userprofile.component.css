@@ -57,3 +57,6 @@ h2 {
 button {
     margin-top:10px;
 }
+mat-form-field{
+ width: 300px;
+}

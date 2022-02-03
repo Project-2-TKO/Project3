@@ -2,15 +2,16 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-import { Observable, forkJoin, BehaviorSubject } from 'rxjs';
+import { Observable, forkJoin, BehaviorSubject, concat } from 'rxjs';
 import { catchError } from 'rxjs';
 
 import { Pokemon } from './pokemon';
+import { PokemonDetails } from './pokemon';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 
 //new
 import { Inject, Injectable } from '@angular/core';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, concatMap } from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -28,19 +29,66 @@ const httpOptions = {
 export class PokeDataService{
   constructor(private http:HttpClient) {}
 
+  //search for one specific pokemon with the name
   getPokemonFromApi(name:string):Observable<HttpResponse<Pokemon>>{
     return this.http.get("https://pokeapi.co/api/v2/pokemon/" + name + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }
 
-  sendPokemonToApi(pokemon: Pokemon):Observable<Pokemon>{
-    let p:Observable<Pokemon> = this.http.post("localhost:4200/cart", pokemon) as Observable<Pokemon>
-    
-    return p;
 
+  getAllPokemons(limit: number, offset: number) {
+    console.log(`${limit}`);
+    console.log(`${offset}`);
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+    
   }
 
+  getDetails(name: string) {
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  }
+  //   getAllPokemons(): Observable<Array<any>> { //any or unknown?
+  //   return this.http.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/").pipe (
+  //     map((x) => x.results),
+  //     switchMap(x => forkJoin(this.nameUrl(x))),
+  //     map(x => x.map(x => {
+  //       return {id:x.id, name:x.name, sprites:x.sprites, types:x.types}
+  //     })),
+  //     tap((x) => console.log(x))
+  //   );
+  // }
+
+  // nameUrl(arr: Pokemon[]): Observable<Pokemon>[] {
+  //   const res = <any>[];
+  //   arr.forEach((x: Pokemon) => {
+  //     res.push(this.http.get(`https://pokeapi.co/api/v2/pokemon/${x.name}`));
+  //   });
+  //   return res;
+  // }
 
 }
+  // sendPokemonToApi(pokemon: Pokemon):Observable<Pokemon>{
+  //   let p:Observable<Pokemon> = this.http.post("localhost:4200/cart", pokemon) as Observable<Pokemon>
+    
+  //   return p;
+  // }
+
+  // getAllPokemons(): Observable<any>{
+  //   return this.http
+  //   .get<Pokemon[]>("https://pokeapi.co/api/v2/pokemon/", httpOptions)
+  //   .pipe(
+  //     concatMap(pokemons => {
+  //       const listPokemons = pokemons.results.map(pokemon => {
+  //         return this.getPokemonFromApi(pokemon.name);
+  //       });
+  //       return forkJoin(listPokemons);
+  //     }),
+  //     tap(())
+  //   )
+  // }
+  
+
+
+
+
 
 
   // // pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
@@ -52,11 +100,11 @@ export class PokeDataService{
 
 
 //   getPokemons(): Observable <any> { //any or unknown?
-//     return this.http.get<Pokemon>(this.pokemonListApi).pipe (
+//     return this.http.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/").pipe (
 //       map((x) => x.results),
 //       switchMap(x => forkJoin(this.nameUrl(x))),
 //       map(x => x.map(x => {
-//         return {name:x.name, sprites:x.sprites}
+//         return {name:x.name, sprites:x.sprites} as Observable<Pokemon>
 //       })),
 //       tap((x) => console.log(x))
 //     );
@@ -65,7 +113,7 @@ export class PokeDataService{
 //   nameUrl(arr: Pokemon[]): Observable<Pokemon>[] {
 //     const res = <any>[];
 //     arr.forEach((x: Pokemon) => {
-//       res.push(this.http.get(`${this.pokemonListApi}/${x.name}`));
+//       res.push(this.http.get(`https://pokeapi.co/api/v2/pokemon/${x.name}`));
 //     });
 //     return res;
 //   }

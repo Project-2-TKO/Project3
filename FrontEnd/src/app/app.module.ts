@@ -23,6 +23,7 @@ import { PokeDataService } from './poke-data.service';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -37,6 +38,7 @@ import { PokemonContainerComponent } from './components/pokemon-container/pokemo
     UserprofileComponent,
     NavbarComponent,
     PokemonContainerComponent,
+    ResetpasswordComponent,
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

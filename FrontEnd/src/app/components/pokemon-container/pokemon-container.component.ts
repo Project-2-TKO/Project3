@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
 import { Pokemon } from '../../pokemon';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-container',
@@ -15,6 +15,14 @@ export class PokemonContainerComponent implements OnInit {
   public pokemon: any = "placeholder";
   public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
+
+  message: string = "";
+
+  subscription: Subscription = new Subscription();
+
+  public input: number = 0;
+
+  
 
   p: number = 0;
   totalPokemon: number;
@@ -63,6 +71,11 @@ getPokemon():void{
       this.pokemon = data.body;
       //we may have to do something with sprites
       console.log(this.pokemon) //will be helpful for debugs
+    
+      this.ps.counter++;
+
+      this.ps.changeMessage("number of Pokemon found: " + this.ps.counter)
+      this.ps.pokemon = data.body;
     },
 
     () => { //incase of errors, set pokemon object to null since we didn't get anything back

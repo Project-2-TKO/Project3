@@ -27,6 +27,25 @@ const httpOptions = {
 })
 
 export class PokeDataService{
+
+  counter: number = 0;
+  
+  public messageSource = new BehaviorSubject('default string')
+
+  currentMessage = this.messageSource.asObservable();
+  pokemon: any;
+
+  changeMessage(newMessage: string){
+    this.messageSource.next(newMessage);
+  }
+
+
+
+
+
+
+
+  //-------HTTP CALLS BELOW-----
   constructor(private http:HttpClient) {}
 
   //search for one specific pokemon with the name

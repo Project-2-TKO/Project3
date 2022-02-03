@@ -14,7 +14,7 @@ export class ResetpasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  resetpasswordnusr(){
+ /* resetpasswordnusr(){
     let user = {username: this.username,
                 password: this.password};
 
@@ -29,6 +29,6 @@ export class ResetpasswordComponent implements OnInit {
       complete: () => console.info('Complete')
     }
     );
-  }
+  }*/ 
 
 }

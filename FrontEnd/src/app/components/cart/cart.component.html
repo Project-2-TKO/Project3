@@ -1,8 +1,52 @@
-<app-navbar></app-navbar>
-<h1 class="jumbotron">Welcome to the Cart</h1>
-<h3 class="jumbotron">{{message}}</h3>
+<mat-toolbar class="nav customize" >
+    
+    <div> 
+        <img src='../../../favicon.ico' height='30'/>
+        Pokemon Black Market </div>
+    <div class='navbar'>
+        <!-- menu -->
+        <mat-menu #appMenu='matMenu' class='customize'>
+            <button mat-menu-item [routerLink]="['/frontpage']">
+                <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
+                Home
+            </button>
+            <button mat-menu-item [routerLink]="['/cart']">
+                <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
+                Cart
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]='submenu' >
+                <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
+                User
+            </button>
+            <button mat-menu-item [routerLink]="['']">
+                <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
+                Sign Out
+            </button>
+        </mat-menu>
+        <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
 
-<div>
-    <h3 class = "jumbotron">Pokemon addeded to cart</h3>
+        <mat-menu #submenu='matMenu' class='customize'>
+            <button mat-menu-item>
+                Order History
+            </button>
+            <button mat-menu-item [routerLink]="['/userprofile']">
+                User Settings
+            </button>
+        </mat-menu>
+
+    </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+<h1 class="jumbotron">Welcome to the Cart</h1>
+
+
+<div *ngFor="let pokemon of pokemonList">
+    <h3>{{pokemon.name}}</h3>
+    <h3>${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
     <img src="{{pokemon.sprites.front_default}}"/>
+</div>
+<div>
+    <h1>Total Cost</h1>
+    <h1>${{totalCost}}</h1>
 </div>

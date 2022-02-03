@@ -28,6 +28,10 @@ const httpOptions = {
 
 export class PokeDataService{
 
+  totalCost : number = 0 - 1 + 1;
+  pokemonList: any = [];
+
+
   counter: number = 0;
   
   public messageSource = new BehaviorSubject('default string')

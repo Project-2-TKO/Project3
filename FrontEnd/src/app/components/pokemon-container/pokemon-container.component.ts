@@ -84,8 +84,13 @@ getPokemon():void{
     }
   )
 }
-showId(num: number){
-  console.log(num);
+addPokemon(pokemon: Pokemon){
+  console.log(pokemon);
+  this.ps.pokemonList.push(pokemon);
+  let price: number = ((pokemon.id * .01) * 543);
+  this.ps.totalCost += price; 
+  console.log(this.ps.totalCost)
+  console.log(typeof this.ps.totalCost)
 }
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);

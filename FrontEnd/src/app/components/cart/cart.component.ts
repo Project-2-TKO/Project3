@@ -9,6 +9,9 @@ import { PokeDataService } from 'src/app/poke-data.service';
 })
 export class CartComponent {
 
+  totalCost: any = 0;
+
+  pokemonList: any = [];
   message: string = "";
 
   subscription : Subscription = new Subscription();
@@ -22,6 +25,10 @@ export class CartComponent {
     this.subscription = this.ps.currentMessage.subscribe(serviceMessage => this.message = serviceMessage)
 
     this.pokemon = this.ps.pokemon
+
+    this.pokemonList = this.ps.pokemonList
+
+    this.totalCost = this.ps.totalCost
   }
 
 

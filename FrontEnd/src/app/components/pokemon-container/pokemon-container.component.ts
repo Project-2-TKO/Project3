@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
 import { Pokemon } from '../../pokemon';
 import { map, Observable } from 'rxjs';
+import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
-  // providers: [PokeDataService],
+  providers: [{provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true }}],
   styleUrls: ['./pokemon-container.component.css']
 })
 export class PokemonContainerComponent implements OnInit {
@@ -16,8 +17,12 @@ export class PokemonContainerComponent implements OnInit {
   public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
 
-  p: number = 0;
-  totalPokemon: number;
+  //for carousel
+  // slides = [{image: '../../assets/zaptos.jpg', text: this.pokemon}];
+  noWrapSlides = false;
+  showIndicator = true;
+  
+
 
   constructor(private ps: PokeDataService) {}
   
@@ -32,21 +37,19 @@ export class PokemonContainerComponent implements OnInit {
 }
 
 getAllPokemons(){
-  console.log(this.p);
-  this.ps.getAllPokemons(151, this.p + 0).subscribe(
+  this.ps.getAllPokemons().subscribe(
     (response: any) => {
-      this.totalPokemon = response.count;
-      
-      // console.log(response);
+      console.log(response);
       response.results.forEach((result: { name: string; }) => {
         this.ps.getDetails(result.name)
         .subscribe((data: any) => {
           this.pokeDataArray.push(data);
-          console.log(this.pokeDataArray);
+      //     console.log(this.pokeDataArray);
+        })
       })
-    }
+    
   
-  )
+  // )
 
 })
 }

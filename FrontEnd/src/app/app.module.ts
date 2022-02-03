@@ -13,7 +13,6 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 
 // AngularMaterialModule 
@@ -22,10 +21,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+//bootstrap NGX
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 // Services (may delete)
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
+import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -40,10 +43,10 @@ import { PokemonContainerComponent } from './components/pokemon-container/pokemo
     UserprofileComponent,
     NavbarComponent,
     PokemonContainerComponent,
+    SearchcontainerComponent,
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
-    NgxPaginationModule,
     BrowserModule, // required browser applications
     AppRoutingModule, // for routing
     HttpClientModule, // for http GET,POST,PUT,DELETE
@@ -51,7 +54,8 @@ import { PokemonContainerComponent } from './components/pokemon-container/pokemo
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    CarouselModule
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

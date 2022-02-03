@@ -1,5 +1,5 @@
 .searchStyle {
-    width:60%;
+    /* width:60%; */
     /* padding:10px; */
     border-radius:20px;
     margin:10px;
@@ -20,11 +20,39 @@
     margin-left:30px;
     /* background-color:white; */
 }
-/* 
+
 .searchContainer {
-    background-image: url('../../../assets/zaptos.jpg');
+    background-image: url('../../../assets/detective.jpg');
     background-size:cover;
-    background-repeat:repeat;
-    height: 200px;
+    background-repeat:no-repeat;
+    height: 90vh;
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+    /* justify-content:center; */
+    /* background-color:blue; */
+}
+
+.card_body {
+    /* width:500px; */
+    /* margin:0 300px 0 300px; */
+    width:800px;
+    padding: 50px;
     justify-content:center;
-} */
+    align-items:center;
+    align-content: center;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color:rgb(27, 78, 126);
+    opacity:0.9;
+}
+
+::ng-deep .pokemon_cards {
+    background-color:rgb(243, 236, 232);
+}
+.inputarea {
+    width: 600px;
+    margin:30px;
+}
+

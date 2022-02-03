@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
   user = {username: String, password: String};
   Credentials = {withCredentials: true};
   response : any ;
+  //msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password";
+  msgError ="";
   constructor(private _http : HttpClient, private router : Router ) {
 
    }
@@ -49,23 +51,9 @@ export class LoginComponent implements OnInit {
     console.log(Credentials);
     let response = this._http.post<any>("http://localhost:3000/login", user, httpOptions ).subscribe ({
       next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
-      error: (e) => console.error(e),
+      error: (e) => console.error(this.msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password"),
       complete: () => console.info('Complete')
     }
     );
-    console.log(response);
-
-     //let response = this._http.post<any>("localhost:3000/login", user, Credentials );
-     //.pipe(Map(this.user), catchError(this.handleErrorObservable));
-      console.log(response);
-   /* if (this.username =="GRAGRA" && this.password =="GRAGRA")
-    {
-      console.log("You can Pass")
-
-    }
-    else
-    {
-      console.log("You are Unwelcome")
-    }*/
   }
 }

@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.username);
       console.log(this.password);
       console.log(user);
+      let Credentials = {withCredentials: true};
       let response =this._http.post<any>("http://localhost:3000/user/",user ,httpOptions,).subscribe (
         {
           next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),

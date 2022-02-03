@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent},
 
+
 ];
 
 @NgModule({

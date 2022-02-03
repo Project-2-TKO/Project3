@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs';
 
 import { Pokemon } from './pokemon';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
+
+//new
+import { Inject, Injectable } from '@angular/core';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -20,129 +24,53 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PokeDataService {
-  pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
-  private handleError: HandleError;
 
-  constructor(
-    private http: HttpClient,
-    httpErrorHandler: HttpErrorHandler) {
-      this.handleError = httpErrorHandler.createHandleError('PokeDataService');
-    }
+export class PokeDataService{
+  constructor(private http:HttpClient) {}
 
-  /* GET POKEMON FROM THE API HOPEFULLY */
-  getPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(this.pokeUrl)
-    .pipe(
-      catchError(this.handleError('getPokemons', []))
-    );
+  getPokemonFromApi(name:string):Observable<HttpResponse<Pokemon>>{
+    return this.http.get("https://pokeapi.co/api/v2/pokemon/" + name + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }
+
+  sendPokemonToApi(pokemon: Pokemon):Observable<Pokemon>{
+    let p:Observable<Pokemon> = this.http.post("localhost:4200/cart", pokemon) as Observable<Pokemon>
+    
+    return p;
+
+  }
+
 
 }
 
 
-// Testing another method
-// export class PokeDataService {
-//   private url: string = "https://pokeapi.co/api/v2/pokemon/";
-//   private _pokemons: any[] = [];
-//   private _next: string = '';
-
-//   constructor(private http: HttpClient) {
-//   }
-
-//   get pokemons(): any[] {
-//     return this._pokemons;
-//   }
-
-//   get next(): string {
-//     return this._next;
-//   }
-
-//   set next(next: string){
-//     this._next = next;
-//   }
-
-//   getType(pokemon: any): string {
-//     return pokemon && pokemon.types.length > 0 ? pokemon.types[0].type.name:'';
-//   }
-
-//   get(name: string): Observable<any> { //<any> not sure if this would work, assuming any data types?
-//     const url = `${this.url}${name}`;
-//     return this.http.get<any>(url);
-//   }
- 
-//   getNext(): Observable<any> {
-//     const url = this.next === '' ? `${this.url}?limit=100` : this.next;
-//     return this.http.get<any>(url);
-//   }
+  // // pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
+  // // private handleError: HandleError;
+  // display = new BehaviorSubject<boolean>(false)
+  // constructor(
+  //   private http: HttpClient,
+  //   @Inject('pokemonListApi') private pokemonListApi: string,
 
 
-// }
-//*******************************************[ Important ]*************************************************************************** */
-// export class PokeDataService {
-
-//   // getData(url:string){
-//   //   return this.http.get(url)
-//   // }
-
-//   constructor(private http:HttpClient) { }
-
-//   // FIRST WAY
-//   // getRequest(url: string): void {
-//   //   this.http.get(url).subscribe((response) => {
-//   //     console.log(response);
-//   //   })
-//   // }
-
-//   //SECOND WAY [ Reusable service to perform GET, POST, UPDATE] | done in the frontpage.component.ts |
-//   //RESOURCE [https://angular.io/guide/http]
-
-//   //GET
-//   getRequest(url: string): Observable<any> {
-//     return this.http.get(url).pipe(
-//       catchError((err, caught) => caught)
+//   getPokemons(): Observable <any> { //any or unknown?
+//     return this.http.get<Pokemon>(this.pokemonListApi).pipe (
+//       map((x) => x.results),
+//       switchMap(x => forkJoin(this.nameUrl(x))),
+//       map(x => x.map(x => {
+//         return {name:x.name, sprites:x.sprites}
+//       })),
+//       tap((x) => console.log(x))
 //     );
 //   }
 
-//   //POST
-//   postRequest(url: string, data: any, option?: any): Observable<any>{
-//     return this.http.post(url, data, option).pipe(
-//       catchError((err, caught) => caught)
-//     );
-//   }
-
-//   //UPDATE
-//   updateRequest(url: string, data: any, option?: any): Observable<any>{
-//     return this.http.put(url, data, option).pipe(
-//       catchError((err, caught) => caught)
-//     );
-//   }
-
-//   //HANDLE HTTP ERRORS FROM ANGULAR DOCS
-//   // handleError code not working so probably don't need 
-//   handleError(error: HttpErrorResponse) {
-//     if(error.error instanceof ErrorEvent) {
-//       // A client-side or network error occurred. Handle it accordingly
-//       console.error('An error occurred:', error.error.message);
-//     }else{
-//       // The backend returned an unsuccessful response code
-//       // The response body may contain clues as to what went wrong
-//       console.error(
-//         `Backend returned code ${error.status},` + 
-//         `body was:`, error.error
-//       );
-//     }
-//     // Return an observable with a user-facing error message
-//     const err = 'Something bad happened; please try again';
-//     throwError(() => err);
-//     //bottom code DEPRECATED
-//     // return throwError(
-//     //   'Something bad happened; please try again later.'
-//     // );
-
-
+//   nameUrl(arr: Pokemon[]): Observable<Pokemon>[] {
+//     const res = <any>[];
+//     arr.forEach((x: Pokemon) => {
+//       res.push(this.http.get(`${this.pokemonListApi}/${x.name}`));
+//     });
+//     return res;
 //   }
 // }
+
 
 //NOTES
 //Services allows you to reuse the logic or functionality into different parts of application

@@ -1,0 +1,7 @@
+body {
+    background-image: url('../../../assets/detective.jpg');
+    background-size:cover;
+    background-repeat:repeat;
+    height: 200px;
+    justify-content:center;
+}

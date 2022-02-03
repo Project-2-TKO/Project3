@@ -11,6 +11,10 @@
                 <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
                 Home
             </button>
+            <button mat-menu-item [routerLink]="['/searchcontainer']">
+                <mat-icon [ngStyle]="{'color':'white'}">search</mat-icon>
+                Search for Pokemon
+            </button>
             <button mat-menu-item [routerLink]="['/cart']">
                 <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
                 Cart
@@ -37,4 +41,4 @@
 
     </div>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->

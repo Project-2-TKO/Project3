@@ -58,10 +58,8 @@ export class PokeDataService{
   }
 
 
-  getAllPokemons(limit: number, offset: number) {
-    console.log(`${limit}`);
-    console.log(`${offset}`);
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  getAllPokemons() {
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/`);
     
   }
 

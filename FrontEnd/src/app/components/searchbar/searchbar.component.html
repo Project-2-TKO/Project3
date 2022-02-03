@@ -1,5 +1,5 @@
 
-<!-- <div style='text-align:center' class='searchContainer'> -->
+<div class='searchContainer'>
     <!-- <h1>
         <mat-icon> favorite_border </mat-icon>
         Hello World
@@ -13,31 +13,34 @@
         <input matInput class='searchInput'>
         
     </mat-form-field> -->
-    <!-- <div class="row" style="margin-left:50%"> -->
+    <div class="row inputarea">
         <!-- Two way binding this input field to a variable called input in pokedex.component.ts -->
-        <!-- <input class="col-lg-3" type="string" [(ngModel)] = "name"/> -->
-        <!--Event binding on this button to call the getPoke() function in pokedex.component.ts-->
-        <!-- <button class=" btn btn-dark col-lg-2" (click)= "getPokemon()">Choose Pokemon</button>
+        <input class="col-8" type="string" [(ngModel)] = "name" placeholder="search by pokemon id or name..."/>
+        <!-- Event binding on this button to call the getPoke() function in pokedex.component.ts -->
+        <button class=" btn btn-dark col-lg-4" (click)= "getPokemon()">Choose Pokemon</button>
     </div>
 
     
-        <div class='card_body' *ngIf="pokemon">
+        <div class='card_body' *ngIf="pokemon" [style.display] = "isVisible ? 'block' : 'none'">
             <mat-card class='pokemon_cards'>
                 <mat-card-title>
                     {{pokemon.name}}
                 </mat-card-title>
+                <p> Pokemon ID: {{pokemon.id}}</p>
                 <mat-card-content>
-                    {{pokemon.type}}
+                    {{pokemon.types[0].type.name}}
+                    <span *ngIf="pokemon.types.length > 1"> & {{pokemon.types[1].type.name}}</span>
                 </mat-card-content>
-                <img mat-card-image src="{{pokemon.sprites.front_default}}">
-                <mat-card-subtitle>
-                    $180.99
-                </mat-card-subtitle>
+                <img mat-card-md-image src="{{pokemon.sprites.front_default}}">
+                <img mat-card-md-image src="{{pokemon.sprites.back_default}}">
+
+                <mat-card-subtitle>${{(((pokemon.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
+
                 <mat-card-actions>
                     <button mat-raised-button>Add to Cart</button>
                 </mat-card-actions>
             </mat-card>
         </div>
 
-</div> -->
+</div>
 

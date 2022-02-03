@@ -1,12 +1,15 @@
-<div class ="container-fluid body-container">
+<!-- <div class ="container-fluid body-container"> -->
+
     
-    
-    <div class="row" style="margin-left:50%">
+    <!-- <div class="row" style="margin-left:50%"> -->
         <!--Two way binding this input field to a variable called input in pokedex.component.ts-->
-        <input class="col-lg-3" type="string" [(ngModel)] = "name"/>
+        <!-- <input class="col-lg-3" type="string" [(ngModel)] = "name"/> -->
         <!--Event binding on this button to call the getPoke() function in pokedex.component.ts-->
-        <button class=" btn btn-dark col-lg-2" (click)= "getPokemon()">Choose Pokemon</button>
-    </div>
+        <!-- <button class=" btn btn-dark col-lg-2" (click)= "getPokemon()">Choose Pokemon</button> -->
+    <!-- </div> -->
+    <!-- <div>
+        <button class='btn' (click) = "getAllPokemons()">Get all</button>
+    </div> -->
 
     <!--I want to make a table to hold the information of the Pokemon Observable that I GET-->
     <!-- <table class="table table-striped table-hover" *ngIf="pokemon"> -->
@@ -16,23 +19,51 @@
             <th scope="col-lg-3">Sprite</th>
         </thead> -->
 
-        <div class='card_body' *ngIf="pokemon">
-            <mat-card class='pokemon_cards'>
-                <mat-card-title>
-                    {{pokemon.name}}
-                </mat-card-title>
-                <mat-card-content>
-                    {{pokemon.type}}
-                </mat-card-content>
-                <img mat-card-image src="{{pokemon.sprites.front_default}}">
-                <mat-card-subtitle>
-                    $180.99
+
+        <!-- <div *ngFor="let poke of pokeDataArray">
+            <h3>{{ poke.name }}</h3>
+        </div>
+         -->
+    <div class='body-container'>
+         <div class="pokeContainer" *ngFor= "let i = index; let poke of pokeDataArray | paginate: { itemsPerPage: 30, currentPage: p, totalItems: totalPokemon }">
+            <mat-card class="pokemon_cards">
+                <div class='whitespace'>
+                <mat-card-title>{{poke.name | titlecase}}</mat-card-title>
+                <mat-card-subtitle>Pokemon ID: {{poke.id}}</mat-card-subtitle>
+                <mat-card-subtitle>{{poke.types[0].type.name}}
+                <span *ngIf="poke.types.length > 1"> & {{poke.types[1].type.name}}</span>
+                <span *ngIf="pokemon.types ">{{poke.types[1].type.name}}</span>
                 </mat-card-subtitle>
+                </div>
+                <img mat-card-sm-image src="{{poke.sprites.front_default}}">
+                <mat-card-subtitle style="color:black">${{(((poke.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle> <!-- getRandomNum function won't work -->
                 <mat-card-actions>
-                    <button mat-raised-button>Add to Cart</button>
+                    <button mat-raised-button (click)="showId(poke.id)">Add to Cart</button>
+                </mat-card-actions>
+                <!-- might take this out, just testing *ngIf with *ngFor -->
+                <mat-card-content *ngIf="!collapsed">
+                    <img mat-card-sm-image src="{{poke.sprites.back_default}}">
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
+                    <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
                 </mat-card-actions>
             </mat-card>
         </div>
+    </div>
+ 
+    <pagination-controls (pageChange)= "p = $event; pokeDataArray = []; getAllPokemons()"></pagination-controls>
+        <!-- not reaching this point -->
+            <!-- <h1>Pokemon Container</h1>
+            <div class='card_body' *ngFor="let poke of pokeDataArray")>
+                <mat-card class='pokemon_cards'>
+                    <mat-card-title>{{poke.id}} , {{poke.name}}</mat-card-title>
+                    <mat-card-subtitle>{{poke.types}}</mat-card-subtitle>
+                    <img mat-card-image src="{{poke.sprites.front_default}}">
+                    <mat-card-subtitle>
+                        $180
+                    </mat-card-subtitle>
+                </mat-card> -->
 
         <!--This data will be based on the Pokemon observable that we get-->
         <!-- <tbody> -->

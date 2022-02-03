@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
 import { Pokemon } from '../../pokemon';
-import { map, Observable } from 'rxjs';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
+import { map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-container',
@@ -23,6 +23,16 @@ export class PokemonContainerComponent implements OnInit {
   showIndicator = true;
   
 
+  message: string = "";
+
+  subscription: Subscription = new Subscription();
+
+  public input: number = 0;
+
+  
+
+  p: number = 0;
+  totalPokemon: number;
 
   constructor(private ps: PokeDataService) {}
   
@@ -66,6 +76,11 @@ getPokemon():void{
       this.pokemon = data.body;
       //we may have to do something with sprites
       console.log(this.pokemon) //will be helpful for debugs
+    
+      this.ps.counter++;
+
+      this.ps.changeMessage("number of Pokemon found: " + this.ps.counter)
+      this.ps.pokemon = data.body;
     },
 
     () => { //incase of errors, set pokemon object to null since we didn't get anything back
@@ -74,8 +89,13 @@ getPokemon():void{
     }
   )
 }
-showId(num: number){
-  console.log(num);
+addPokemon(pokemon: Pokemon){
+  console.log(pokemon);
+  this.ps.pokemonList.push(pokemon);
+  let price: number = ((pokemon.id * .01) * 543);
+  this.ps.totalCost += price; 
+  console.log(this.ps.totalCost)
+  console.log(typeof this.ps.totalCost)
 }
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);

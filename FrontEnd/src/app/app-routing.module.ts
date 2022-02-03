@@ -6,6 +6,7 @@ import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 const routes: Routes = [
@@ -16,8 +17,9 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent},
   { path: 'searchcontainer', component: SearchcontainerComponent },
-  
-  
+  { path: 'resetpassword', component: ResetpasswordComponent},
+
+
 ];
 
 @NgModule({

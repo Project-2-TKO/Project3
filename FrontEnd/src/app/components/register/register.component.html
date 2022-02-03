@@ -8,22 +8,23 @@
                 <mat-card class='mat_container'>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input matInput placeholder='Username' formController="username">
+                        <input  type="text" matInput placeholder='Username' name ="username" formController="username" [(ngModel)]="username">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input matInput placeholder='Password' formController="password">
+                        <input type="password" matInput placeholder='Password' name ="password" formController="password" [(ngModel)]="password">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input matInput placeholder='Confirm Password' formController="password">
+                        <input type="password"  matInput placeholder='Confirm Password' name ="passwordc" formController="password" [(ngModel)]="passwordc">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input matInput placeholder='E-mail address' formController="address">
+                        <input type="email"  matInput placeholder='E-mail@address' name ="email" formController="address" [(ngModel)]="email">
                     </mat-form-field>
-
-                    <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']"> Register </button>
+                    <button mat-raised-button color='primary' type='submit' (click)=registusr()> Register </button>
+                    <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
+                    <small class="text-danger">{{msgError}}</small>
                 </mat-card>
             </div>
         </form>

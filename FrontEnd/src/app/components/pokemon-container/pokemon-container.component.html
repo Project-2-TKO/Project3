@@ -33,7 +33,7 @@
                 <img mat-card-sm-image src="{{poke.sprites.front_default}}">
                 <mat-card-subtitle style="color:black">${{(((poke.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-actions>
-                    <button mat-raised-button (click)="showId(poke.id)">Add to Cart</button>
+                    <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">

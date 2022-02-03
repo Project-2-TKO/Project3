@@ -38,7 +38,7 @@
                 <img mat-card-sm-image src="{{poke.sprites.front_default}}">
                 <mat-card-subtitle style="color:black">${{(((poke.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle> <!-- getRandomNum function won't work -->
                 <mat-card-actions>
-                    <button mat-raised-button (click)="showId(poke.id)">Add to Cart</button>
+                    <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
                 </mat-card-actions>
                 <!-- might take this out, just testing *ngIf with *ngFor -->
                 <mat-card-content *ngIf="!collapsed">

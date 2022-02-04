@@ -26,10 +26,15 @@ export class CartComponent {
 
     this.pokemon = this.ps.pokemon
 
+    
+
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost
-  }
 
+  }
+  delete(): void{
+    this.delete = this.ps.pokemon
+  }
 
 }

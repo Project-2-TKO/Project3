@@ -44,7 +44,7 @@
 <div>   
     <mat-card class="cardInCart"> 
     <div class="pokemonInCart" *ngFor="let pokemon of pokemonList">
-        <button class= "x"(click)="delete()">X</button>
+        <button class= "x"(click)="delete(pokemon)">X</button>
         <h3 style="font-style: italic;">{{pokemon.name | titlecase}}</h3>
         <h3 style="font-size: 25px;font-weight: bold;">${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
         <img src="{{pokemon.sprites.front_default}}"/>

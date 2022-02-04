@@ -13,23 +13,23 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component'
 
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PokeDataService } from './poke-data.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 //bootstrap NGX
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
 // Services (may delete)
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
-import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
-import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
-import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+;
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -44,8 +44,9 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
     UserprofileComponent,
     NavbarComponent,
     PokemonContainerComponent,
+    SearchbarComponent,
     SearchcontainerComponent,
-    ResetpasswordComponent,
+    ResetpasswordComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -56,8 +57,7 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule,
-    CarouselModule
+    MatButtonModule
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

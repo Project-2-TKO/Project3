@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: agust
+=======
+Built-By: 19899
+>>>>>>> 99a0a348f6eb92525566e9aa8145f50e15d43aa5
 Build-Jdk: 15
 Created-By: Maven Integration for Eclipse
 

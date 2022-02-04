@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
 
 @Component({
@@ -8,33 +9,32 @@ import { PokeDataService } from 'src/app/poke-data.service';
 })
 export class CartComponent {
 
-  public name: string = '';
-  public pokemon: any = "placeholder";
+  totalCost: any = 0;
+
+  pokemonList: any = [];
+  message: string = "";
+
+  subscription : Subscription = new Subscription();
+
+  pokemon: any = null;
   
   constructor(private ps: PokeDataService) {}
 
+  ngOnInit(): void{
 
+    this.subscription = this.ps.currentMessage.subscribe(serviceMessage => this.message = serviceMessage)
 
-  getPokemon():void{
-    this.ps.getPokemonFromApi(this.name).subscribe(
-  
-      //get the data out of the observable that we subscribe to, and put it into a Pokemon object
-      (data:any) => {
-        let response:String = data.status;//gets the status code
-        console.log(response);
-        //assign it to our pokemon variable above
-        this.pokemon = data.body;
-        //we may have to do something with sprites
-        console.log(this.pokemon) //will be helpful for debugs
-      },
-  
-      () => { //incase of errors, set pokemon object to null since we didn't get anything back
-        this.pokemon = null
-        console.log("It got away!!!")
-      }
-  
-  
-    )
+    this.pokemon = this.ps.pokemon
+
+    
+
+    this.pokemonList = this.ps.pokemonList
+
+    this.totalCost = this.ps.totalCost
+
+  }
+  delete(): void{
+    this.delete = this.ps.pokemon
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokeDataService } from 'src/app/poke-data.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,11 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 
-  public searchInput: string = '';
+  isVisible: boolean = false;
+  public name: string = '';
+  public pokemon: any = "placeholder";
   
-  constructor() { }
+  constructor(private ps: PokeDataService) { }
 
   ngOnInit(): void {
   }
 
+
+  //getting pokemon by name in search bar
+getPokemon():void{
+  this.isVisible = true;
+  this.ps.getPokemonFromApi(this.name).subscribe(
+  
+
+    //get the data out of the observable that we subscribe to, and put it into a Pokemon object
+    (data:any) => {
+      let response:String = data.status;//gets the status code
+      console.log(response);
+      //assign it to our pokemon variable above
+      this.pokemon = data.body;
+      //we may have to do something with sprites
+      console.log(this.pokemon) //will be helpful for debugs
+    },
+
+    () => { //incase of errors, set pokemon object to null since we didn't get anything back
+      this.pokemon = null
+      console.log("It got away!!!")
+    }
+  )
+}
 }

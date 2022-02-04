@@ -1,25 +1,67 @@
-<app-navbar></app-navbar>
+<mat-toolbar class="nav customize" >
+    
+    <div> 
+        <img src='../../../favicon.ico' height='30'/>
+        Pokemon Black Market </div>
+    <div class='navbar'>
+        <!-- menu -->
+        <mat-menu #appMenu='matMenu' class='customize'>
+            <button mat-menu-item [routerLink]="['/frontpage']">
+                <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
+                Home
+            </button>
+            <button mat-menu-item [routerLink]="['/cart']">
+                <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
+                Cart
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]='submenu' >
+                <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
+                User
+            </button>
+            <button mat-menu-item [routerLink]="['']">
+                <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
+                Sign Out
+            </button>
+        </mat-menu>
+        <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
 
-    <div class="row" style="margin-left:50%">
-        <!--Two way binding this input field to a variable called input in pokedex.component.ts-->
-        <input class="col-lg-3" type="string" [(ngModel)] = "name"/>
-        <!--Event binding on this button to call the getPoke() function in pokedex.component.ts-->
-        <button class=" btn btn-dark col-lg-2" (click)= "getPokemon()">Choose Pokemon</button>
+        <mat-menu #submenu='matMenu' class='customize'>
+            <button mat-menu-item>
+                Order History
+            </button>
+            <button mat-menu-item [routerLink]="['/userprofile']">
+                User Settings
+            </button>
+        </mat-menu>
+
     </div>
-<div class='card_body' *ngIf="pokemon">
-    <mat-card class='pokemon_cards'>
-        <mat-card-title>
-            {{pokemon.name}}
-        </mat-card-title>
-        <mat-card-content>
-            {{pokemon.type}}
-        </mat-card-content>
-        <img mat-card-image src="{{pokemon.sprites.front_default}}">
-        <mat-card-subtitle>
-            $180.99
-        </mat-card-subtitle>
-        <mat-card-actions>
-            <button mat-raised-button>Add to Cart</button>
-        </mat-card-actions>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+    <br>
+<h1 style= "font-style:normal;font-weight: bold; font-size: 30px;" class="jumbotron">Your Cart</h1>
+
+<div>   
+    <mat-card class="cardInCart"> 
+    <div class="pokemonInCart" *ngFor="let pokemon of pokemonList">
+        <button class= "x"(click)="delete()">X</button>
+        <h3 style="font-style: italic;">{{pokemon.name | titlecase}}</h3>
+        <h3 style="font-size: 25px;font-weight: bold;">${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
+        <img src="{{pokemon.sprites.front_default}}"/>
+    </div>
     </mat-card>
 </div>
+
+
+<div class = "costOfPokemon">
+    <mat-card class="costInCart">
+    <div>
+        <h1>Total Cost</h1>
+        <h1>${{totalCost.toFixed(2)}}</h1>
+        <button class="checkout" [routerLink]="['/checkout']">Checkout</button>
+    </div>
+    </mat-card>
+</div>
+
+
+

@@ -1,0 +1,63 @@
+.nav {
+    justify-content:space-between;
+}
+
+.navbar {
+    display:flex;
+    flex-direction:row;
+}
+
+.navbar ul{
+    display:flex;
+    flex-direction:row;
+}
+
+.navbar ul li {
+    /* margin:25px; */
+    padding-right:1rem;
+    text-decoration:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+a {
+    text-decoration: none;
+    color:white;
+    font-size:14px;
+}
+
+::ng-deep .customize {
+    background: rgb(21, 30, 56) ;
+    color:white;
+}
+
+button {
+    color:white;
+}
+
+::ng-deep .mat-menu-submenu-icon {
+    color:white;
+}
+
+::ng-deep .mainMenu {
+    height: 60px; 
+}
+.costOfPokemon{
+    max-width:90%;
+    margin:60px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    padding-top: 0px;
+    align-items:center;
+    text-align: center;
+    font-family:monospace;
+}
+.checkout{
+    background: rgb(21, 30, 56) ;
+}
+.jumbotron{
+    align-items:center;
+    text-align: center;
+}

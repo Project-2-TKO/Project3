@@ -1,14 +1,8 @@
-.container1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-direction: center;
-}
 .container {
   background-image: url('../../../assets/moltres.jpg');
   background-size:cover;
   background-repeat:no-repeat;
+  background-color:black;
   /* height: 500px; */
   display:flex;
   justify-content:center;

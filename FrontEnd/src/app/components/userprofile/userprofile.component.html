@@ -1,16 +1,19 @@
-<div class = 'login_container'>
-  <h2>User Profile</h2>
-  <h2 >{{uname}}</h2>
+<div class = "container">
+
   <form>
-      <div>
+      <div class = 'login_container'>
+        <h2>User setting</h2>
           <mat-card class="mat_container">
-            <h2 >User Code  : {{usrID}}</h2>
+            <h2 >Profile user ID  : {{usrID}}</h2>
+
               <mat-form-field>
-                  <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username">
+                  <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username" readonly>
               </mat-form-field>
+
               <mat-form-field>
-                <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email">
+                <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email" readonly>
               </mat-form-field>
+
               <mat-form-field>
                 <input matInput placeholder='Fisrt Name' name="fname" formController="fname" [(ngModel)]="fname">
               </mat-form-field>
@@ -36,6 +39,7 @@
               </mat-form-field>
 
               <button mat-raised-button color='primary' type='submit' (click)=udpprfusr()> Update Profile </button>
+              <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']"> Exit </button>
               <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
               <small class="text-danger">{{msgError}}</small>
           </mat-card>

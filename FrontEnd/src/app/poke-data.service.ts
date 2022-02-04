@@ -59,7 +59,7 @@ export class PokeDataService{
 
 
   getAllPokemons() {
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon/`);
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=151`);
     
   }
 

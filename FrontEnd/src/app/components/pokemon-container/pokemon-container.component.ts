@@ -16,6 +16,11 @@ export class PokemonContainerComponent implements OnInit {
   public pokemon: any = "placeholder";
   public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
+  
+
+  //featuredPokemon
+  public sales: any[] = [];
+  public sales2: any[] = [];
 
   //for carousel
   // slides = [{image: '../../assets/zaptos.jpg', text: this.pokemon}];
@@ -44,23 +49,35 @@ export class PokemonContainerComponent implements OnInit {
     //   })
     // })
     this.getAllPokemons();
+   
 }
 
 getAllPokemons(){
   this.ps.getAllPokemons().subscribe(
     (response: any) => {
-      console.log(response);
+      // console.log(response);
       response.results.forEach((result: { name: string; }) => {
         this.ps.getDetails(result.name)
         .subscribe((data: any) => {
-          this.pokeDataArray.push(data);
+          if(data.name == 'bulbasaur' || data.name == 'charmander' || data.name == 'squirtle' || data.name == 'pikachu' || data.name == 'meowth'){
+            this.sales.push(data);
+          }else if(data.name == 'articuno' || data.name == 'moltres' || data.name ==  'zapdos'){
+            this.sales2.push(data);
+          }else{
+            this.pokeDataArray.push(data);
+          }
+          
+          console.log(data.name);
+          // if(this.pokeDataArray[data].name)
+          // console.log(this.pokeDataArray[1].id)
+          // console.log(this.pokeDataArray[1].name)
       //     console.log(this.pokeDataArray);
+      // console.log(data)
         })
       })
     
   
   // )
-
 })
 }
 
@@ -100,26 +117,5 @@ addPokemon(pokemon: Pokemon){
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);
 }
-//get all pokemons into an array
-// getAllPokemons(): void {
-//   this.ps.getAllPokemons().subscribe(
-//     (data:any) => {
-//       for( let details of data ){
-//         this.pokemonArray.push(details);
-//         // console.log(this.pokemonArray);
-//       }
-//       for(let pokeData of this.pokemonArray){
-//         this.pokeDataArray.push(pokeData);
-//         console.log(pokeData.id);
-//         console.log(pokeData.name);
-//         console.log(pokeData.types);
-        
-//       }
-//       console.log(this.pokeDataArray)
-//       // console.log(this.pokemonArray); // now we can use *ngFor to loop through this array?
-//     }
-//   )
-// }
-
 
 }

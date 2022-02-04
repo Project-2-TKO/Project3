@@ -42,9 +42,9 @@ export class UserprofileComponent implements OnInit {
           credit_card_name :String,
           credit_card_number : String,
           first_name: String,
-          Last_name: String,
-          Phone_number: String,
-          Physical_address: String
+          last_name: String,
+          phone_number: String,
+          physical_address: String
         };
   response : any ;
   msgError ="";
@@ -75,12 +75,13 @@ export class UserprofileComponent implements OnInit {
             this.username= usr.username;
             this.email=usr.email_address;
             this.fname=usr.first_name;
-            this.lname=usr.Last_name;
-            this.phnum=usr.Phone_number;
-            this.phadd=usr.Physical_address;
+            this.lname=usr.last_name;
+            this.phnum=usr.phone_number;
+            this.phadd=usr.physical_address;
             this.ccnum=usr.credit_card_number;
             this.ccname=usr.credit_card_name;
             this.usrID=usr.user_id;
+            this.password=usr.password;
           }
         }
       );
@@ -92,15 +93,16 @@ export class UserprofileComponent implements OnInit {
     this.s_username= localStorage.getItem('username');
     console.log("session name"+this.s_username);
     let user = {
+      user_id: this.usrID,
       username:      this.username,
       password:      this.password,
       email_address: this.email,
       credit_card_name : this.ccname,
       credit_card_number : this.ccnum,
       first_name: this.fname,
-      Last_name: this.lname,
-      Phone_number: this.phnum,
-      Physical_address: this.phadd
+      last_name: this.lname,
+      phone_number: this.phnum,
+      physical_address: this.phadd
     };
 console.log(this.username);
 console.log(this.password);
@@ -108,7 +110,7 @@ console.log(user);
 let Credentials = {withCredentials: true};
 let response =this._http.put<any>("http://localhost:3000/user/" +this.usrID+"/",user ,httpOptions,).subscribe (
 {
-next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
+next: (v) => console.log("reponse rcieved"),//this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
 error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
 complete: () => console.info('Complete')
 });

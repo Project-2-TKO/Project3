@@ -67,7 +67,7 @@ getAllPokemons(){
             this.pokeDataArray.push(data);
           }
           
-          console.log(data.name);
+          // console.log(data.name);
           // if(this.pokeDataArray[data].name)
           // console.log(this.pokeDataArray[1].id)
           // console.log(this.pokeDataArray[1].name)
@@ -109,7 +109,7 @@ getPokemon():void{
 addPokemon(pokemon: Pokemon){
   console.log(pokemon);
   this.ps.pokemonList.push(pokemon);
-  let price: number = ((pokemon.id * .01) * 543);
+  let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; 
   console.log(this.ps.totalCost)
   console.log(typeof this.ps.totalCost)

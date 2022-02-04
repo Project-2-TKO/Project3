@@ -1,23 +1,28 @@
     <!-- CAROUSEL MAYBE FOR FEATURED -->
-    <!-- <div style="width: 500px; height: 500px;">
-        <carousel [noWrap]="noWrapSlides" [showIndicators]="showIndicator" *ngIf="pokeDataArray">
-            <slide>
-                <text>{{pokeDataArray[6].name}}</text> -->
-                <!-- <img [src]="slide.image" alt="image slide" style="display:block; width:100%">
-                <di class="carousel-caption">
-                    <h3>Weekly Featured Pokemon</h3>
-                    <p>{{slide.text}}</p>
-                </di> -->
-            <!-- </slide>
-        </carousel>
-        <br/>
-        <div class="checkbox">
-            <label><input type="checkbox" [(ngModel)]="noWrapSlides">Disable Slide Looping</label>
-            <label><input type="checkbox" [(ngModel)]="showIndicator">Enable Indicator</label>
-        </div>
-        
-    </div> -->
-
+    <div class="carouselContainer">
+    <carousel [isAnimated] = "true" [interval] = "3000">
+        <slide>
+          <img src="../../../assets/carousel1.jpeg" alt="first slide" style="display: block; height: 500px;" id="carouImage">
+          <div class="carousel-caption d-none d-md-block" id="description">
+            <h3>Subsribe to our newsletter.</h3>
+            <p>We send out weekly notifications on sales and promotions.</p>
+          </div>
+        </slide>
+        <slide>
+          <img src="../../../assets/carousel2.jpg" alt="second slide" style="display: block; height: 500px;" id="carouImage">
+          <div class="carousel-caption d-none d-md-block" id="description">
+            <h1>Join our team</h1>
+          </div>
+        </slide>
+        <slide>
+          <img src="../../../assets/carousel3.jpg" alt="third slide" style="display: block; height: 500px;" id="carouImage">
+          <div class="carousel-caption d-none d-md-block" id="description">
+            <h3>New Pokemon Coming Soon</h3>
+            <p>2nd Generation Pokemon Coming to the Black Market Soon</p>
+          </div>
+        </slide>
+      </carousel>
+    </div>
     <!-- SALE -->
     <div class='main_container'>
         <div class= 'overflow'>

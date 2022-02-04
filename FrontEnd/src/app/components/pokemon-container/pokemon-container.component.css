@@ -13,9 +13,25 @@
     flex-direction:column; 
     align-items:center;
     justify-content:center;
-
 }
+#description {
+    background-color: white;
+    opacity: 0.8;
+    color:black;
+    width:400px;
+}
+#carouImage {
+    max-height: 500px !important;
+    min-width: 100%;
+    max-width: 100%;
+    /* object-fit: cover; */
+    object-position: center;
+  }
 
+.carouselContainer {
+    border: 10px ridge tomato;
+    background-color:black;
+}
 #sale {
     color:black; 
     font-size:17px; 

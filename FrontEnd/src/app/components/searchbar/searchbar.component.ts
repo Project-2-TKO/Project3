@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
+import { Pokemon } from 'src/app/pokemon';
 
 @Component({
   selector: 'app-searchbar',
@@ -39,5 +40,14 @@ getPokemon():void{
       console.log("It got away!!!")
     }
   )
+
+}
+addPokemon(pokemon: Pokemon){
+  console.log(pokemon);
+  this.ps.pokemonList.push(pokemon);
+  let price: number = ((pokemon.id * .01) * 543);
+  this.ps.totalCost += price; 
+  console.log(this.ps.totalCost)
+  console.log(typeof this.ps.totalCost)
 }
 }

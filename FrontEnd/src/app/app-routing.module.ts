@@ -8,6 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { History } from 'ngx-bootstrap/utils/facade/browser';
+import { HistoryContainerComponent } from './components/history-container/history-container.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,7 +20,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent},
   { path: 'searchcontainer', component: SearchcontainerComponent },
   { path: 'resetpassword', component: ResetpasswordComponent},
-
+  { path: 'history', component: HistoryContainerComponent}
 
 ];
 

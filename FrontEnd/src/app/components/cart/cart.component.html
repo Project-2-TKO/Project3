@@ -38,15 +38,29 @@
     </mat-toolbar>
     <router-outlet></router-outlet>
 
-<h1 class="jumbotron">Welcome to the Cart</h1>
+<h1 style= "font-style:normal;font-weight: bold; font-size: 30px;" class="jumbotron">Your Cart</h1>
+
+<div>   
+    <mat-card class="cardInCart"> 
+    <div class="pokemonInCart" *ngFor="let pokemon of pokemonList">
+        <button class= "x"(click)="delete()">X</button>
+        <h3 style="font-style: italic;">{{pokemon.name | titlecase}}</h3>
+        <h3 style="font-size: 25px;font-weight: bold;">${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
+        <img src="{{pokemon.sprites.front_default}}"/>
+    </div>
+    </mat-card>
+</div>
 
 
-<div *ngFor="let pokemon of pokemonList">
-    <h3>{{pokemon.name}}</h3>
-    <h3>${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
-    <img src="{{pokemon.sprites.front_default}}"/>
+<div class = "costOfPokemon">
+    <mat-card class="costInCart">
+    <div>
+        <h1>Total Cost</h1>
+        <h1>${{totalCost.toFixed(2)}}</h1>
+        <button class="checkout" [routerLink]="['/checkout']">Checkout</button>
+    </div>
+    </mat-card>
 </div>
-<div>
-    <h1>Total Cost</h1>
-    <h1>${{totalCost}}</h1>
-</div>
+
+
+

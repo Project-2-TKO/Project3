@@ -58,27 +58,27 @@ public class UserDAO {
 			return 0;
 		}
 	}
-	public int updateUser(User user) {
-		try(Session ses = HibernateUtil.getSession()){
-			Transaction tran = ses.beginTransaction();
-			ses.merge(user);
-			tran.commit();
-			HibernateUtil.closeSession();
-			return 1;
-		}
 //	public int updateUser(User user) {
 //		try(Session ses = HibernateUtil.getSession()){
 //			Transaction tran = ses.beginTransaction();
-//			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', passowrd = '" + user.getPassword() + 
-//					"', first_name = '" + user.getFirst_name() + "', last_name = '" + user.getLast_name() + 
-//					"', email_address = '" + user.getEmail_address() + "', phone_number = '" + user.getPhone_number() +
-//					"', physical_address = '" + user.getPhysical_address() + "', credit_card_number = '" + user.getCredit_card_number() +
-//					"', credit_card_name = '" + user.getCredit_card_name() + "'	WHERE id = " + user.getUser_id());
-//			q.executeUpdate();
+//			ses.merge(user);
 //			tran.commit();
 //			HibernateUtil.closeSession();
 //			return 1;
 //		}
+	public int updateUser(User user) {
+		try(Session ses = HibernateUtil.getSession()){
+			Transaction tran = ses.beginTransaction();
+			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() + 
+					"', first_name = '" + user.getFirst_name() + "', last_name = '" + user.getLast_name() + 
+					"', email_address = '" + user.getEmail_address() + "', phone_number = '" + user.getPhone_number() +
+					"', physical_address = '" + user.getPhysical_address() + "', credit_card_number = '" + user.getCredit_card_number() +
+					"', credit_card_name = '" + user.getCredit_card_name() + "'	WHERE User_id = " + user.getUser_id());
+			q.executeUpdate();
+			tran.commit();
+			HibernateUtil.closeSession();
+			return 1;
+		}
 		catch(HibernateException e) {
 			System.out.println("There was an error updating the User");
 			return 0;

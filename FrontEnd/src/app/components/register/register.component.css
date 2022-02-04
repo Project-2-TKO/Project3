@@ -2,6 +2,7 @@
     background-image: url('../../../assets/moltres.jpg');
     background-size:cover;
     background-repeat:no-repeat;
+    background-color:black;
     /* height: 500px; */
     display:flex;
     justify-content:center;

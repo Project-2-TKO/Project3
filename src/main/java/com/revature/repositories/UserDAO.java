@@ -91,7 +91,7 @@ public class UserDAO {
 		try(Session ses = HibernateUtil.getSession()){
 			Transaction tran = ses.beginTransaction();
 			System.out.println("im running");
-			Query q = ses.createQuery("UPDATE User SET password = '" + user.getPassword() + "' WHERE User_id = " + user.getUser_id());
+			Query q = ses.createQuery("UPDATE User SET password = '" + user.getPassword() + "' WHERE user_id = " + user.getUser_id());
 			q.executeUpdate();
 			tran.commit();
 			System.out.println("i got here");

@@ -17,7 +17,7 @@
     border:2px solid black;
     border-radius:20px;
     opacity:0.9;
-    width:400px;
+    width:700px;
     padding:20px;
 
 }
@@ -47,3 +47,6 @@ h2 {
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
     color:black;
 }
+mat-form-field{
+  width: 500px;
+ }

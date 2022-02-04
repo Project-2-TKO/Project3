@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { observable, Observable } from 'rxjs';
 import { catchError} from 'rxjs';
 import { of } from 'rxjs';
 import { error } from '@angular/compiler/src/util';
+import { ArrayDataSource } from '@angular/cdk/collections';
+import { User } from 'src/app/models/user';
 
 
 const httpOptions   = {
@@ -23,7 +25,7 @@ const httpOptions   = {
 })
 export class UserprofileComponent implements OnInit {
   usrID!: String;
-  username!: String;
+  username!: string;
   password!: String;
   email!:String;
   ccname!: String;
@@ -32,8 +34,9 @@ export class UserprofileComponent implements OnInit {
   lname!: String;
   phnum!: String;
   phadd!: String;
-
-  user = {username: String,
+  uname: string;
+  user = {user_id: String,
+          username: String,
           password: String,
           email_address: String,
           credit_card_name :String,
@@ -46,12 +49,48 @@ export class UserprofileComponent implements OnInit {
   response : any ;
   msgError ="";
   Credentials = {withCredentials: true};
-  constructor(private _http : HttpClient, private router : Router) { }
+  public lusername= window.localStorage.getItem("username");
 
-  ngOnInit(): void {
+   ;
+  s_username: any;
+  constructor(private _http : HttpClient, private router : Router) { }
+  getUserByUsername(lusername : any):Observable<HttpResponse<User>>{
+    return this._http.get("http://localhost:3000/user/username/" +lusername+"/", {observe: "response"}) as Observable<HttpResponse<User>>
+    }
+  ngOnInit(): void
+  {
+      //lusername= window.localStorage.getItem("username");
+      console.log("sesion user.... "+window.localStorage.getItem("username"))
+      let uname = window.localStorage.getItem("username");
+      let luser = this.user;
+      //this.username = uname;
+      this.getUserByUsername(uname).subscribe(
+        (data:any) =>{
+          this.user = data;
+          //let response: String = data.response;
+          console.log(this.user)
+          this.user = data.body;
+          for(let usr of data.body)
+          {
+            this.username= usr.username;
+            this.email=usr.email_address;
+            this.fname=usr.first_name;
+            this.lname=usr.Last_name;
+            this.phnum=usr.Phone_number;
+            this.phadd=usr.Physical_address;
+            this.ccnum=usr.credit_card_number;
+            this.ccname=usr.credit_card_name;
+            this.usrID=usr.user_id;
+          }
+        }
+      );
   }
+
+
   udpprfusr(){
-    let userID = 3;
+    console.log(this.lusername);
+    this.s_username= localStorage.getItem('username');
+    console.log("session name"+this.s_username);
     let user = {
       username:      this.username,
       password:      this.password,
@@ -67,9 +106,9 @@ console.log(this.username);
 console.log(this.password);
 console.log(user);
 let Credentials = {withCredentials: true};
-let response =this._http.put<any>("http://localhost:3000/user/" +userID+"/",user ,httpOptions,).subscribe (
+let response =this._http.put<any>("http://localhost:3000/user/" +this.usrID+"/",user ,httpOptions,).subscribe (
 {
-next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),
+next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
 error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
 complete: () => console.info('Complete')
 });

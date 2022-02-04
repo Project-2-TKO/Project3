@@ -10,7 +10,7 @@
                 <mat-card class='mat_container'>
 
                     <mat-form-field appearance='outline' id='field'>
-                        <input type="text" matInput placeholder='Username' name="usernamer" formController="username" [(ngModel)]="username" >
+                        <input type="text" matInput placeholder='Username' name="usernamer" formController="username" [(ngModel)]="username">
                     </mat-form-field>
 
                     <mat-form-field appearance='outline' id='field'>
@@ -19,6 +19,8 @@
 
                     <button mat-raised-button color='primary' (click)=Loginusr() > Login </button>
                     <small class="text-danger">{{msgError}}</small>
+                    <br/>
+                    <br/>
                     <button mat-raised-button color='primary' type='submit' [routerLink]="['/resetpassword']"> Reset password </button>
                 </mat-card>
             </div>

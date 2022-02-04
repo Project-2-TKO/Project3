@@ -43,3 +43,8 @@ button {
 ::ng-deep .mainMenu {
     height: 60px; 
 }
+
+::ng-deep .navbar {
+    position:absolute;
+    right: 0;
+}

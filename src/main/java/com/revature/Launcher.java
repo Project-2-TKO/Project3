@@ -38,7 +38,8 @@ public class Launcher {
 	        app.put("/user/{user_id}", uc.updateUser);
 	        app.get("/user/{user_id}", uc.getUserByUserId);
 	        app.get("/user/username/{username}", uc.getUserByUsername);
-	       
+	        app.put("/reset", uc.resetPassword);
+	        
 	        app.get("/pokedex", pc.getAllPokeDex);
 	        app.post("/pokedex", pc.insertPokeDex);
 	        
@@ -47,6 +48,7 @@ public class Launcher {
 	        app.get("/pokedex/pokemon/{pokemon_id}",pc.getPokeDexByPokemonId);
 	        
 	        app.get("/pokedex/user/{user_id}", pc.getPokeDexByUserId);
+	       
 	     
 	 }
 	

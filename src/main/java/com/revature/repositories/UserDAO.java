@@ -84,5 +84,22 @@ public class UserDAO {
 			return 0;
 		}
 	}
+	public int resetPassword(User user) {
+		try(Session ses = HibernateUtil.getSession()){
+			Transaction tran = ses.beginTransaction();
+			System.out.println("im running");
+			Query q = ses.createQuery("UPDATE User SET password = '" + user.getPassword() + "' WHERE User_id = " + user.getUser_id());
+			q.executeUpdate();
+			tran.commit();
+			System.out.println("i got here");
+			HibernateUtil.closeSession();
+			return 1;
+		}
+		catch(HibernateException e) {
+			System.out.println("There was an error reseting the Password");
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 }

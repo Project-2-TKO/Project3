@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchcontainerComponent } from './components/searchcontainer/searchcontainer.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component'
+import { HistoryContainerComponent } from './components/history-container/history-container.component';
 
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
@@ -29,6 +30,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 // Services (may delete)
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
+import { PokedexComponent } from './components/pokedex/pokedex.component';
 ;
 
 @NgModule({
@@ -46,7 +48,9 @@ import { MessageService } from './message.service';
     PokemonContainerComponent,
     SearchbarComponent,
     SearchcontainerComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    HistoryContainerComponent,
+    PokedexComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -57,7 +61,8 @@ import { MessageService } from './message.service';
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    CarouselModule
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

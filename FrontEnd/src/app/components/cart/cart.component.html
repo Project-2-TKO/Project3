@@ -58,7 +58,7 @@
     <div>
         <h1>Total Cost</h1>
         <h1>${{totalCost.toFixed(2)}}</h1>
-        <button class="checkout" [routerLink]="['/checkout']">Checkout</button>
+        <button class="checkout" (click)="finalPrice()" [routerLink]="['/checkout']">Checkout</button>
     </div>
     </mat-card>
 </div>

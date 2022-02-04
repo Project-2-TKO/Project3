@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokeDataService } from 'src/app/poke-data.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  totalCost: any = 0;
 
-  ngOnInit(): void {
+  constructor(private ps: PokeDataService) { }
+
+ ngOnInit(): void{
+
+
+    this.totalCost = this.ps.totalCost
+
   }
 
 }

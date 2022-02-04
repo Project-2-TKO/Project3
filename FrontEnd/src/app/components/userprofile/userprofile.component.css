@@ -24,7 +24,7 @@
   border:2px solid black;
   border-radius:20px;
   opacity:0.9;
-  width:600px;
+  width:700px;
   padding:20px;
 
 }
@@ -58,5 +58,5 @@ button {
     margin-top:10px;
 }
 mat-form-field{
- width: 300px;
+ width: 500px;
 }

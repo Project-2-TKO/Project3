@@ -27,6 +27,29 @@ const httpOptions = {
 })
 
 export class PokeDataService{
+
+  totalCost : number = 0 - 1 + 1;
+  pokemonList: any = [];
+
+
+  counter: number = 0;
+  
+  public messageSource = new BehaviorSubject('default string')
+
+  currentMessage = this.messageSource.asObservable();
+  pokemon: any;
+
+  changeMessage(newMessage: string){
+    this.messageSource.next(newMessage);
+  }
+
+
+
+
+
+
+
+  //-------HTTP CALLS BELOW-----
   constructor(private http:HttpClient) {}
 
   //search for one specific pokemon with the name
@@ -35,10 +58,8 @@ export class PokeDataService{
   }
 
 
-  getAllPokemons(limit: number, offset: number) {
-    console.log(`${limit}`);
-    console.log(`${offset}`);
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  getAllPokemons() {
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=151`);
     
   }
 

@@ -1,10 +1,18 @@
 <div class = 'login_container'>
   <h2>User Profile</h2>
+  <h2 >{{uname}}</h2>
   <form>
       <div>
           <mat-card class="mat_container">
+            <h2 >User Code  : {{usrID}}</h2>
               <mat-form-field>
                   <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder='Fisrt Name' name="fname" formController="fname" [(ngModel)]="fname">
               </mat-form-field>
 
               <mat-form-field>

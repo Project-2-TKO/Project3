@@ -48,6 +48,12 @@ public class UserServices {
 			throw new Exception();
 		}
 	}
+	public void resetPassword(User user) throws Exception {
+		int result = ud.resetPassword(user);
+		if (result == 0) {
+			throw new Exception();
+		}
+	}
 
 
 }

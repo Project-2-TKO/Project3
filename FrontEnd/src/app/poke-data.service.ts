@@ -57,6 +57,10 @@ export class PokeDataService{
     return this.http.get("https://pokeapi.co/api/v2/pokemon/" + name + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }
 
+  //for my history
+  getPokemonById(id:string):Observable<HttpResponse<Pokemon>>{
+    return this.http.get("https://pokeapi.co/api/v2/pokemon/" + id + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
+  }
 
   getAllPokemons() {
     return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=151`);

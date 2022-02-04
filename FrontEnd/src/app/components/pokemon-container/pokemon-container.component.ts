@@ -67,7 +67,7 @@ getAllPokemons(){
             this.pokeDataArray.push(data);
           }
           
-          console.log(data.name);
+          // console.log(data.name);
           // if(this.pokeDataArray[data].name)
           // console.log(this.pokeDataArray[1].id)
           // console.log(this.pokeDataArray[1].name)

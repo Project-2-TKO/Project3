@@ -87,7 +87,7 @@ public class UserController {
 				String body = ctx.body();
 				Gson gson = new Gson();
 				User user = gson.fromJson(body, User.class);
-				us. updateUser(user);
+				us.updateUser(user);
 				ctx.status(201);
 			}
 			catch(Exception e) {
@@ -98,6 +98,25 @@ public class UserController {
 			ctx.status(403);
 		}	
 	};
+	public Handler resetPassword = ctx -> {
+		if(ctx.req.getSession() != null) {
+			try {
+				String body = ctx.body();
+				Gson gson = new Gson();
+				User user = gson.fromJson(body, User.class);
+				us.resetPassword(user);
+				ctx.status(201);
+			}
+			catch(Exception e) {
+				ctx.status(404);
+				e.printStackTrace();
+			}
+		}
+		else {
+			ctx.status(403);
+		}
+	};
+
 }
 
 

@@ -128,10 +128,23 @@ export class CheckoutComponent implements OnInit {
 
     
   // }
-  udpprfusr(){
+
+
+
+
+  //-------REQUEST TO POST POKEMON IN POKEDEX-----------///
+
+
+
+
+  insertPokemon(){
     console.log(this.lusername);
     this.s_username= localStorage.getItem('username');
     console.log("session name"+this.s_username);
+
+    //need to change let user to let pokemon???
+      //what should I place within user arguments?
+
     let user = {
       user_id: this.usrID,
       username:      this.username,
@@ -148,10 +161,13 @@ console.log(this.username);
 console.log(this.password);
 console.log(user);
 let Credentials = {withCredentials: true};
-let response =this._http.put<any>("http://localhost:3000/user/" +this.usrID+"/",user ,httpOptions,).subscribe (
+
+
+//-----STILL NEED WORK DONE TO THIS
+let response =this._http.post<any>("http://localhost:3000/pokedex/" +this.usrID+"/",user ,httpOptions,).subscribe (
 {
 next: (v) => console.log("reponse rcieved"),//this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
-error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
+error: (e) => console.error(this.msgError="Pokemon failed to insert into Pokedex"),
 complete: () => console.info('Complete')
 });
 

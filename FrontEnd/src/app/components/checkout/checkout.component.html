@@ -52,4 +52,45 @@
         </div>
         </mat-card>
     </div>
+
+    <div class = "container">
+
+        <form>
+            <div class = 'login_container'>
+              
+                <mat-card class="mat_container">
+                  <h2 >Profile user ID  : {{usrID}}</h2>
+      
+                    <mat-form-field>
+                        <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username" readonly>
+                    </mat-form-field>
+      
+                    <mat-form-field>
+                      <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email" readonly>
+                    </mat-form-field>
+    
+                    <mat-form-field>
+                      <input matInput placeholder='Physical Address' name="phadd" formController="phadd" [(ngModel)]="phadd">
+                    </mat-form-field>
+      
+                    <mat-form-field>
+                      <input matInput placeholder='Credit Card Number' name="ccnum" formController="ccnum" [(ngModel)]="ccnum">
+                    </mat-form-field>
+      
+                    <mat-form-field>
+                      <input matInput placeholder='Credit Card Name' name="ccname" formController="ccname" [(ngModel)]="ccname">
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color='primary' type='submit' (click)=udpprfusr()>Submit Payment</button>
+                    <br>
+                    <br>
+                    <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']"> Exit </button>
+                    <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
+                    <small class="text-danger">{{msgError}}</small>
+                </mat-card>
+            </div>
+        </form>
+      </div>
+      
+
     <router-outlet></router-outlet>

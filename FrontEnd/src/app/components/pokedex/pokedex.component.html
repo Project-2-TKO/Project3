@@ -1,18 +1,19 @@
 <div class="pokemon_container">
+<div class="flex">
 <div class="header">
-<h2>{{user | titlecase }}'s Pokedex</h2>
+    <h2>{{user | titlecase }}'s Pokedex</h2>
 </div>
-<div *ngIf="pokemonArray">
+</div>
+<div class="card_container">
+<div *ngFor="let i = index; let poke of pokemonArray" >
     <mat-card class="pokemon_cards">
         <div class='whitespace'>
-        <mat-card-title>{{pokemonArray.name | titlecase}}</mat-card-title>
-        <mat-card-subtitle>Pokemon ID: {{pokemonArray.id}}</mat-card-subtitle>
-        <mat-card-subtitle>{{pokemonArray.types[0].type.name}}
-        <span *ngIf="pokemonArray.types.length > 1"> & {{pokemonArray.types[1].type.name}}</span>
-        <span *ngIf="pokemonArray.types ">{{pokemonArray.types[1].type.name}}</span>
-        </mat-card-subtitle>
+        <mat-card-title>{{poke.name | titlecase}}</mat-card-title>
+        <mat-card-subtitle>Pokemon ID: {{poke.id}}</mat-card-subtitle>
+        <img mat-card-lg-image src="{{poke.sprites.front_default}}">
+        <mat-card-subtitle>Pokemon ID: {{poke.id}}</mat-card-subtitle>
         </div>
-        <img mat-card-lg-image src="{{pokemonArray.sprites.front_default}}">
     </mat-card>
+</div>
 </div>
 </div>

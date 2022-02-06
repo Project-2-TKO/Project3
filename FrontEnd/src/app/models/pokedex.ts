@@ -5,3 +5,10 @@ export class Pokedex {
     ){}
   }
   
+
+export class UserId {
+        constructor(
+        public user_id: String,
+        public username: String
+    ){}
+}

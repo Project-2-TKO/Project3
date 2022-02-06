@@ -55,7 +55,7 @@ export class PokedexComponent implements OnInit {
                 //assign it to our pokemon variable above
                 this.pokemon_id = data.body;
                 //we may have to do something with sprites
-                console.log(this.pokemon_id) //will be helpful for debugs
+                console.log(this.pokemon_id)
               },
           
               () => { //incase of errors, set pokemon object to null since we didn't get anything back

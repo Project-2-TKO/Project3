@@ -1,0 +1,26 @@
+.footer_container{
+    color:white;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    padding:70px 10px 40px 10px
+}
+
+img {
+    margin:30px;
+}
+
+.main_footer{
+    background-color:rgb(21, 30, 56);
+    position:relative;
+    bottom:0;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    padding-bottom:30px;
+}
+
+hr{
+    color:white;
+}

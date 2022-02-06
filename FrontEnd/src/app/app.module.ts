@@ -31,6 +31,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
+import { FooterComponent } from './components/footer/footer.component';
 ;
 
 @NgModule({
@@ -50,7 +51,8 @@ import { PokedexComponent } from './components/pokedex/pokedex.component';
     SearchcontainerComponent,
     ResetpasswordComponent,
     HistoryContainerComponent,
-    PokedexComponent
+    PokedexComponent,
+    FooterComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

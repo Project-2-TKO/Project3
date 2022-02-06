@@ -1,4 +1,4 @@
-.container {
+.container_login {
     background-image: url('../../../assets/articuno.jpg');
     background-size:cover;
     background-repeat:no-repeat;
@@ -24,9 +24,13 @@
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 40px;
     padding:20px;
     margin:20px;
+    font-family:monospace;
+}
+span {
+    color: black;
 }
 
 .mat_container {

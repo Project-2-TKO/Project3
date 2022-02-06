@@ -15,10 +15,18 @@
     justify-content:center;
 }
 #description {
-    background-color: white;
-    opacity: 0.8;
-    color:black;
+    background-color:darkslategray;
+    border:3px solid white;
+    border-radius:15px;
+    opacity: 0.9;
+    color:white;
     width:400px;
+    padding:10px;
+}
+
+h3 {
+    font-size:20px;
+    font-style:italic;
 }
 #carouImage {
     max-height: 500px !important;

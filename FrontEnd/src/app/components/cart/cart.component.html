@@ -26,7 +26,7 @@
         <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
 
         <mat-menu #submenu='matMenu' class='customize'>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/history']">
                 Order History
             </button>
             <button mat-menu-item [routerLink]="['/userprofile']">

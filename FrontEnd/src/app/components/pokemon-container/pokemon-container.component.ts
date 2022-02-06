@@ -55,7 +55,7 @@ export class PokemonContainerComponent implements OnInit {
 getAllPokemons(){
   this.ps.getAllPokemons().subscribe(
     (response: any) => {
-      // console.log(response);
+      console.log(response);
       response.results.forEach((result: { name: string; }) => {
         this.ps.getDetails(result.name)
         .subscribe((data: any) => {

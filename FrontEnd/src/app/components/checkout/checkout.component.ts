@@ -74,6 +74,7 @@ export class CheckoutComponent implements OnInit {
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost;
+
     console.log("sesion user.... "+window.localStorage.getItem("username"))
       let uname = window.localStorage.getItem("username");
       let luser = this.user;
@@ -136,47 +137,43 @@ export class CheckoutComponent implements OnInit {
 
 
 
-
-  insertPokemon(){
-    console.log(this.lusername);
-    this.s_username= localStorage.getItem('username');
-    console.log("session name"+this.s_username);
-
-    //need to change let user to let pokemon???
-      //what should I place within user arguments?
-
-    let user = {
-      user_id: this.usrID,
-      username:      this.username,
-      password:      this.password,
-      email_address: this.email,
-      credit_card_name : this.ccname,
-      credit_card_number : this.ccnum,
-      first_name: this.fname,
-      last_name: this.lname,
-      phone_number: this.phnum,
-      physical_address: this.phadd
-    };
-console.log(this.username);
-console.log(this.password);
-console.log(user);
-let Credentials = {withCredentials: true};
+  inject(mon: any): void{
+    for(var i = 0; i < this.pokemonList.length; i++){
+        console.log(this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id))
+        if (this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id) !== -1){
+          this.pokemonCost = this.pokemonList[i].id
+          insertPokemon(this.pokemonCost)
+          
+          
+          
+          
+          }
 
 
-//-----STILL NEED WORK DONE TO THIS
-let response =this._http.post<any>("http://localhost:3000/pokedex/" +this.usrID+"/",user ,httpOptions,).subscribe (
-{
-next: (v) => console.log("reponse rcieved"),//this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
-error: (e) => console.error(this.msgError="Pokemon failed to insert into Pokedex"),
-complete: () => console.info('Complete')
-});
 
-console.log(response);
 
+  insertPokemon(this.pokemon.id){
+    if(this.password == this.passwordc)
+    {
+      let pokedex = {user_id:      this.user_id, ///user id, pokemon id
+                  pokemon_id:      this.pokemon_id
+                 
+                };
+      
+      let Credentials = {withCredentials: true};
+      let response =this._http.post<any>("http://localhost:3000/pokedex/",pokedex ,httpOptions,).subscribe (
+        {
+          next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),
+          error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
+          complete: () => console.info('Complete')
+        });
+
+      console.log(response);
   }
-
-
-
+  else
+  {
+    this.msgError="passwords does not match, please revalidate your password"
+  }
 
   }
 

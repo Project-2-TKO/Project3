@@ -12,7 +12,7 @@ export class CartComponent {
 
   totalCost: any = 0;
   pokemonCost: any = 0;
-
+  finalCost: any = 0;
   pokemonList: any = [];
   message: string = "";
 
@@ -33,6 +33,7 @@ export class CartComponent {
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost
+    
 
   }
   delete(mon: any): void{
@@ -41,6 +42,7 @@ export class CartComponent {
         if (this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id) !== -1){
           this.pokemonCost = this.pokemonList[i].id
           this.totalCost = this.totalCost -= (((this.pokemonCost * .01) * 543));
+        
           this.pokemonList.splice(i , 1);
           
           break
@@ -56,11 +58,6 @@ export class CartComponent {
 
     
   }
-  finalPrice(): void{
-    this.totalCost
-  }
-
-
 
 
 }

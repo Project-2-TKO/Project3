@@ -153,7 +153,7 @@ console.log(pokedex);
       let Credentials = {withCredentials: true};
       let response =this._http.post<any>("http://localhost:3000/pokedex",pokedex ,httpOptions,).subscribe (
         {
-          next: (v) => console.log("Pokemon Entered"),
+          next: (v) => this.deleteCart(), //console.log("Pokemon Entered")
           error: (e) => console.error(this.msgError="Could not enter"),
           complete: () => console.info('Complete')
         });
@@ -165,7 +165,7 @@ console.log(pokedex);
     
     this.pokemonList.length = 0;
     this.ps.totalCost = 0;
-
+    this.router.navigate(['/frontpage']);
 
 
   }

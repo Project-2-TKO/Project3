@@ -56,9 +56,9 @@ export class RegisterComponent implements OnInit {
                   credit_card_name : "",
                   credit_card_number : "",
                   first_name: "",
-                  Last_name: "",
-                  Phone_number: "",
-                  Physical_address: ""
+                  last_name: "",
+                  phone_number: "",
+                  physical_address: ""
                 };
       console.log(this.username);
       console.log(this.password);

@@ -14,12 +14,14 @@ const httpOptions   = {
   })
 };
 
-@Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
-})
-export class CheckoutComponent implements OnInit {
+@Component(
+  {
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.css']
+  })
+export class CheckoutComponent implements OnInit
+{
   usrID!: String;
   username!: string;
   password!: String;
@@ -41,16 +43,15 @@ export class CheckoutComponent implements OnInit {
           last_name: String,
           phone_number: String,
           physical_address: String
-        };
+};
   response : any ;
   msgError ="";
   Credentials = {withCredentials: true};
   public lusername= window.localStorage.getItem("username");
 
-   ;
   s_username: any;
   totalCost: any = 0;
-  pokemonCost: any = 0;
+  pokemon_id: any = 0;
   mon:any =0;
   pokemonList: any = [];
   message: string = "";
@@ -63,13 +64,14 @@ export class CheckoutComponent implements OnInit {
     return this._http.get("http://localhost:3000/user/username/" +lusername+"/", {observe: "response"}) as Observable<HttpResponse<User>>
     }
 
-  ngOnInit(): void{
+  ngOnInit(): void
+  {
 
     this.subscription = this.ps.currentMessage.subscribe(serviceMessage => this.message = serviceMessage)
 
     this.pokemon = this.ps.pokemon
 
-    
+
 
     this.pokemonList = this.ps.pokemonList
 
@@ -101,79 +103,46 @@ export class CheckoutComponent implements OnInit {
         }
       );
   }
-      
-        
-//app.post("/pokedex", pc.insertPokeDex);
-      
-      
-  // }
-  // }
-  // delete(mon: any): void{
-  //   for(var i = 0; i < this.pokemonList.length; i++){
-  //       console.log(this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id))
-  //       if (this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id) !== -1){
-  //         this.pokemonCost = this.pokemonList[i].id
-  //         this.totalCost = this.totalCost - (((this.pokemonCost * .01) * 543));
-  //         this.pokemonList.splice(i , 1);
-          
-  //         break
-          
-  //         }
-        
-          
-
-        
-        
-  //   }
-   
-
-    
-  // }
-
-
-
 
   //-------REQUEST TO POST POKEMON IN POKEDEX-----------///
 
 
 
-  inject(mon: any): void{
-    for(var i = 0; i < this.pokemonList.length; i++){
-        console.log(this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id))
-        if (this.pokemonList.findIndex(() => mon.id == this.pokemonList[i].id) !== -1){
-          this.pokemonCost = this.pokemonList[i].id
-          insertPokemon(this.pokemonCost)
-          
-          
-          
-          
-          }
-
-
-
-
-  insertPokemon(this.pokemon.id){
-    if(this.password == this.passwordc)
+  inject(): void
     {
-      let pokedex = {user_id:      this.user_id, ///user id, pokemon id
-                  pokemon_id:      this.pokemon_id
-                 
+      setTimeout(() => {
+      for(var i = 0; i < this.pokemonList.length; i++)
+      {
+
+            this.pokemon_id = this.pokemonList[i].id
+             this.insertPokemon(this.pokemon_id)
+
+            console.log(this.pokemon_id);
+
+          // }
+        }
+      }, 1000);
+    }
+
+
+
+
+  insertPokemon(pokemon_id :any)
+  {
+      let pokedex = {
+                  pokemon_id:      this.pokemon_id,
+                  user_id:      this.usrID ///user id, pokemon id
                 };
-      
+console.log(this.usrID);
+console.log(this.pokemon_id);
       let Credentials = {withCredentials: true};
       let response =this._http.post<any>("http://localhost:3000/pokedex/",pokedex ,httpOptions,).subscribe (
         {
           next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),
-          error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
+          error: (e) => console.error(this.msgError="Could not enter"),
           complete: () => console.info('Complete')
         });
 
       console.log(response);
   }
-  else
-  {
-    this.msgError="passwords does not match, please revalidate your password"
-  }
-
-  }
-
+}

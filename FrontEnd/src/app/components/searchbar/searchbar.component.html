@@ -32,7 +32,10 @@
                     <span *ngIf="pokemon.types.length > 1"> & {{pokemon.types[1].type.name}}</span>
                 </mat-card-content>
                 <img mat-card-md-image src="{{pokemon.sprites.front_default}}">
-                <img mat-card-md-image src="{{pokemon.sprites.back_default}}">
+                <span *ngIf="pokemon.sprites.back_default">
+                    <img mat-card-md-image src="{{pokemon.sprites.back_default}}">
+                </span>
+                
 
                 <mat-card-subtitle>${{(((pokemon.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
 

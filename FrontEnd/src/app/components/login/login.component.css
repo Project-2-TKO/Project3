@@ -4,6 +4,7 @@
     background-repeat:no-repeat;
     background-color:black;
     /* height: 500px; */
+    background-position: center;
     display:flex;
     justify-content:center;
     height:100vh;

@@ -121,7 +121,7 @@ export class CheckoutComponent implements OnInit
 
           // }
         }
-      }, 1000);
+      }, 5000);
     }
 
 
@@ -129,16 +129,31 @@ export class CheckoutComponent implements OnInit
 
   insertPokemon(pokemon_id :any)
   {
-      let pokedex = {
+    let user = {
+      user_id: this.usrID,
+      username: this.username,
+      password: this.password,
+      first_name: this.fname,
+      last_name: this.lname,
+      email_address: this.email,
+      phone_number: this.phnum,
+      physical_address: this.phadd,
+      credit_card_name : this.ccname,
+      credit_card_number : this.ccnum
+    };
+    let pokedex = {
                   pokemon_id:      this.pokemon_id,
-                  user_id:      this.usrID ///user id, pokemon id
+                  user:      user//this.usrID ///user id, pokemon id
                 };
 console.log(this.usrID);
 console.log(this.pokemon_id);
+console.log(this.user);
+console.log(pokedex);
+
       let Credentials = {withCredentials: true};
-      let response =this._http.post<any>("http://localhost:3000/pokedex/",pokedex ,httpOptions,).subscribe (
+      let response =this._http.post<any>("http://localhost:3000/pokedex",pokedex ,httpOptions,).subscribe (
         {
-          next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),
+          next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
           error: (e) => console.error(this.msgError="Could not enter"),
           complete: () => console.info('Complete')
         });

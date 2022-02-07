@@ -28,7 +28,8 @@ const httpOptions = {
 
 export class PokeDataService{
 
-  totalCost : number = 0 - 1 + 1;
+  totalCost : number = 0;
+  
   pokemonList: any = [];
 
 

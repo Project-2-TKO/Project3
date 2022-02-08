@@ -1,54 +1,8 @@
-
+<app-navbar></app-navbar>
 <div class="cart_container">
    
     <div class="center_div">
 
-
-<mat-toolbar class="nav customize" >
-
-
-        <div> 
-            <img src='../../../favicon.ico' height='30'/>
-            Pokemon Black Market </div>
-        <div class='navbar'>
-            <mat-menu #appMenu='matMenu' class='customize'>
-                <button mat-menu-item [routerLink]="['/frontpage']">
-                    <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
-                    Home
-                </button>
-                <button mat-menu-item [routerLink]="['/cart']">
-                    <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
-                    Cart
-                </button>
-                <button mat-menu-item [matMenuTriggerFor]='submenu' >
-                    <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
-                    User
-                </button>
-                <button mat-menu-item [routerLink]="['']">
-                    <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
-                    Sign Out
-                </button>
-            </mat-menu>
-            <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
-    
-            <mat-menu #submenu='matMenu' class='customize'>
-                <button mat-menu-item>
-                    Order History
-                </button>
-                <button mat-menu-item [routerLink]="['/userprofile']">
-                    User Settings
-                </button>
-            </mat-menu>
-            
-            
-    
-    
-        </div>
-    
-        </mat-toolbar>
-        <br>
-        <br>
-        <h1 style= "font-style:normal;font-weight: bold; font-size: 30px;" class="jumbotron" id="heading"></h1>
     
         <div class = "costOfPokemon">
             <mat-card class="costInCart">

@@ -1,96 +1,108 @@
+
+<div class="cart_container">
+   
+    <div class="center_div">
+
+
 <mat-toolbar class="nav customize" >
+
+
+        <div> 
+            <img src='../../../favicon.ico' height='30'/>
+            Pokemon Black Market </div>
+        <div class='navbar'>
+            <mat-menu #appMenu='matMenu' class='customize'>
+                <button mat-menu-item [routerLink]="['/frontpage']">
+                    <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
+                    Home
+                </button>
+                <button mat-menu-item [routerLink]="['/cart']">
+                    <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
+                    Cart
+                </button>
+                <button mat-menu-item [matMenuTriggerFor]='submenu' >
+                    <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
+                    User
+                </button>
+                <button mat-menu-item [routerLink]="['']">
+                    <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
+                    Sign Out
+                </button>
+            </mat-menu>
+            <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
     
-    <div> 
-        <img src='../../../favicon.ico' height='30'/>
-        Pokemon Black Market </div>
-    <div class='navbar'>
-        <!-- menu -->
-        <mat-menu #appMenu='matMenu' class='customize'>
-            <button mat-menu-item [routerLink]="['/frontpage']">
-                <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
-                Home
-            </button>
-            <button mat-menu-item [routerLink]="['/cart']">
-                <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
-                Cart
-            </button>
-            <button mat-menu-item [matMenuTriggerFor]='submenu' >
-                <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
-                User
-            </button>
-            <button mat-menu-item [routerLink]="['']">
-                <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
-                Sign Out
-            </button>
-        </mat-menu>
-        <button mat-flat-button [matMenuTriggerFor]='appMenu' class='customize mainMenu'><mat-icon>menu</mat-icon></button>
-
-        <mat-menu #submenu='matMenu' class='customize'>
-            <button mat-menu-item>
-                Order History
-            </button>
-            <button mat-menu-item [routerLink]="['/userprofile']">
-                User Settings
-            </button>
-        </mat-menu>
-        
-        
-
-
-    </div>
-
-    </mat-toolbar>
-    <br>
-    <h1 style= "font-style:normal;font-weight: bold; font-size: 30px;" class="jumbotron">Checkout</h1>
-
-    <div class = "costOfPokemon">
-        <mat-card class="costInCart">
-        <div>
-            <h1>Total Cost</h1>
-            <h1>${{totalCost.toFixed(2)}}</h1>
-            <button class="checkout" [routerLink]="['/checkout']">Pay Now</button>
+            <mat-menu #submenu='matMenu' class='customize'>
+                <button mat-menu-item>
+                    Order History
+                </button>
+                <button mat-menu-item [routerLink]="['/userprofile']">
+                    User Settings
+                </button>
+            </mat-menu>
+            
+            
+    
+    
         </div>
-        </mat-card>
+    
+        </mat-toolbar>
+        <br>
+        <br>
+        <h1 style= "font-style:normal;font-weight: bold; font-size: 30px;" class="jumbotron" id="heading"></h1>
+    
+        <div class = "costOfPokemon">
+            <mat-card class="costInCart">
+            <div>
+                <h1 id="totalCost">Total Cost</h1>
+                <h1>${{totalCost.toFixed(2)}}</h1>
+            </div>
+            </mat-card>
+        </div>
+    
+        <div class = "cardInCart">
+    
+            <form>
+                <div class = 'login_container'>
+                  
+                    <mat-card class="pokemonInCart">
+                      <h2 >Profile user ID  : {{usrID}}</h2>
+          
+                        <mat-form-field>
+                            <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username" readonly>
+                        </mat-form-field>
+          
+                        <mat-form-field>
+                          <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email" readonly>
+                        </mat-form-field>
+        
+                        <mat-form-field>
+                          <input matInput placeholder='Physical Address' name="phadd" formController="phadd" [(ngModel)]="phadd">
+                        </mat-form-field>
+          
+                        <mat-form-field>
+                          <input matInput placeholder='Credit Card Number' name="ccnum" formController="ccnum" [(ngModel)]="ccnum">
+                        </mat-form-field>
+          
+                        <mat-form-field>
+                          <input matInput placeholder='Credit Card Name' name="ccname" formController="ccname" [(ngModel)]="ccname">
+                        </mat-form-field>
+                        <br>
+                        <button class="checkout" mat-raised-button color='primary' type='submit' (click)="inject()" style="color:white; padding:10px; border-radius:15px">Submit Payment</button>
+                        <br>
+                        <br>
+                        <button class="checkout" mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']" style="color:white; padding:10px; border-radius:15px"> Exit </button>
+                        <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
+                        <small class="text-danger">{{msgError}}</small>
+                    </mat-card>
+                </div>
+            </form>
+          </div>
+
+
+
+
     </div>
 
-    <div class = "container">
-
-        <form>
-            <div class = 'login_container'>
-              
-                <mat-card class="mat_container">
-                  <h2 >Profile user ID  : {{usrID}}</h2>
-      
-                    <mat-form-field>
-                        <input matInput placeholder='User Name' name ="username" formController="username" [(ngModel)]="username" readonly>
-                    </mat-form-field>
-      
-                    <mat-form-field>
-                      <input matInput placeholder='e-mail' name="email" formController="email" [(ngModel)]="email" readonly>
-                    </mat-form-field>
-    
-                    <mat-form-field>
-                      <input matInput placeholder='Physical Address' name="phadd" formController="phadd" [(ngModel)]="phadd">
-                    </mat-form-field>
-      
-                    <mat-form-field>
-                      <input matInput placeholder='Credit Card Number' name="ccnum" formController="ccnum" [(ngModel)]="ccnum">
-                    </mat-form-field>
-      
-                    <mat-form-field>
-                      <input matInput placeholder='Credit Card Name' name="ccname" formController="ccname" [(ngModel)]="ccname">
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button color='primary' type='submit' (click)="inject()">Submit Payment</button>
-                    <br>
-                    <br>
-                    <button mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']" > Exit </button>
-                    <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
-                    <small class="text-danger">{{msgError}}</small>
-                </mat-card>
-            </div>
-        </form>
-      </div>
-      
-
-    <router-outlet></router-outlet>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

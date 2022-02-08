@@ -1,48 +1,4 @@
-.nav {
-    justify-content:space-between;
-}
 
-.navbar {
-    display:flex;
-    flex-direction:row;
-}
-
-.navbar ul{
-    display:flex;
-    flex-direction:row;
-}
-
-.navbar ul li {
-    /* margin:25px; */
-    padding-right:1rem;
-    text-decoration:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-a {
-    text-decoration: none;
-    color:white;
-    font-size:14px;
-}
-
-::ng-deep .customize {
-    background: rgb(21, 30, 56) ;
-    color:white;
-}
-
-button {
-    color:white;
-}
-
-::ng-deep .mat-menu-submenu-icon {
-    color:white;
-}
-
-::ng-deep .mainMenu {
-    height: 60px; 
-}
 .cardInCart{
     max-width:90%;
     margin:60px;
@@ -52,6 +8,7 @@ button {
     padding-top: 0px;
     text-align:center;
     font-family:monospace;
+    opacity:0.9;
 }
 .costOfPokemon{
     padding-right:1rem;
@@ -59,6 +16,9 @@ button {
     display:block;
     flex-direction:column;
     align-items:center;
+    text-align:center;
+    width:500px;
+    margin:20px;
     
 }
 .checkout{
@@ -71,11 +31,31 @@ button {
     background-color:rgb(243, 236, 232);
     margin: 5px;
 }
-.jumbotron{
-    align-items:center;
-    text-align: center;
-}
-.x{
+
+/* .x{
     color:red;
     background-color: white;
+} */
+
+.cart_container {
+    color:white;
+    background: url('../../../assets/cart.jpg');
+    min-height:90vh;
+    height:auto;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.center_div {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    opacity:0.9;
+}
+
+#heading {
+    font-size:40px;
+    font-weight:bold;
+    margin:50px;
 }

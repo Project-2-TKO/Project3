@@ -1,5 +1,8 @@
 .nav {
-    justify-content:space-between;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;;
 }
 
 .navbar {
@@ -11,7 +14,7 @@
     display:flex;
     flex-direction:row;
 }
-
+ 
 .navbar ul li {
     /* margin:25px; */
     padding-right:1rem;
@@ -57,7 +60,56 @@ button {
 .checkout{
     background: rgb(21, 30, 56) ;
 }
-.jumbotron{
+/* .jumbotron{
     align-items:center;
     text-align: center;
+} */
+.cart_container {
+    color:white;
+    background: url('../../../assets/mewtwo.jpg');
+    min-height:90vh;
+    height:auto;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.center_div {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    opacity:0.9;
+}
+
+#heading {
+    font-size:40px;
+    font-weight:bold;
+    margin:90px;
+}
+.cardInCart{
+    max-width:100%;
+    margin:80px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    padding-top: 0px;
+    text-align:center;
+    font-family:monospace;
+    
+}
+.pokemonInCart{
+    border:8px rgb(22, 7, 46);
+    border-style:solid;
+    border-radius:8px;
+    background-color:rgb(243, 236, 232);
+    margin: 125px;
+}
+#totalCost{
+    font-size:30px;
+    font-family: monospace;
+    font: weight 500px;;
+    margin:40px;
+    
+
+    
 }

@@ -110,7 +110,7 @@ console.log(user);
 let Credentials = {withCredentials: true};
 let response =this._http.put<any>("http://localhost:3000/user/" +this.usrID+"/",user ,httpOptions,).subscribe (
 {
-next: (v) => console.log("reponse rcieved"),//this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
+next: (v) =>  this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
 error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
 complete: () => console.info('Complete')
 });

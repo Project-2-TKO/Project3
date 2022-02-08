@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { delay, Observable, Subscription } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { PokeDataService } from 'src/app/poke-data.service';
 
@@ -110,18 +110,12 @@ export class CheckoutComponent implements OnInit
 
   inject(): void
     {
-      setTimeout(() => {
       for(var i = 0; i < this.pokemonList.length; i++)
       {
-
             this.pokemon_id = this.pokemonList[i].id
-             this.insertPokemon(this.pokemon_id)
-
+            this.insertPokemon(this.pokemon_id)
             console.log(this.pokemon_id);
-
-          // }
         }
-      }, 5000);
     }
 
 
@@ -153,9 +147,9 @@ console.log(pokedex);
       let Credentials = {withCredentials: true};
       let response =this._http.post<any>("http://localhost:3000/pokedex",pokedex ,httpOptions,).subscribe (
         {
-          next: (v) => this.deleteCart(), //console.log("Pokemon Entered")
-          error: (e) => console.error(this.msgError="Could not enter"),
-          complete: () => console.info('Complete')
+          next: (v) => console.log("Done"), //console.log("Pokemon Entered")
+          error: (e) =>console.log("oops"),
+          complete: () => console.log("Complete")
         });
 
       console.log(response);

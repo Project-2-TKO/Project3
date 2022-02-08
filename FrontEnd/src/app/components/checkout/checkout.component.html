@@ -90,7 +90,7 @@
                         <button class="checkout" mat-raised-button color='primary' type='submit' (click)="inject()" style="color:white; padding:10px; border-radius:15px">Submit Payment</button>
                         <br>
                         <br>
-                        <button class="checkout" mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']" style="color:white; padding:10px; border-radius:15px"> Exit </button>
+                        <button class="checkout" mat-raised-button color='primary' type='submit' [routerLink]="['/frontpage']" (click)="deleteCart()" style="color:white; padding:10px; border-radius:15px"> Exit </button>
                         <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
                         <small class="text-danger">{{msgError}}</small>
                     </mat-card>

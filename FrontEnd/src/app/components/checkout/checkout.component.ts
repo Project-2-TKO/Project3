@@ -107,15 +107,17 @@ export class CheckoutComponent implements OnInit
   //-------REQUEST TO POST POKEMON IN POKEDEX-----------///
 
 
-
+  
   inject(): void
     {
+     
       for(var i = 0; i < this.pokemonList.length; i++)
-      {
+      { 
             this.pokemon_id = this.pokemonList[i].id
             this.insertPokemon(this.pokemon_id)
             console.log(this.pokemon_id);
         }
+     
     }
 
 
@@ -157,7 +159,7 @@ console.log(pokedex);
 
   deleteCart(){
     
-    this.pokemonList.length = 0;
+    this.ps.pokemonList = [];
     this.ps.totalCost = 0;
     this.router.navigate(['/frontpage']);
 

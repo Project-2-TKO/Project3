@@ -16,7 +16,7 @@ public class Launcher {
 		AuthController ac = new AuthController();
 		PokeDexController pc = new PokeDexController();
 		UserController uc = new UserController();
-		
+		//test
 //		try (Session ses = HibernateUtil.getSession()){
 //			System.out.println("Connection Successful");
 //		}

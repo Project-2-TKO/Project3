@@ -3,23 +3,21 @@ package com.revature.controllers;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.revature.models.PokeDex;
-import com.revature.models.User;
-import com.revature.services.PokeDexServices;
-import com.revature.services.UserServices;
+import com.revature.models.Reviews;
+import com.revature.services.ReviewsServices;
 
 import io.javalin.http.Handler;
 
-public class PokeDexController {
-	PokeDexServices ps = new PokeDexServices();
+public class ReviewsController {
+	ReviewsServices rs = new ReviewsServices();
 
-	public Handler getAllPokeDex = ctx -> {
+	public Handler getAllReviews = ctx -> {
 		if(ctx.req.getSession(true) != null) { 
 			try {	
-				List<PokeDex> allpokeDex = ps.getAllPokeDex();
+				List<Reviews> allreviews = rs.getAllReviews();
 				Gson gson = new Gson();
-				String JSONpokeDex = gson.toJson(allpokeDex);
-				ctx.result(JSONpokeDex);
+				String JSONreviews = gson.toJson(allreviews);
+				ctx.result(JSONreviews);
 				ctx.status(200);
 			}
 			catch(Exception e) {
@@ -30,14 +28,14 @@ public class PokeDexController {
 			ctx.status(403);
 		}
 	};
-	public Handler getPokeDexByPokeDexId = ctx -> {
+	public Handler getReviewsByReviewsId = ctx -> {
         if(ctx.req.getSession() != null) {
         	try {
-	            int id = Integer.parseInt(ctx.pathParam("pokedex_id")) ;
-	            PokeDex pokeDex = ps.getPokeDexByPokeDexId(id);
+	            int id = Integer.parseInt(ctx.pathParam("review_id")) ;
+	            Reviews reviews = rs.getReviewsByReviewsId(id);
 	            Gson gson = new Gson();
-	            String JSONpokeDex = gson.toJson(pokeDex);
-	            ctx.result(JSONpokeDex);
+	            String JSONreviews = gson.toJson(reviews);
+	            ctx.result(JSONreviews);
 	            ctx.status(200);
         	}	
         	catch(Exception e) {
@@ -48,13 +46,13 @@ public class PokeDexController {
 			ctx.status(403);
 		}
     };
-	public Handler getPokeDexByUserId = ctx -> {
+	public Handler getReviewsByUserId = ctx -> {
 		if(ctx.req.getSession() != null) {
 	        try {	
 	            int user_id =Integer.parseInt(ctx.pathParam("user_id")) ;
-	            List<PokeDex> pokeDex = ps.getPokeDexByUserId(user_id);
+	            List<Reviews> reviews = rs.getReviewsByUserId(user_id);
 	            Gson gson = new Gson();
-	            String JSONPokeDox = gson.toJson(pokeDex);
+	            String JSONPokeDox = gson.toJson(reviews);
 	            ctx.result(JSONPokeDox);
 	            ctx.status(200);
 	        }
@@ -66,15 +64,15 @@ public class PokeDexController {
 			ctx.status(403);
 		}
     };
-    public Handler getPokeDexByPokemonId = ctx -> {
+    public Handler getReviewsByPokemonId = ctx -> {
         if(ctx.req.getSession() != null) {
         	try {
 	            int id = Integer.parseInt(ctx.pathParam("pokemon_id"));
 	            System.out.println(id);
-	            List<PokeDex> pokeDex = ps.getPokeDexByPokemonId(id);
+	            List<Reviews> reviews = rs.getReviewsByPokemonId(id);
 	            Gson gson = new Gson();
-	            String JSONpokeDex = gson.toJson(pokeDex);
-	            ctx.result(JSONpokeDex);
+	            String JSONreviews = gson.toJson(reviews);
+	            ctx.result(JSONreviews);
 	            ctx.status(200);
         	}
         	catch(Exception e) {
@@ -85,13 +83,13 @@ public class PokeDexController {
 			ctx.status(403);
 		}
     };    
-    public Handler insertPokeDex = ctx -> {
+    public Handler insertReviews = ctx -> {
 		if(ctx.req.getSession() != null) {
 			try {	
 				String body = ctx.body();
 				Gson gson = new Gson();
-				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
-				ps.insertPokeDex(pokeDex);
+				Reviews reviews = gson.fromJson(body, Reviews.class);
+				rs.insertReviews(reviews);
 				ctx.status(201);
 			}
 			catch(Exception e) {
@@ -102,13 +100,13 @@ public class PokeDexController {
 			ctx.status(403);
 		}
 	};
-	public Handler updatePokeDex = ctx -> {
+	public Handler updateReviews = ctx -> {
 		if(ctx.req.getSession() != null) {
 			try {	
 				String body = ctx.body();
 				Gson gson = new Gson();
-				PokeDex pokeDex = gson.fromJson(body, PokeDex.class);
-				ps. updatePokeDex(pokeDex);
+				Reviews reviews = gson.fromJson(body, Reviews.class);
+				rs. updateReviews(reviews);
 				ctx.status(201);
 			}
 			catch(Exception e) {

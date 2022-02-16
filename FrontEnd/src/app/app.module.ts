@@ -25,6 +25,13 @@ import { PokeDataService } from './poke-data.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+//firebase 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 //bootstrap NGX
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 // Services (may delete)
@@ -32,7 +39,8 @@ import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
-;
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -52,7 +60,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ResetpasswordComponent,
     HistoryContainerComponent,
     PokedexComponent,
-    FooterComponent
+    FooterComponent, 
+    // AngularFireModule.initializeApp(environment.firebase)
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -64,7 +73,12 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    CarouselModule
+    CarouselModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

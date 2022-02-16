@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PokeDataService } from './poke-data.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 // By convention, app component is also known as root component
 @Component({
@@ -13,6 +14,8 @@ import { PokeDataService } from './poke-data.service';
 })
 export class AppComponent {
   title = 'FrontEnd';
+
+
 
   // handleEvent() {
   //   console.log('button Clicked', this.title)

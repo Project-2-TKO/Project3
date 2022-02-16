@@ -11,5 +11,9 @@ export class ReviewpageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  getreviews():void{
+    
+    //console.log("review page")
+  }
 
 }

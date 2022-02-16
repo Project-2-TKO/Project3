@@ -109,16 +109,26 @@ export class CheckoutComponent implements OnInit
 
   
   inject(): void
-    {
-     
-      for(var i = 0; i < this.pokemonList.length; i++)
-      { 
-            this.pokemon_id = this.pokemonList[i].id
-            this.insertPokemon(this.pokemon_id)
-            console.log(this.pokemon_id);
-        }
-     
-    }
+  {
+   console.log(this.ps.pokemonList)
+   
+    for(var i = 0; i < this.pokemonList.length; i++)
+    {   
+     this.delaying(i)
+      }
+    
+    this.ps.pokemonList = [];
+    this.deleteCart();
+   
+  }
+
+  delaying(i:any){
+        setTimeout(() =>{
+          this.pokemon_id = this.pokemonList[i].id
+          console.log(this.pokemon_id)
+          this.insertPokemon(this.pokemon_id)
+        }, 1000*i);
+  }
 
 
 

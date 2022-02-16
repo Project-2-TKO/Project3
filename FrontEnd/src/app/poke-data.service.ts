@@ -32,6 +32,8 @@ export class PokeDataService{
   
   pokemonList: any = [];
 
+  wishList: any = [];
+
 
   counter: number = 0;
   

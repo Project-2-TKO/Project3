@@ -10,7 +10,7 @@ export class PokeReviewService {
 
   constructor(private http:HttpClient) { }
 
-  getPokemonFromApi(name:string):Observable<HttpResponse<Pokemon>>{
-    return this.http.get("https://pokeapi.co/api/v2/pokemon/" + name + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
+  getAllReviewById(id:number):Observable<HttpResponse<Pokemon>>{
+    return this.http.get("https://pokeapi.co/api/v2/pokemon/reviews/pokemon/" + id + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }
 }

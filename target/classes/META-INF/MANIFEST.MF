@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
 Built-By: sophie
-=======
-Built-By: JoseMedina
->>>>>>> 884cbd1b66d0fdd15850031ced50df4873dbd000
-=======
-Built-By: www78
->>>>>>> 1837a59ab8eeabbe0e7817a8c93ed5524aaa7454
 Build-Jdk: 15
 Created-By: Maven Integration for Eclipse
 

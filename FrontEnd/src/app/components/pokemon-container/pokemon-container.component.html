@@ -53,8 +53,9 @@
                 <mat-card-actions>
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
+                    <mat-card-content>test</mat-card-content>
                 </mat-card-actions>
-                <button mat-raised-button>Reviews</button>
+                <button mat-raised-button (click)="reviews(poke.id)" routerLink="/reviews">Reviews</button>
             </mat-card>
         </div>
         <div class="pokeContainer" *ngFor= "let i = index; let poke of sales2">
@@ -80,8 +81,9 @@
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
                 </mat-card-actions>
+                <mat-card-content>test</mat-card-content>
                 <mat-card-actions>
-                  <button mat-raised-button>Reviews</button>
+                  <button mat-raised-button (click)="reviews(poke.id)">Reviews</button>
               </mat-card-actions>
             </mat-card>
         </div>

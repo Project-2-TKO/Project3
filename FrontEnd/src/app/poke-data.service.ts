@@ -34,7 +34,6 @@ export class PokeDataService{
 
   wishList: any = [];
 
-
   counter: number = 0;
   
   public messageSource = new BehaviorSubject('default string')

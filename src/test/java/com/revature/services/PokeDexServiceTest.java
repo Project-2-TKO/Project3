@@ -41,13 +41,13 @@ public class PokeDexServiceTest {
     assertEquals(actualResult, s.getAllPokeDex());
 	}
 	
-	//check to see why it is failing to find by pokedexID
+	
 	@Test
 	public void testPokeDexByPokeDexId() throws Exception {
 		
-	PokeDex actualResult1 = s.getPokeDexByPokeDexId(1);
+	PokeDex actualResult1 = s.getPokeDexByPokeDexId(22);
 	
-    assertEquals(actualResult1,s.getPokeDexByPokeDexId(1));
+    assertEquals(actualResult1,s.getPokeDexByPokeDexId(22));
 	}
 	
 	@Test

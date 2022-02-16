@@ -32,7 +32,8 @@ export class PokeDataService{
   
   pokemonList: any = [];
 
-  pokemonid:number=0;
+  wishList: any = [];
+
   counter: number = 0;
   
   public messageSource = new BehaviorSubject('default string')

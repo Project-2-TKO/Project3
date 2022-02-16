@@ -25,7 +25,8 @@
         <!-- We will map our classes here -->
         <mapping class="com.revature.models.User"/>
         <mapping class="com.revature.models.PokeDex"/>
-        
+        <mapping class="com.revature.models.WishList"/>
+        <mapping class="com.revature.models.Reviews"/>
 
      </session-factory>
  </hibernate-configuration>

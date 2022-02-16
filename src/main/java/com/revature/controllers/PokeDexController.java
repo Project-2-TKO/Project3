@@ -119,8 +119,4 @@ public class PokeDexController {
 			ctx.status(403);
 		}	
 	};
-
-
-	
-
 }

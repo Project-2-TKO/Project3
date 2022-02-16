@@ -16,7 +16,7 @@ public class Launcher {
 		WishListController wc = new WishListController();
 		ReviewsController rc = new ReviewsController();
 		UserController uc = new UserController();
-		
+		//test
 //		try (Session ses = HibernateUtil.getSession()){
 //			System.out.println("Connection Successful");
 //		}

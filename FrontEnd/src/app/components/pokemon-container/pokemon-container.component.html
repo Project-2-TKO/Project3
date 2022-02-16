@@ -43,8 +43,9 @@
                 <img mat-card-sm-image src="{{poke.sprites.front_default}}">
                 <mat-card-subtitle style="color:black; text-decoration:line-through">${{(((poke.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-subtitle id="sale"> 50% OFF ${{((((poke.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
-                <mat-card-actions>
+                <mat-card-actions id="action_buttons">
                     <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
+                    <button mat-raised-button  color="primary" id="wishlistButton">To Wishlist</button>
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">
@@ -52,7 +53,9 @@
                 <mat-card-actions>
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
+                    <mat-card-content>test</mat-card-content>
                 </mat-card-actions>
+                <button mat-raised-button (click)="reviews(poke.id)" routerLink="/reviews">Reviews</button>
             </mat-card>
         </div>
         <div class="pokeContainer" *ngFor= "let i = index; let poke of sales2">
@@ -78,6 +81,10 @@
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
                 </mat-card-actions>
+                <mat-card-content>test</mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="reviews(poke.id)">Reviews</button>
+              </mat-card-actions>
             </mat-card>
         </div>
 </div>

@@ -32,7 +32,7 @@ import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 ;
 
 @NgModule({
@@ -54,7 +54,7 @@ import { ReviewpageComponent } from './components/reviewpage/reviewpage.componen
     HistoryContainerComponent,
     PokedexComponent,
     FooterComponent,
-    ReviewpageComponent
+    WishlistComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

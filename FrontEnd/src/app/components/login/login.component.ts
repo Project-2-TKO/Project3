@@ -53,8 +53,8 @@ export class LoginComponent implements OnInit {
     //window.localStorage.setItem("username",this.username);
     let response = this._http.post<any>("http://localhost:3000/login", user, httpOptions ).subscribe (
       {
-      next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
-      error: (e) => console.error(this.msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password"),
+      next: () => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
+      error: () => console.error(this.msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password"),
       complete: () => window.localStorage.setItem("username",this.username)//console.info('Complete')
     }
     );

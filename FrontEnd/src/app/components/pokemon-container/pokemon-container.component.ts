@@ -3,11 +3,13 @@ import { PokeDataService } from 'src/app/poke-data.service';
 import { Pokemon } from '../../pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
+import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
+
 
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
-  providers: [{provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true }}],
+  providers: [{provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true }},ReviewpageComponent],
   styleUrls: ['./pokemon-container.component.css']
 })
 export class PokemonContainerComponent implements OnInit {
@@ -39,7 +41,7 @@ export class PokemonContainerComponent implements OnInit {
   p: number = 0;
   totalPokemon: number;
 
-  constructor(private ps: PokeDataService) {}
+  constructor(private ps: PokeDataService,private rp: ReviewpageComponent) {}
   
   ngOnInit(): void{
     // this.ps.getAllPokemons()
@@ -117,5 +119,8 @@ addPokemon(pokemon: Pokemon){
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);
 }
+reviews(id:number):void{
 
+  this.rp.getreviews(id);
+}
 }

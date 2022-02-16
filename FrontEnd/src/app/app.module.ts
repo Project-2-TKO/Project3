@@ -41,6 +41,8 @@ import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { environment } from 'src/environments/environment';
 
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+;
 
 @NgModule({
   //declarations : the components, directives, and pipes that belong to this NgModule
@@ -62,6 +64,8 @@ import { environment } from 'src/environments/environment';
     PokedexComponent,
     FooterComponent, 
     // AngularFireModule.initializeApp(environment.firebase)
+    FooterComponent,
+    WishlistComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

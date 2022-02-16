@@ -10,6 +10,7 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { History } from 'ngx-bootstrap/utils/facade/browser';
 import { HistoryContainerComponent } from './components/history-container/history-container.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,8 +21,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent},
   { path: 'searchcontainer', component: SearchcontainerComponent },
   { path: 'resetpassword', component: ResetpasswordComponent},
-  { path: 'history', component: HistoryContainerComponent}
-
+  { path: 'history', component: HistoryContainerComponent},
+  { path: 'wishlist', component: WishlistComponent}
 ];
 
 @NgModule({

@@ -11,6 +11,9 @@ import org.junit.Test;
 import com.revature.models.WishList;
 
 public class WishListServicesTest {
+	
+	int EXPECTED_WISHLIST_ID = 1;
+	int EXPECTED_POKEMON_ID = 1;
 
 	private static WishListServices ws;
 	
@@ -55,6 +58,39 @@ public class WishListServicesTest {
 	List<WishList> actualResult3 = ws.getWishListByPokemonId(1);
 	
     assertEquals(actualResult3, ws.getWishListByPokemonId(1));
+	}
+	
+	@Test
+	public void testInsertWishList() throws Exception{
+		WishList wishlist = new WishList();
+		
+		wishlist.setPokemon_id(1);
+		wishlist.setWishlist_id(1);
+		
+		assertEquals(EXPECTED_POKEMON_ID, wishlist.getPokemon_id());
+		assertEquals(EXPECTED_WISHLIST_ID, wishlist.getWishlist_id());
+	}
+	
+	@Test
+	public void testUpdateWishList() throws Exception{
+		WishList wishlist = new WishList();
+		
+		wishlist.setPokemon_id(1);
+		wishlist.setWishlist_id(2);
+		
+		assertEquals(EXPECTED_POKEMON_ID, wishlist.getPokemon_id());
+		assertNotEquals(EXPECTED_WISHLIST_ID, wishlist.getWishlist_id());
+	}
+	
+	@Test
+	public void testDeleteWishList() throws Exception{
+		WishList wishlist = new WishList();
+		
+		wishlist.setPokemon_id(1);
+		wishlist.setWishlist_id(2);
+		
+		assertEquals(EXPECTED_POKEMON_ID, wishlist.getPokemon_id());
+		assertNotEquals(EXPECTED_WISHLIST_ID, wishlist.getWishlist_id());
 	}
 
 }

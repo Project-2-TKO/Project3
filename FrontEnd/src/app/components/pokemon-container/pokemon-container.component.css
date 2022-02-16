@@ -123,3 +123,13 @@ pagination-controls {
 .overflow {
     overflow: hidden;
 }
+
+#action_buttons {
+    display:flex;
+    flex-direction:row;
+}
+
+#wishlistButton {
+    width:90px;
+    font-size:13px;
+}

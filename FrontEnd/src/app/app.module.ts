@@ -25,6 +25,13 @@ import { PokeDataService } from './poke-data.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+//firebase 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 //bootstrap NGX
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 // Services (may delete)
@@ -32,6 +39,8 @@ import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { environment } from 'src/environments/environment';
+
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 ;
 
@@ -53,6 +62,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     ResetpasswordComponent,
     HistoryContainerComponent,
     PokedexComponent,
+    FooterComponent, 
+    // AngularFireModule.initializeApp(environment.firebase)
     FooterComponent,
     WishlistComponent
   ],
@@ -66,7 +77,12 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    CarouselModule
+    CarouselModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

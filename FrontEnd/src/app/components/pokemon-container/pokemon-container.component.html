@@ -45,7 +45,7 @@
                 <mat-card-subtitle id="sale"> 50% OFF ${{((((poke.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-actions id="action_buttons">
                     <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
-                    <button mat-raised-button  color="primary" id="wishlistButton">To Wishlist</button>
+                    <button mat-raised-button (click)="addWishlist(poke)" color="primary" id="wishlistButton">To Wishlist</button>
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">
@@ -70,9 +70,10 @@
                 </div>
                 <img mat-card-sm-image src="{{poke.sprites.front_default}}">
                 <mat-card-subtitle style="color:black; text-decoration:line-through">${{(((poke.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
-                <mat-card-subtitle id="sale"> 10% OFF ${{((((poke.id * .01) * 543)*.9).toFixed(2)) }}</mat-card-subtitle>
+                <mat-card-subtitle id="sale"> 50% OFF ${{((((poke.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-actions>
                     <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
+                    <button mat-raised-button (click)="addWishlist(poke)"color="primary" id="wishlistButton">To Wishlist</button>
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">

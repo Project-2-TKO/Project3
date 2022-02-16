@@ -32,7 +32,7 @@ export class PokeDataService{
   
   pokemonList: any = [];
 
-
+  pokemonid:number=0;
   counter: number = 0;
   
   public messageSource = new BehaviorSubject('default string')

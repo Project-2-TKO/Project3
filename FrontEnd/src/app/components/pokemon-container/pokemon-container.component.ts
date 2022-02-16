@@ -119,8 +119,8 @@ addPokemon(pokemon: Pokemon){
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);
 }
-reviews():void{
+reviews(id:number):void{
 
-  this.rp.getreviews();
+  this.rp.getreviews(id);
 }
 }

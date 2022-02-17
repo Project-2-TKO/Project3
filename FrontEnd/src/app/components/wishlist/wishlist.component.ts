@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokeDataService } from 'src/app/poke-data.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor() { }
+  wishList: any = [];
 
-  ngOnInit(): void {
+  pokemon: any = null;
+  
+  constructor(private ps: PokeDataService) {}
+
+  ngOnInit(): void{
+
+    this.pokemon = this.ps.pokemon
+
+    this.wishList = this.ps.wishList
+
   }
 
 }

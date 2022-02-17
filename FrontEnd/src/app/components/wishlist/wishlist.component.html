@@ -1,3 +1,11 @@
 <app-navbar></app-navbar>
-<p>wishlist works!</p>
+<div>   
+    <mat-card class="cardInCart"> 
+    <div class="pokemonInCart" *ngFor="let wish of wishList">
+        <h3 style="font-style: italic;">{{wish.name | titlecase}}</h3>
+        <h3 style="font-size: 25px;font-weight: bold;">${{(((wish.id * .01) * 543).toFixed(2))}}</h3>
+        <img src="{{wish.sprites.front_default}}"/>
+    </div>
+    </mat-card>
+</div>
 <app-footer></app-footer>

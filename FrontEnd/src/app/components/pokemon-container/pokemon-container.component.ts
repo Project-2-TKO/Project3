@@ -19,6 +19,8 @@ export class PokemonContainerComponent implements OnInit {
   public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
   
+  //wishlist
+  public wishlist: Array<Pokemon> = [];
 
   //featuredPokemon
   public sales: any[] = [];
@@ -116,6 +118,15 @@ addPokemon(pokemon: Pokemon){
   console.log(this.ps.totalCost)
   console.log(typeof this.ps.totalCost)
 }
+
+addWishlist(pokemon: Pokemon){
+  console.log(pokemon);
+  this.ps.wishList.push(pokemon);
+  let price: number = (((pokemon.id * .01) * 543) * .5);
+  this.ps.totalCost += price; 
+  console.log(this.ps.wishList);
+}
+
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);
 }

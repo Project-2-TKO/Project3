@@ -119,6 +119,19 @@ addPokemon(pokemon: Pokemon){
   console.log(typeof this.ps.totalCost)
 }
 
+getRandomNum(){
+  return (Math.random()*(500)+1.00).toFixed(2);
+}
+reviews(id:number):void{
+
+  this.rp.getreviews(id);
+}
+
+//WISHLIST
+//get method to grab user details with username
+//create a method/function that would be called on wishlist button click that would http post the 
+//pokemon to the database linked with the user id.
+// note we are pushing the pokemon id and user id to db
 addWishlist(pokemon: Pokemon){
   console.log(pokemon);
   this.ps.wishList.push(pokemon);
@@ -127,11 +140,4 @@ addWishlist(pokemon: Pokemon){
   console.log(this.ps.wishList);
 }
 
-getRandomNum(){
-  return (Math.random()*(500)+1.00).toFixed(2);
-}
-reviews(id:number):void{
-
-  this.rp.getreviews(id);
-}
 }

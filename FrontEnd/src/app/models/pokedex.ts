@@ -12,3 +12,10 @@ export class UserId {
         public username: String
     ){}
 }
+
+export class Wishlist {
+  constructor(
+    public user_id: String,
+    public pokemon_id: [],
+  ){}
+}

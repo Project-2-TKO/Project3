@@ -17,6 +17,7 @@ import { SearchcontainerComponent } from './components/searchcontainer/searchcon
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component'
 import { HistoryContainerComponent } from './components/history-container/history-container.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
@@ -65,7 +66,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     FooterComponent, 
     // AngularFireModule.initializeApp(environment.firebase)
     FooterComponent,
-    WishlistComponent
+    WishlistComponent,
+    ThemeToggleComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

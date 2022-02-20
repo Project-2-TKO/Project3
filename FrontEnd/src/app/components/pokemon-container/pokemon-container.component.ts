@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
-import { Pokemon } from '../../pokemon';
+import { Pokemon } from 'src/app/pokemon';// '../../pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
 import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
@@ -16,7 +16,7 @@ export class PokemonContainerComponent implements OnInit {
   collapsed = true;
   public name: string = '';
   public pokemon: any = "placeholder";
-  public pokemonArray: Array<Pokemon> = [];
+  //public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
   
   //wishlist
@@ -75,7 +75,7 @@ getAllPokemons(){
           // if(this.pokeDataArray[data].name)
           // console.log(this.pokeDataArray[1].id)
           // console.log(this.pokeDataArray[1].name)
-      //     console.log(this.pokeDataArray);
+      //console.log("pokemonDataArray "+this.pokeDataArray);
       // console.log(data)
         })
       })
@@ -139,5 +139,8 @@ addWishlist(pokemon: Pokemon){
   this.ps.totalCost += price; 
   console.log(this.ps.wishList);
 }
+saveWishlist(){
+    
 
+}
 }

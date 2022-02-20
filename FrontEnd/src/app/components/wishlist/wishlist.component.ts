@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Pokedex, UserId, Wishlist } from 'src/app/models/pokedex';
-import { Observable } from 'rxjs';
+import { Observable, window } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
 
 
@@ -22,7 +22,8 @@ const httpOptions   = {
 export class WishlistComponent implements OnInit {
 
   wishlist: any = [];
-  user = window.localStorage.getItem("username") ;
+  mylist: any = [];
+  //user = window.localStorage.getItem("username") ;
   userId: string;
   pokemonId: string;
   userInfo: any = [];
@@ -39,8 +40,14 @@ export class WishlistComponent implements OnInit {
   
   constructor(private _http : HttpClient, private ps: PokeDataService) {}
 
+
+
+
   ngOnInit(): void {
-    this.getUserId(this.user).subscribe(
+    this.wishlist=this.ps.wishList;
+    for(let w of this.wishlist)
+      this.mylist.push( w.id);
+   /* this.getUserId(this.user).subscribe(
       (data:any) => {
         this.userInfo = data;
         // console.log(this.userInfo);
@@ -65,9 +72,16 @@ export class WishlistComponent implements OnInit {
           )
         }
       }
-    )
+    )*/
   }
+  saveWishlist()
+  {
+   /* let username = JSON.parse(localStorage.getItem("username"));*/
+                      
+      let response=this._http.post("http://localhost:3000/wishlist/abc" ,this.mylist)
+      .subscribe( data=>console.log(data));
 
+  }
   getWishlistByUserId(userId: any):Observable<HttpResponse<Pokedex>>{
     return this._http.get("http://localhost:3000/wishlist/user/" + userId, {observe: "response"}) as Observable<HttpResponse<Wishlist>>
   }
@@ -76,3 +90,7 @@ export class WishlistComponent implements OnInit {
     return this._http.get("http://localhost:3000/user/username/" + user, {observe: "response"}) as Observable<HttpResponse<UserId>>
   }
 }
+function arr(arg0: string, arr: any) {
+  throw new Error('Function not implemented.');
+}
+

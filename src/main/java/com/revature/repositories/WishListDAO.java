@@ -50,7 +50,7 @@ public class WishListDAO {
 	}
 	public List<WishList> getWishListByPokemonId(int pokemon_id){
 		try(Session ses = HibernateUtil.getSession()){
-			Query q = ses.createQuery("FROM WishList p WHERE p.pokemon_id = ?0");
+			Query q = ses.createQuery("FROM WishList p WHERE wishlist_id = ?0");
 			q.setParameter(0, pokemon_id);
 			List<WishList> movieList = q.getResultList();
 			HibernateUtil.closeSession();
@@ -61,7 +61,7 @@ public class WishListDAO {
 			return null;
 		}
 	}
-	public int insertpokeDex(WishList wishlist) {
+	public int insertWishList(WishList wishlist) {
 		try(Session ses = HibernateUtil.getSession()){
 			ses.save(wishlist);
 			HibernateUtil.closeSession();

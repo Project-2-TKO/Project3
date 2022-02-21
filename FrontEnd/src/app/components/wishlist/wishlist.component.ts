@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Pokedex, UserId, Wishlist } from 'src/app/models/pokedex';
 import { Observable, window } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
+import { LoginComponent } from '../login/login.component';
+//import { LocalStorage } from '@ngx-pwa/local-storage';
 
 
 const httpOptions   = {
@@ -23,7 +25,9 @@ export class WishlistComponent implements OnInit {
 
   wishlist: any = [];
   mylist: any = [];
-  //user = window.localStorage.getItem("username") ;
+  //localStorage: LocalStorage;
+   username= localStorage.getItem("username") ;
+    //user=localStorage.getItem("user") ;
   userId: string;
   pokemonId: string;
   userInfo: any = [];
@@ -33,16 +37,20 @@ export class WishlistComponent implements OnInit {
 
   pokemonArray: any = [];
   pokemonArray2: any = [];
-
+  //public lusername= window.localStorage.getItem("username");
   response : any ;
   msgError ="";
   Credentials = {withCredentials: true};
   
-  constructor(private _http : HttpClient, private ps: PokeDataService) {}
+  constructor(private _http : HttpClient, private ps: PokeDataService
+    ) {}
 
 
 
-
+  removeWishlist()
+  {
+    this.wishlist.pop();
+  }
   ngOnInit(): void {
     this.wishlist=this.ps.wishList;
     for(let w of this.wishlist)
@@ -76,10 +84,12 @@ export class WishlistComponent implements OnInit {
   }
   saveWishlist()
   {
-   /* let username = JSON.parse(localStorage.getItem("username"));*/
-                      
-      let response=this._http.post("http://localhost:3000/wishlist/abc" ,this.mylist)
-      .subscribe( data=>console.log(data));
+    // console.log("user " + this.user +" user name " +this.username);
+    //let username = JSON.parse(window.arguments);
+       //hard coded username as abc which exists in dba
+       //mylist is array of ints represnts pokemon ids               
+      let response=this._http.post("http://localhost:3000/wishlist/"+this.username ,this.mylist)
+      .subscribe( (data)=>{console.log(data);});
 
   }
   getWishlistByUserId(userId: any):Observable<HttpResponse<Pokedex>>{

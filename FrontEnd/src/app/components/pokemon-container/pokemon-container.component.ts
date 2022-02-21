@@ -112,6 +112,7 @@ getPokemon():void{
 }
 addPokemon(pokemon: Pokemon){
   console.log(pokemon);
+  
   this.ps.pokemonList.push(pokemon);
   let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; 

@@ -47,9 +47,12 @@ export class WishlistComponent implements OnInit {
 
 
 
-  removeWishlist()
+  removeWishlist(pokemonid:number)
   {
     this.wishlist.pop();
+    let response=this._http.delete("http://localhost:3000/delete/"+ pokemonid )
+    .subscribe( (data: any)=>{console.log(data);});
+  
   }
   ngOnInit(): void {
     this.wishlist=this.ps.wishList;
@@ -93,7 +96,8 @@ export class WishlistComponent implements OnInit {
 
   }
   getWishlistByUserId(userId: any):Observable<HttpResponse<Pokedex>>{
-    return this._http.get("http://localhost:3000/wishlist/user/" + userId, {observe: "response"}) as Observable<HttpResponse<Wishlist>>
+    return this._http.get("http://localhost:3000/wishlist/user/" + userId,
+     {observe: "response"}) as Observable<HttpResponse<Wishlist>>
   }
 
   getUserId(user:any):Observable<HttpResponse<UserId>>{

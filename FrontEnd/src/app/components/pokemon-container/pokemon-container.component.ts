@@ -4,8 +4,14 @@ import { Pokemon } from 'src/app/pokemon';// '../../pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
 import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
+import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/models/user';
 
-
+export interface WishListItem{
+  wishListId:number;
+  pokemonId:number;
+ user:User;
+}
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
@@ -13,6 +19,7 @@ import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
   styleUrls: ['./pokemon-container.component.css']
 })
 export class PokemonContainerComponent implements OnInit {
+   username=window.localStorage.getItem("username");
   collapsed = true;
   public name: string = '';
   public pokemon: any = "placeholder";
@@ -21,6 +28,7 @@ export class PokemonContainerComponent implements OnInit {
   
   //wishlist
   public wishlist: Array<Pokemon> = [];
+  public wishlist2: Array<WishListItem> = [];
 
   //featuredPokemon
   public sales: any[] = [];
@@ -42,8 +50,12 @@ export class PokemonContainerComponent implements OnInit {
 
   p: number = 0;
   totalPokemon: number;
+  pokemonId: any;
+  wishlistId: any;
+  loginUser: User ;
+  
 
-  constructor(private ps: PokeDataService,private rp: ReviewpageComponent) {}
+  constructor(private _http: HttpClient,private ps: PokeDataService,private rp: ReviewpageComponent) {}
   
   ngOnInit(): void{
     // this.ps.getAllPokemons()
@@ -110,9 +122,25 @@ getPokemon():void{
     }
   )
 }
+// getUser():Observable<Array<User>>
+// {
+//    return this._http.get("http://localhost:3000/username/"+this.username) as Observable<Array<User>>;
+  
+// }
 addPokemon(pokemon: Pokemon){
+
+  /*let response=this._http.post("http://localhost:3000/pokedex/"+ pokemon.id  +"/"+this.username ,null)
+  .subscribe( (data: any)=>{console.log(data); 
+
+    pokemon.wishListId=data;
+  this.ps.wishList.push(pokemon);
+  let price: number = (((pokemon.id * .01) * 543) * .5);
+  this.ps.totalCost += price; */
+    
+  
   console.log(pokemon);
   
+ // this.ps.wishList.push(wlst);
   this.ps.pokemonList.push(pokemon);
   let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; 
@@ -135,12 +163,24 @@ reviews(id:number):void{
 // note we are pushing the pokemon id and user id to db
 addWishlist(pokemon: Pokemon){
   console.log(pokemon);
+  /*pokemon.wishListId=this.wishlistId;
+  this.ps.wishList.push(pokemon);
+  let price: number = (((pokemon.id * .01) * 543) * .5);
+  this.ps.totalCost += price; */
+  console.log("user name and pokemon id " +this.username + "///"+pokemon.id);
+  let response=this._http.post("http://localhost:3000/wishlist/"+ pokemon.id  +"/"+this.username ,null)
+  .subscribe( (data: any)=>{console.log(data); 
+
+    pokemon.wishListId=data;
   this.ps.wishList.push(pokemon);
   let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; 
-  console.log(this.ps.wishList);
+    
+    });
+
 }
 saveWishlist(){
+  this.wishlist
     
 
 }

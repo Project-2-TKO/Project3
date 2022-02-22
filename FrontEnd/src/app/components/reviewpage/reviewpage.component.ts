@@ -10,26 +10,25 @@ import { PokeReviewService } from 'src/app/poke-review.service';
 export class ReviewpageComponent implements OnInit {
   pokemon:any=null;
   pokeid:number;
-  reviews:any=null;
+  rev:any=[];
+  numof5:number=0;
+  numof4:number=0;
+  numof3:number=0;
+  numof2:number=0;
+  numof1:number=0;
   constructor(private rs:PokeReviewService,private ps:PokeDataService) { }
 
   ngOnInit(): void {
-    this.pokemon=this.ps.pokemon;
-  }
-  getreviews(id:number):void{
-    console.log(id)
-    this.rs.getAllReviewByPokemonId(id).subscribe(
-      (data:any) => {
-        console.log(data.body)
-        this.reviews=data.body;
-      },
-  
-      () => { //incase of errors, set pokemon object to null since we didn't get anything back
+    
+    
+    
+    setTimeout(() => {
+      this.rev=this.rs.reviewsarray
+      console.log(this.rs.reviewsarray)
+    }, 150);
+    console.log(this.rev)
 
-
-      }
-    )
-    //console.log("review page")
   }
+ 
 
 }

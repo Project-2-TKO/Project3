@@ -7,9 +7,9 @@ import { Pokemon } from './pokemon';
   providedIn: 'root'
 })
 export class PokeReviewService {
-
+  reviewsarray:any=[];
   constructor(private http:HttpClient) { }
-
+  
   getAllReviewByPokemonId(id:number):Observable<HttpResponse<Pokemon>>{
     return this.http.get("http://localhost:3000/reviews/pokemon/" + id + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }

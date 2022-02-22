@@ -11,6 +11,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { History } from 'ngx-bootstrap/utils/facade/browser';
 import { HistoryContainerComponent } from './components/history-container/history-container.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'resetpassword', component: ResetpasswordComponent},
   { path: 'history', component: HistoryContainerComponent},
   { path: 'wishlist', component: WishlistComponent},
+  { path: 'reviews', component: ReviewpageComponent},
   { path: 'dark', component: ThemeToggleComponent},
 ];
 

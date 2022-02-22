@@ -33,6 +33,7 @@ import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
 ;
 
 @NgModule({
@@ -54,7 +55,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     HistoryContainerComponent,
     PokedexComponent,
     FooterComponent,
-    WishlistComponent
+    WishlistComponent,
+    ReviewpageComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

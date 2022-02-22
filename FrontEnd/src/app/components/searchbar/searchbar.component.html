@@ -43,7 +43,7 @@
                     <button mat-raised-button (click)="addPokemon(pokemon)">Add to Cart</button>
                 </mat-card-actions>
                 <mat-card-actions>
-                    <button mat-raised-button>Reviews</button>
+                    <button mat-raised-button (click)="reviews(pokemon.id)" routerLink="/reviews">Reviews</button>
                 </mat-card-actions>
             </mat-card>
         </div>

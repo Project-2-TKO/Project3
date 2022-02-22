@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
+import { PokeReviewService } from 'src/app/poke-review.service';
 import { Pokemon } from 'src/app/pokemon';
 
 @Component({
@@ -12,9 +13,10 @@ export class SearchbarComponent implements OnInit {
   isVisible: boolean = false;
   public name: string = '';
   public pokemon: any = "placeholder";
-  
-  constructor(private ps: PokeDataService) { }
+  rating: any=[];
+  constructor(private ps: PokeDataService,private rs:PokeReviewService) { }
 
+  
   ngOnInit(): void {
   }
 
@@ -49,5 +51,20 @@ addPokemon(pokemon: Pokemon){
   this.ps.totalCost += price; 
   console.log(this.ps.totalCost)
   console.log(typeof this.ps.totalCost)
+}
+reviews(id:number){
+  
+  this.rs.getAllReviewByPokemonId(id).subscribe(
+    (data:any) => {
+      console.log(data.body)
+      this.rs.reviewsarray=data.body;
+      this.rating=data.body.rating;
+      console.log(this.rating)
+      //this.rating=data.body.rating;
+     // console.log(data.body)
+     // console.log(this.rs.reviewsarray)
+      //this.rp.getreviews(id);
+    }
+  )
 }
 }

@@ -4,12 +4,13 @@ import { Pokemon } from '../../pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
 import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
+import { PokeReviewService } from 'src/app/poke-review.service';
 
 
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
-  providers: [{provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true }},ReviewpageComponent],
+  providers: [{provide: CarouselConfig, useValue: { interval: 1500, noPause: false, showIndicators: true }}],
   styleUrls: ['./pokemon-container.component.css']
 })
 export class PokemonContainerComponent implements OnInit {
@@ -18,7 +19,7 @@ export class PokemonContainerComponent implements OnInit {
   public pokemon: any = "placeholder";
   public pokemonArray: Array<Pokemon> = [];
   public pokeDataArray: any[] = []; //might be this
-  
+  public rating:any[]=[];
 
   //featuredPokemon
   public sales: any[] = [];
@@ -41,7 +42,7 @@ export class PokemonContainerComponent implements OnInit {
   p: number = 0;
   totalPokemon: number;
 
-  constructor(private ps: PokeDataService,private rp: ReviewpageComponent) {}
+  constructor(private ps: PokeDataService,private rs:PokeReviewService) {}
   
   ngOnInit(): void{
     // this.ps.getAllPokemons()
@@ -51,7 +52,7 @@ export class PokemonContainerComponent implements OnInit {
     //   })
     // })
     this.getAllPokemons();
-   
+    //this.reviews(this.ps.pokemonid);
 }
 
 getAllPokemons(){
@@ -119,8 +120,21 @@ addPokemon(pokemon: Pokemon){
 getRandomNum(){
   return (Math.random()*(500)+1.00).toFixed(2);
 }
-reviews(id:number):void{
 
-  this.rp.getreviews(id);
+
+reviews(id:number){
+  
+  this.rs.getAllReviewByPokemonId(id).subscribe(
+    (data:any) => {
+      console.log(data.body)
+      this.rs.reviewsarray=data.body;
+      this.rating=data.body.rating;
+      console.log(this.rating)
+      //this.rating=data.body.rating;
+     // console.log(data.body)
+     // console.log(this.rs.reviewsarray)
+      //this.rp.getreviews(id);
+    }
+  )
 }
 }

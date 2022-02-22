@@ -53,7 +53,7 @@
                 <mat-card-actions>
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
-                    <mat-card-content>test</mat-card-content>
+                    
                 </mat-card-actions>
                 <button mat-raised-button (click)="reviews(poke.id)" routerLink="/reviews">Reviews</button>
             </mat-card>
@@ -83,7 +83,7 @@
                 </mat-card-actions>
                 <mat-card-content>test</mat-card-content>
                 <mat-card-actions>
-                  <button mat-raised-button (click)="reviews(poke.id)">Reviews</button>
+                  <button mat-raised-button (click)="reviews(poke.id)" routerLink="/reviews">Reviews</button>
               </mat-card-actions>
             </mat-card>
         </div>

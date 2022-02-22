@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void{
+    //window.localStorage.clear();
    // this.response=this._http.post("localhost:3000/login",this.user, this.Credentials );
   }
 

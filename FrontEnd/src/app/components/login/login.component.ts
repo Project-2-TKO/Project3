@@ -6,6 +6,11 @@ import { HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 import { error } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+
+//firebase
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import firebase from 'firebase/compat/app';
+
 const httpOptions   = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -32,9 +37,10 @@ export class LoginComponent implements OnInit {
   response : any ;
   //msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password";
   msgError ="";
-  constructor(private _http : HttpClient, private router : Router ) {
+  constructor(private _http : HttpClient, private router : Router,  public auth: AngularFireAuthModule) {
 
    }
+
 
   ngOnInit(): void{
    // this.response=this._http.post("localhost:3000/login",this.user, this.Credentials );
@@ -45,6 +51,8 @@ export class LoginComponent implements OnInit {
                 password: this.password};
 
     let Credentials = {withCredentials: true};
+    this.auth = new firebase.auth.GoogleAuthProvider();
+    console.log(this.auth);
     console.log(this.username);
     console.log(this.password);
     console.log(user);
@@ -58,5 +66,8 @@ export class LoginComponent implements OnInit {
       complete: () => window.localStorage.setItem("username",this.username)//console.info('Complete')
     }
     );
-  }
+  };
+
+  //Create logout function to end session in another component
+
 }

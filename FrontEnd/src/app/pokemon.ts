@@ -8,6 +8,7 @@ export interface Pokemon {
     types: Object,
     sprites: [],
     front_shiny:string,
+    wishListId:number
     
 }
 

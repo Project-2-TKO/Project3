@@ -36,7 +36,7 @@ public class ReviewsDAO {
 	}
 	public List<Reviews> getReviewsByUserId(int user_id){
 		try(Session ses = HibernateUtil.getSession()){
-			Query q = ses.createQuery("FROM Reviews r WHERE p.user.user_id = ?0");
+			Query q = ses.createQuery("FROM Reviews r WHERE r.user.user_id = ?0");
 			q.setParameter(0, user_id);
 			List<Reviews> movieList = q.getResultList();
 			HibernateUtil.closeSession();

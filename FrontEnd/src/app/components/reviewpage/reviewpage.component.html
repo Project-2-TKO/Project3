@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar></app-navbar> 
 <div class="container">
     <div id="reviews" class="review-section">
         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -27,7 +27,7 @@
                         <tr class="">
                             <td>
                                 <span>
-                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">5 Stars</button>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">4 Stars</button>
                                 </span>
                             </td>
                             <td class="progress-bar-container">
@@ -42,7 +42,7 @@
                         <tr class="">
                             <td>
                                 <span>
-                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">5 Stars</button>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">3 Stars</button>
                                 </span>
                             </td>
                             <td class="progress-bar-container">
@@ -57,7 +57,7 @@
                         <tr class="">
                             <td>
                                 <span>
-                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">5 Stars</button>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">2 Stars</button>
                                 </span>
                             </td>
                             <td class="progress-bar-container">
@@ -72,7 +72,7 @@
                         <tr class="">
                             <td>
                                 <span>
-                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">5 Stars</button>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">1 Stars</button>
                                 </span>
                             </td>
                             <td class="progress-bar-container">
@@ -91,25 +91,13 @@
         </div>
     </div>
 
-    <div class="review-list">
-        <ul >
-            <li>
-                <div class="d-flex">
-                    <div class="left">
-                        
-                    </div>
-                    <div class="right">
-                        
-                        
-                        <div class="review-description" >
-                            
-                            <p>
-                                <!-- {{i.review}} -->123
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
+    <div class="review-list" >
+        <ul *ngFor="let reviews of rev">
+            <li >
+                
+                    {{reviews.review}}
+                  
+                
             </li>
         </ul>
     </div>

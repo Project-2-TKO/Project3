@@ -51,6 +51,22 @@ public class PokeDexServiceTest {
 	}
 	
 	@Test
+	public void testPokeDexByPokemonId() throws Exception {
+		
+	List<PokeDex> actualResult1 = s.getPokeDexByPokemonId(1);
+	
+    assertEquals(actualResult1,s.getPokeDexByPokemonId(1));
+	}
+	
+	@Test
+	public void testPokeDexByUserId() throws Exception {
+		
+	List<PokeDex> actualResult1 = s.getPokeDexByUserId(2);
+	
+    assertEquals(actualResult1,s.getPokeDexByUserId(2));
+	}
+	
+	@Test
 	public void testInsertPokeDex() throws Exception{
 		PokeDex pokedex = new PokeDex();
 		

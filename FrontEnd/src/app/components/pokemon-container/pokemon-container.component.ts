@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { PokeReviewService } from 'src/app/poke-review.service';
 
-// export interface WishListItem{
-//   wishListId:number;
-//   pokemonId:number;
-//  user:User;
-// }
+export interface WishListItem{
+  wishListId:number;
+  pokemonId:number;
+ user:User;
+}
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
@@ -30,7 +30,7 @@ export class PokemonContainerComponent implements OnInit {
   
   //wishlist
   public wishlist: Array<Pokemon> = [];
-  // public wishlist2: Array<WishListItem> = [];
+  public wishlist2: Array<WishListItem> = [];
 
   //featuredPokemon
   public sales: any[] = [];

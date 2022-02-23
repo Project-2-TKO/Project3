@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { PokeReviewService } from 'src/app/poke-review.service';
 
-export interface WishListItem{
-  wishListId:number;
-  pokemonId:number;
- user:User;
-}
+// export interface WishListItem{
+//   wishListId:number;
+//   pokemonId:number;
+//  user:User;
+// }
 @Component({
   selector: 'app-pokemon-container',
   templateUrl: './pokemon-container.component.html',
@@ -24,13 +24,13 @@ export class PokemonContainerComponent implements OnInit {
   collapsed = true;
   public name: string = '';
   public pokemon: any = "placeholder";
-  //public pokemonArray: Array<Pokemon> = [];
+  public pokemonArray: Array<Pokemon> = []; //comment out?
   public pokeDataArray: any[] = []; //might be this
   public rating:any[]=[];
   
   //wishlist
   public wishlist: Array<Pokemon> = [];
-  public wishlist2: Array<WishListItem> = [];
+  // public wishlist2: Array<WishListItem> = [];
 
   //featuredPokemon
   public sales: any[] = [];
@@ -57,7 +57,7 @@ export class PokemonContainerComponent implements OnInit {
   loginUser: User ;
   
 
-  constructor(private _http: HttpClient,private ps: PokeDataService,private rp: ReviewpageComponent,private rs:PokeReviewService) {}
+  constructor(private _http: HttpClient,private ps: PokeDataService, private rs: PokeReviewService) {}
     
   ngOnInit(): void{
     // this.ps.getAllPokemons()
@@ -84,13 +84,6 @@ getAllPokemons(){
           }else{
             this.pokeDataArray.push(data);
           }
-          
-          // console.log(data.name);
-          // if(this.pokeDataArray[data].name)
-          // console.log(this.pokeDataArray[1].id)
-          // console.log(this.pokeDataArray[1].name)
-      //console.log("pokemonDataArray "+this.pokeDataArray);
-      // console.log(data)
         })
       })
     
@@ -194,9 +187,7 @@ addWishlist(pokemon: Pokemon){
     });
 
 }
-saveWishlist(){
-  this.wishlist
-    
-
-}
+// saveWishlist(){
+//   this.wishlist
+// }
 }

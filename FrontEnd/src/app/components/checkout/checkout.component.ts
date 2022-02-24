@@ -127,7 +127,7 @@ export class CheckoutComponent implements OnInit
           this.pokemon_id = this.pokemonList[i].id
           console.log(this.pokemon_id)
           this.insertPokemon(this.pokemon_id)
-        }, 200*i);
+        }, 500*i);
   }
 
 

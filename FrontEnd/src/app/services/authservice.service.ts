@@ -37,3 +37,7 @@ export class AuthserviceService {
     })
   }
 }
+
+function onSignIn(firebaseUser: { getAuthResponse: () => { (): any; new(): any; id_token: any; }; }){
+  let id_token = firebaseUser.getAuthResponse().id_token; 
+}

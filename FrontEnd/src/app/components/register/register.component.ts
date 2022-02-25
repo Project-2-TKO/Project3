@@ -75,18 +75,17 @@ export class RegisterComponent implements OnInit {
         this.firebaseErrorMessage = result.message 
     });
     //Send password and email possibly username  to Google instead of to the database
-    //ngsubmit sends info in the search bar 
     if(this.password == this.passwordc)
     {
-      let user = {username:      this.username,
-                  password:      this.password,
-                  email_address: this.email,
-                  // credit_card_name : "",
-                  // credit_card_number : "",
-                  // first_name: "",
-                  // last_name: "",
-                  // phone_number: "",
-                  // physical_address: ""
+      let user = {username:      this.signupForm.value.username,
+                  password:      this.signupForm.value.password,
+                  email_address: this.signupForm.value.address,
+                  credit_card_name : "",
+                  credit_card_number : "",
+                  first_name: "",
+                  last_name: "",
+                  phone_number: "",
+                  physical_address: ""
                 };
       console.log(this.username);
       console.log(this.password);

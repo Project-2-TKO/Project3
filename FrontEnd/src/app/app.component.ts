@@ -27,16 +27,4 @@ export class AppComponent implements OnInit{
       this.renderer.addClass(document.body, theme.newValue);
     })
   }
-
-
-  // handleEvent() {
-  //   console.log('button Clicked', this.title)
-  // }
-
-  // testing http get pokemon
-  // constructor(private pokeService: PokeDataService) {}
-
-  // handleEvent() {
-  //   this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon");
-  // }
 }

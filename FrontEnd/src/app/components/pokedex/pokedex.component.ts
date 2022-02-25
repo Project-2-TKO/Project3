@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Pokedex, UserId } from 'src/app/models/pokedex';
 import { Observable } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
+import { PokeReviewService } from 'src/app/poke-review.service';
 
 
 const httpOptions   = {
@@ -40,7 +41,7 @@ export class PokedexComponent implements OnInit {
   Credentials = {withCredentials: true};
   // public user = window.localStorage.getItem("username"); //might need to grab user_ID? unless its already saved in storage
 
-  constructor(private _http : HttpClient, private ps: PokeDataService) { }
+  constructor(private _http : HttpClient, private ps: PokeDataService,private rs:PokeReviewService) { }
 
   ngOnInit(): void {
     this.getUserId(this.user).subscribe(
@@ -70,7 +71,12 @@ export class PokedexComponent implements OnInit {
       }
     )
   }
-
+  openpop(id:number){
+    this.rs.pokeid=id;
+    this.rs.pokeid=id;
+    window.open('http://localhost:4200/writerev/'+id, 'SampleWindow', 'WIDTH=450,HEIGHT=400')
+    console.log(this.rs.pokeid)
+  }
   getPokeDexByUserId(userId: any):Observable<HttpResponse<Pokedex>>{
     return this._http.get("http://localhost:3000/pokedex/user/" + userId, {observe: "response"}) as Observable<HttpResponse<Pokedex>>
   }

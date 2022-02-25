@@ -156,6 +156,7 @@ reviews(id:number){
       this.rs.reviewsarray=data.body;
       this.rating=data.body.rating;
       console.log(this.rating)
+      
       //this.rating=data.body.rating;
      // console.log(data.body)
      // console.log(this.rs.reviewsarray)

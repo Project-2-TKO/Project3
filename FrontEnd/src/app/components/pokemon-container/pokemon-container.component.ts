@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
-import { Pokemon } from 'src/app/pokemon';// '../../pokemon';
+import { Pokemon } from 'src/app/pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
 import { ReviewpageComponent } from '../reviewpage/reviewpage.component';

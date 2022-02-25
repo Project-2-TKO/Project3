@@ -54,6 +54,7 @@ export class CheckoutComponent implements OnInit
   pokemon_id: any = 0;
   mon:any =0;
   pokemonList: any = [];
+  bundleList: any = [];
   message: string = "";
 
   subscription : Subscription = new Subscription();
@@ -71,8 +72,8 @@ export class CheckoutComponent implements OnInit
 
     this.pokemon = this.ps.pokemon
 
-
-
+    this.bundleList = this.ps.bundleList;
+    
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost;
@@ -101,6 +102,7 @@ export class CheckoutComponent implements OnInit
             this.password=usr.password;
           }
         }
+        
       );
   }
 
@@ -110,6 +112,15 @@ export class CheckoutComponent implements OnInit
   
   inject(): void
   {
+    for(let i = 0 ; i<this.bundleList.length; i++){
+      console.log(this.bundleList[i].ids);
+      let bundles = this.bundleList[i].ids;
+      for(let j = 0 ; j < bundles.length; j++){
+        this.pokemon_id = bundles[j];
+        this.insertPokemon(this.pokemon_id);
+      }
+    }
+
    console.log(this.ps.pokemonList)
    
     for(var i = 0; i < this.pokemonList.length; i++)
@@ -127,11 +138,9 @@ export class CheckoutComponent implements OnInit
           this.pokemon_id = this.pokemonList[i].id
           console.log(this.pokemon_id)
           this.insertPokemon(this.pokemon_id)
-        }, 500*i);
+        }, 1000*i);
   }
-
-
-
+  
 
   insertPokemon(pokemon_id :any)
   {
@@ -170,6 +179,7 @@ console.log(pokedex);
   deleteCart(){
     
     this.ps.pokemonList = [];
+    this.ps.bundleList = [];
     this.ps.totalCost = 0;
     this.router.navigate(['/frontpage']);
 

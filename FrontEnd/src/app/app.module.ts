@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; //BrowserModule is required for all browser based application
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -77,6 +77,7 @@ import { ReviewpageComponent } from './components/reviewpage/reviewpage.componen
     AppRoutingModule, // for routing
     HttpClientModule, // for http GET,POST,PUT,DELETE
     FormsModule, // for forms
+    ReactiveFormsModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,

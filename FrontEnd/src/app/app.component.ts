@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { ThemeService } from 'src/app/services/theme.service';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { PokeDataService } from './poke-data.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 // By convention, app component is also known as root component
 @Component({
@@ -10,21 +12,19 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   //Either by Root provider or component provider
   selector: 'app-root', // selector is something that Angular understands which tells it where to place the component
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] //we have an array for style b/c we can include multiple css files
+  styleUrls: ['./app.component.scss'] //we have an array for style b/c we can include multiple css files
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'FrontEnd';
 
+  constructor (private themeService: ThemeService, private renderer: Renderer2) {}
 
-
-  // handleEvent() {
-  //   console.log('button Clicked', this.title)
-  // }
-
-  // testing http get pokemon
-  // constructor(private pokeService: PokeDataService) {}
-
-  // handleEvent() {
-  //   this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon");
-  // }
+  ngOnInit(): void {
+    this.themeService.themeChanges().subscribe(theme => {
+      if (theme.oldValue) {
+        this.renderer.removeClass(document.body, theme.oldValue);
+      }
+      this.renderer.addClass(document.body, theme.newValue);
+    })
+  }
 }

@@ -45,7 +45,7 @@ public class WishListServices {
 		}
 	}
 	public void insertWishList(WishList wishlist) throws Exception {
-		int result = wd.insertpokeDex(wishlist);
+		int result = wd.insertWishList(wishlist);
 		if(result == 0) {
 			throw new Exception();
 		}

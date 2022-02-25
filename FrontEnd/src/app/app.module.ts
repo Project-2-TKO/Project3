@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; //BrowserModule is required for all browser based application
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -17,6 +17,7 @@ import { SearchcontainerComponent } from './components/searchcontainer/searchcon
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component'
 import { HistoryContainerComponent } from './components/history-container/history-container.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
@@ -42,6 +43,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { environment } from 'src/environments/environment';
 
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
+import { BundleComponent } from './components/bundle/bundle.component';
 ;
 
 @NgModule({
@@ -65,7 +68,10 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     FooterComponent, 
     // AngularFireModule.initializeApp(environment.firebase)
     FooterComponent,
-    WishlistComponent
+    WishlistComponent,
+    ReviewpageComponent,
+    ThemeToggleComponent,
+    BundleComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -73,6 +79,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     AppRoutingModule, // for routing
     HttpClientModule, // for http GET,POST,PUT,DELETE
     FormsModule, // for forms
+    ReactiveFormsModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,

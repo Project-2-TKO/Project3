@@ -65,6 +65,14 @@ public class UserServiceTest {
 	}
 	
 	@Test
+	public void TestUserByUsername() throws Exception {
+		
+	List<User> actualResult1 = s.getUserByUsername("Bon3837");
+	
+    assertEquals(actualResult1,s.getUserByUsername("Bon3837"));
+	}
+	
+	@Test
     public void TestinsertUser() {
         User user = new User();
         user.setFirst_name("Scott");

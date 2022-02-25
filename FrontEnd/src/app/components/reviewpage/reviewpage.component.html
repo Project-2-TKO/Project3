@@ -1,0 +1,108 @@
+<app-navbar></app-navbar> 
+<div class="container">
+    <div id="reviews" class="review-section">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="m-0">37 Reviews</h4>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="stars-counters">
+                    <tbody>
+                        <tr class="">
+                            <td>
+                                <span>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">5 Stars</button>
+                                </span>
+                            </td>
+                            <td class="progress-bar-container">
+                                <div class="fit-progressbar fit-progressbar-bar star-progress-bar">
+                                    <div class="fit-progressbar-background">
+                                        <span class="progress-fill" style="width: {{this.percentof5}}%;"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="star-num">({{this.numof5}})</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                <span>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">4 Stars</button>
+                                </span>
+                            </td>
+                            <td class="progress-bar-container">
+                                <div class="fit-progressbar fit-progressbar-bar star-progress-bar">
+                                    <div class="fit-progressbar-background">
+                                        <span class="progress-fill" style="width: {{this.percentof4}}%;"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="star-num">({{this.numof4}})</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                <span>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">3 Stars</button>
+                                </span>
+                            </td>
+                            <td class="progress-bar-container">
+                                <div class="fit-progressbar fit-progressbar-bar star-progress-bar">
+                                    <div class="fit-progressbar-background">
+                                        <span class="progress-fill" style="width: {{this.percentof3}}%;"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="star-num">({{this.numof3}})</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                <span>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">2 Stars</button>
+                                </span>
+                            </td>
+                            <td class="progress-bar-container">
+                                <div class="fit-progressbar fit-progressbar-bar star-progress-bar">
+                                    <div class="fit-progressbar-background">
+                                        <span class="progress-fill" style="width: {{this.percentof2}}%;"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="star-num">({{this.numof2}})</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                <span>
+                                    <button class="fit-button fit-button-color-blue fit-button-fill-ghost fit-button-size-medium stars-filter">1 Stars</button>
+                                </span>
+                            </td>
+                            <td class="progress-bar-container">
+                                <div class="fit-progressbar fit-progressbar-bar star-progress-bar">
+                                    <div class="fit-progressbar-background">
+                                        <span class="progress-fill" style="width: {{this.percentof1}}%;"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="star-num">({{this.numof1}})</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="review-list" >
+        <h2>Reviews: </h2>
+        <hr>
+        <ul *ngFor="let reviews of rev">
+            <li >
+                 rating: {{reviews.rating}}<br>
+                    {{reviews.review}} 
+                    
+                    
+                
+                
+            </li>
+        </ul>
+    </div>
+</div>

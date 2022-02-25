@@ -1,0 +1,29 @@
+.wishlist_container {
+    background-image: url('../../../assets/wish.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    height:auto;
+    min-height:90vh;
+    color:white;
+    text-align:center;
+    padding-bottom:65px;
+}
+
+.wishlist_display {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    background-color:black;
+    opacity:0.8;
+}
+
+.wishlist_item {
+    background-color:dimgray;
+    margin:30px;
+    padding:15px;
+    height:auto;
+    border:2px solid rebeccapurple;
+    border-radius:20px;
+    font-size:12px;
+}

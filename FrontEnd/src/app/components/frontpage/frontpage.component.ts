@@ -14,56 +14,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontpageComponent implements OnInit {
 
-  // poke:any;
-  // pokemons: Pokemon[] = [];
-
-  // constructor(private pokeService: PokeDataService) {}
   constructor() {
 
   }
   ngOnInit() {
-    // this.getPokemons();
   }
-
-  // getPokemons(): void {
-  //   this.pokeService.getPokemons()
-  //   .subscribe(pokemons => {
-  //     this.pokemons = pokemons;
-  //     console.log(pokemons);
-
-
-      
-
-  //     // pokemons.map(response => console.log(response));
-  //   })
-  // }
-
-
-
-
-//   get pokemons(): any[] {
-//     console.log(this.pokeDataService.pokemons)
-//     return this.pokeDataService.pokemons;
-//   }
-
-  // pokemonInfo: any = [];
-  
-
-  // handleEvent() {
-  //   this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon/?limit=100")
-  //   .subscribe((response) =>
-  //    console.log(response.results));
-
-
-     //need to figure out how to look through each pokemon since I got the data response in the console.
-
-     //then do another request with that pokemon's url with id to get more information on the specific pokemon
-    
-  
-    // this.pokeService.getRequest("https://pokeapi.co/api/v2/pokemon/charmander")
-    // .subscribe((response) => console.log(response));
-  // }
-
-  // ngOnInit(): void {
-  // }
 }

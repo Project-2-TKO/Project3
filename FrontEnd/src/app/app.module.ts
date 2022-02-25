@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; //BrowserModule is required for all browser based application
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -17,6 +17,7 @@ import { SearchcontainerComponent } from './components/searchcontainer/searchcon
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component'
 import { HistoryContainerComponent } from './components/history-container/history-container.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 // AngularMaterialModule 
 import { AngularMaterialModule } from './angular-material.module';
@@ -25,6 +26,13 @@ import { PokeDataService } from './poke-data.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+//firebase 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 //bootstrap NGX
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 // Services (may delete)
@@ -32,6 +40,11 @@ import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { environment } from 'src/environments/environment';
+
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
+import { BundleComponent } from './components/bundle/bundle.component';
 ;
 
 @NgModule({
@@ -52,7 +65,13 @@ import { FooterComponent } from './components/footer/footer.component';
     ResetpasswordComponent,
     HistoryContainerComponent,
     PokedexComponent,
-    FooterComponent
+    FooterComponent, 
+    // AngularFireModule.initializeApp(environment.firebase)
+    FooterComponent,
+    WishlistComponent,
+    ReviewpageComponent,
+    ThemeToggleComponent,
+    BundleComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -60,11 +79,17 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule, // for routing
     HttpClientModule, // for http GET,POST,PUT,DELETE
     FormsModule, // for forms
+    ReactiveFormsModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    CarouselModule
+    CarouselModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   //app.module.ts doesn't require exports here b/c it's the root of the application but it is a subset of declarations
   // that should be visible and usable in the component templates of other NgModules

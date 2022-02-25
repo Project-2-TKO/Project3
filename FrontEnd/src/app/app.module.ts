@@ -44,6 +44,7 @@ import { environment } from 'src/environments/environment';
 
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
+import { BundleComponent } from './components/bundle/bundle.component';
 ;
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ReviewpageComponent } from './components/reviewpage/reviewpage.componen
     FooterComponent,
     WishlistComponent,
     ReviewpageComponent,
-    ThemeToggleComponent
+    ThemeToggleComponent,
+    BundleComponent
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [

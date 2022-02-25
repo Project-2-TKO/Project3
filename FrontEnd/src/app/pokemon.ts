@@ -19,3 +19,10 @@ export interface PokemonDetails {
     types: Object,
     sprites: Object,
 }
+
+//Bundle testing
+export interface BundleList {
+    // id:any,
+    // image: String,
+    // price: number
+}

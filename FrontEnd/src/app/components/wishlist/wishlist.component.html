@@ -7,10 +7,10 @@
    
     <mat-table class="wishlist_display"> 
     <div class="wishlist_item" *ngFor="let wish of wishlist">
-        <h3 style="font-style: italic;">{{wish.pokeInfo.name | titlecase}}</h3>
-        <h3 style="font-size: 16px;font-weight: bold;">${{(((wish.pokeInfo.id * .01) * 543).toFixed(2))}}</h3>
-        <img src="{{wish.pokeInfo.sprites.front_default}}"/> <br/>
-        <button (click)="removeWishlist(wish.wishlistid)"  >{{wish.wishlistid}} remove from list</button>
+        <h3 style="font-style: italic;">{{wish.name | titlecase}}</h3>
+        <h3 style="font-size: 16px;font-weight: bold;">${{(((wish.id * .01) * 543).toFixed(2))}}</h3>
+        <img src="{{wish.sprites.front_default}}"/> <br/>
+        <button (click)="removeWishlist(wish.wishListId)"  >{{wish.wishListId}}remove from list</button>
     </div>
     
     </mat-table>

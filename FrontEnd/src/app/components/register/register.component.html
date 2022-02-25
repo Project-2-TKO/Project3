@@ -1,29 +1,33 @@
 
-<div class = "container_register">
+<div class = "container_register"> <!--Firebase error message hidden-->
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span></span>{{firebaseErrorMessage}}
+    </div>
 
     <div class = 'login_container'>
         <h2>Pokemon <span>Black</span> Market</h2>
 
-        <form>
+        <form [formGroup]="signupForm" (ngSubmit)="registusr($event)"> <!--Firebase Form Group-->
             <div>
                 <mat-card class='mat_container'>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input  type="text" matInput placeholder='Username' name ="username" formController="username" [(ngModel)]="username">
+                        <input  type="text" matInput placeholder='Username' name ="username" formControlName="username">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input type="password" matInput placeholder='Password' name ="password" formController="password" [(ngModel)]="password">
+                        <input type="password" matInput placeholder='Password' name ="password" formControlName="password" >
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input type="password"  matInput placeholder='Confirm Password' name ="passwordc" formController="password" [(ngModel)]="passwordc">
+                        <input type="password"  matInput placeholder='Confirm Password' name ="passwordc" formControlName="passwordc" >
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input type="email"  matInput placeholder='E-mail@address' name ="email" formController="address" [(ngModel)]="email">
+                        <input type="email"  matInput placeholder='E-mail@address' name ="email" formControlName="address" >
                     </mat-form-field>
-                    <button mat-raised-button color='primary' type='submit' (click)=registusr()> Register </button>
+                    <button mat-raised-button color='primary' type='submit' (click)=registusr($event)> Register </button>
+                    <!-- (click)=registusr() PUT THIS BACK IF NECC-->
                     <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->
                     <small class="text-danger">{{msgError}}</small>
                 </mat-card>

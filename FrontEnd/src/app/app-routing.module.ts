@@ -13,6 +13,7 @@ import { HistoryContainerComponent } from './components/history-container/histor
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+import { WriterevComponent } from './components/writerev/writerev.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,8 +26,9 @@ const routes: Routes = [
   { path: 'resetpassword', component: ResetpasswordComponent},
   { path: 'history', component: HistoryContainerComponent},
   { path: 'wishlist', component: WishlistComponent},
-  { path: 'reviews', component: ReviewpageComponent},
+  { path: 'reviews/:id', component: ReviewpageComponent},
   { path: 'dark', component: ThemeToggleComponent},
+  { path: 'writerev/:id', component: WriterevComponent},
 ];
 
 @NgModule({

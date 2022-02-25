@@ -169,7 +169,7 @@ reviews(id:number){
 // note we are pushing the pokemon id and user id to db
 addWishlist(pokemon: Pokemon){
   console.log(pokemon);
-  /*pokemon.wishListId=this.wishlistId;
+    /*pokemon.wishListId=this.wishlistId;
   this.ps.wishList.push(pokemon);
   let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; */

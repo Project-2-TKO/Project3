@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeDataService } from 'src/app/poke-data.service';
-import { Pokemon } from 'src/app/pokemon';// '../../pokemon';
+import { Pokemon } from 'src/app/pokemon';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { map, Observable, Subscription } from 'rxjs';
 import { ReviewpageComponent } from '../reviewpage/reviewpage.component';
@@ -24,7 +24,7 @@ export class PokemonContainerComponent implements OnInit {
   collapsed = true;
   public name: string = '';
   public pokemon: any = "placeholder";
-  //public pokemonArray: Array<Pokemon> = [];
+  public pokemonArray: Array<Pokemon> = []; //comment out?
   public pokeDataArray: any[] = []; //might be this
   public rating:any[]=[];
   
@@ -57,10 +57,8 @@ export class PokemonContainerComponent implements OnInit {
   loginUser: User ;
   
 
-  constructor(private _http: HttpClient,private ps: PokeDataService,private rs:PokeReviewService) {}
-    
+  constructor(private _http: HttpClient,private ps: PokeDataService, private rs: PokeReviewService) {}
   ngOnInit(): void{
-    // this.ps.getAllPokemons()
     // .subscribe((response: any) => {
     //   response.results.forEach(result => {
     //     this.ps
@@ -84,13 +82,6 @@ getAllPokemons(){
           }else{
             this.pokeDataArray.push(data);
           }
-          
-          // console.log(data.name);
-          // if(this.pokeDataArray[data].name)
-          // console.log(this.pokeDataArray[1].id)
-          // console.log(this.pokeDataArray[1].name)
-      //console.log("pokemonDataArray "+this.pokeDataArray);
-      // console.log(data)
         })
       })
     
@@ -194,9 +185,7 @@ addWishlist(pokemon: Pokemon){
     });
 
 }
-saveWishlist(){
-  this.wishlist
-    
-
-}
+// saveWishlist(){
+//   this.wishlist
+// }
 }

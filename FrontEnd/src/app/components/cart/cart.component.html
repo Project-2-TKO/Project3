@@ -15,6 +15,13 @@
         <img src="{{pokemon.sprites.front_default}}"/>
     </div>
     </mat-card>
+    <mat-card class="cardInCart" > 
+        <div class="pokemonInCart" *ngFor="let bundle of bundleList">
+            <!-- <button class= "x"(click)="delete(bundleList)">X</button> -->
+            <h3 style="font-style: italic;">Bundle Deal</h3>
+            <img src="{{bundle.images}}"/>
+        </div>
+    </mat-card>
 </div>
 
 <div class="center_div">

@@ -14,6 +14,7 @@ export class CartComponent {
   pokemonCost: any = 0;
   finalCost: any = 0;
   pokemonList: any = [];
+  bundleList: any = [];
   message: string = "";
 
   subscription : Subscription = new Subscription();
@@ -28,7 +29,7 @@ export class CartComponent {
 
     this.pokemon = this.ps.pokemon
 
-    
+    this.bundleList = this.ps.bundleList
 
     this.pokemonList = this.ps.pokemonList
 

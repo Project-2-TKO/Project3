@@ -1,0 +1,22 @@
+<div class="bundle_container">
+    <h1> <mat-icon [ngStyle]="{'color':'red'}">local_fire_department</mat-icon>   Bundle Deals  <mat-icon [ngStyle]="{'color':'red'}">local_fire_department</mat-icon></h1>
+    <mat-container id="card_container">
+    <mat-card class="card_body" *ngIf="bundle1">
+        <img src="{{bundle1Img}}" width="300px" height="200px">
+        <hr/>
+        <mat-card-subtitle>Bundle Deal $300 </mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-raised-button (click)="addBundle(bundle1)">Add to Cart</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card_body" *ngIf="bundle2">
+        <img src="{{bundle2Img}}" width="300px" height="200px">
+        <hr/>
+        <mat-card-subtitle>Bundle Deal $300 </mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-raised-button (click)="addBundle(bundle2)">Add to Cart</button>
+        </mat-card-actions>
+    </mat-card>
+</mat-container>
+</div>

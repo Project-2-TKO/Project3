@@ -52,33 +52,22 @@ public class ReviewsServicesTest {
 			//Look at this later to figure out why it doesn't pass all tests together.
 			
 			
-<<<<<<< HEAD
+
 			/*  @Test
 			  public void testReviewsByUserId() throws Exception {
 			  
 			  List<Reviews> actualResult2 = rs.getReviewsByUserId(1);
 			  
-			 assertEquals(actualResult2, rs.getReviewsByUserId(1)); }
-=======
-			/*
-			 * @Test public void testReviewsByUserId() throws Exception {
-			 * 
-			 * List<Reviews> actualResult = rs.getReviewsByUserId(1);
-			 * 
-			 * assertEquals(actualResult, rs.getReviewsByUserId(1)); }
->>>>>>> ffc103da06e01d6b52f5e27fcecd9d0b2613843a
-			 */
+			 assertEquals(actualResult2, rs.getReviewsByUserId(1)); }*/
+
+
 			 
 			
 			
 			  @Test public void testReviewsByPokemonId() throws Exception {
 			  
 			  List<Reviews> actualResult = rs.getReviewsByPokemonId(132);
-<<<<<<< HEAD
-			  
-=======
-			 
->>>>>>> ffc103da06e01d6b52f5e27fcecd9d0b2613843a
+
 			  assertEquals(actualResult, rs.getReviewsByPokemonId(132)); }
 			 
 			

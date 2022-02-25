@@ -57,7 +57,7 @@ export class PokemonContainerComponent implements OnInit {
   loginUser: User ;
   
 
-  constructor(private _http: HttpClient,private ps: PokeDataService,private rp: ReviewpageComponent,private rs:PokeReviewService) {}
+  constructor(private _http: HttpClient,private ps: PokeDataService,private rs:PokeReviewService) {}
     
   ngOnInit(): void{
     // this.ps.getAllPokemons()

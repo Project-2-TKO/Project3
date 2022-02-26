@@ -6,10 +6,12 @@ import { HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 import { error } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 
 //firebase
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import firebase from 'firebase/compat/app';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 const httpOptions   = {
   headers: new HttpHeaders({
@@ -29,6 +31,8 @@ const httpOptions   = {
 })
 export class LoginComponent implements OnInit {
 
+  signInForm!:FormGroup; 
+
   username!: string;
   password!:String;
   result!: boolean;
@@ -43,17 +47,26 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void{
+
+    this.signInForm = new FormGroup({
+      'password': new FormControl('', Validators.required),
+      'username': new FormControl('', Validators.required)
+    });//Form group controls for firebase
     //window.localStorage.clear();
    // this.response=this._http.post("localhost:3000/login",this.user, this.Credentials );
   }
 
-  Loginusr(){
-    let user = {username: this.username,
-                password: this.password};
+  Loginusr(e:any){
+    if(e){
+      e.preventDefault(); //prevents default form behavior
+    }
+
+    let user = {username: this.signInForm.value.username,
+                password: this.signInForm.value.password};
 
     let Credentials = {withCredentials: true};
-    this.auth = new firebase.auth.GoogleAuthProvider();
-    console.log(this.auth);
+    // this.auth = new firebase.auth.GoogleAuthProvider();
+    // console.log(this.auth);
     console.log(this.username);
     console.log(this.password);
     console.log(user);
@@ -64,11 +77,9 @@ export class LoginComponent implements OnInit {
       {
       next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
       error: (e) => console.error(this.msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password"),
-      complete: () => window.localStorage.setItem("username",this.username)//console.info('Complete')
+      complete: () => window.localStorage.setItem("username",this.signInForm.value.username)//console.info('Complete')
     }
     );
   };
-
-  //Create logout function to end session in another component
 
 }

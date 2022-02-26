@@ -57,7 +57,7 @@ public class PokeDexServiceTest {
 	
     assertEquals(actualResult1,s.getPokeDexByPokemonId(1));
 	}
-	
+
 	@Test
 	public void testPokeDexByUserId() throws Exception {
 		

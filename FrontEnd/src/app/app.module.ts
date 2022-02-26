@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; //BrowserModule is required for all browser based application
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -45,6 +45,8 @@ import { environment } from 'src/environments/environment';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ReviewpageComponent } from './components/reviewpage/reviewpage.component';
 import { BundleComponent } from './components/bundle/bundle.component';
+import { WriterevComponent } from './components/writerev/writerev.component';
+
 ;
 
 @NgModule({
@@ -71,7 +73,9 @@ import { BundleComponent } from './components/bundle/bundle.component';
     WishlistComponent,
     ReviewpageComponent,
     ThemeToggleComponent,
-    BundleComponent
+    BundleComponent,
+    WriterevComponent,
+
   ],
   //imports : other modules whose exported classes are needed by component templates declared in this NgModule
   imports: [
@@ -79,6 +83,7 @@ import { BundleComponent } from './components/bundle/bundle.component';
     AppRoutingModule, // for routing
     HttpClientModule, // for http GET,POST,PUT,DELETE
     FormsModule, // for forms
+    ReactiveFormsModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatCardModule,

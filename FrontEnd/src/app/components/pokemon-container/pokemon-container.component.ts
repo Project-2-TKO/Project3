@@ -58,9 +58,7 @@ export class PokemonContainerComponent implements OnInit {
   
 
   constructor(private _http: HttpClient,private ps: PokeDataService, private rs: PokeReviewService) {}
-    
   ngOnInit(): void{
-    // this.ps.getAllPokemons()
     // .subscribe((response: any) => {
     //   response.results.forEach(result => {
     //     this.ps
@@ -156,6 +154,7 @@ reviews(id:number){
       this.rs.reviewsarray=data.body;
       this.rating=data.body.rating;
       console.log(this.rating)
+      
       //this.rating=data.body.rating;
      // console.log(data.body)
      // console.log(this.rs.reviewsarray)

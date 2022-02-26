@@ -1,8 +1,15 @@
 <app-navbar></app-navbar> 
 <div class="container">
+    <div class="row inputarea">
+        <!-- Two way binding this input field to a variable called input in pokedex.component.ts -->
+        <input class="col-8" type="string" [(ngModel)] = "name" placeholder="search by pokemon id or name..."/>
+        <!-- Event binding on this button to call the getPoke() function in pokedex.component.ts -->
+        <button class=" btn btn-dark col-lg-4" (click)= "getPokemon()" [routerLink]="['/reviews/',pokeid]">Choose Pokemon</button>
+    </div>
+    
     <div id="reviews" class="review-section">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h4 class="m-0">37 Reviews</h4>
+            <h4 class="m-0">{{this.sum}} Reviews</h4>
             
         </div>
         <div class="row">
@@ -92,8 +99,12 @@
     </div>
 
     <div class="review-list" >
+
         <h2>Reviews: </h2>
+
         <hr>
+        <form *ngIf="isVisible">no reviews</form>
+        <form *ngIf="isVisible==false">
         <ul *ngFor="let reviews of rev">
             <li >
                  rating: {{reviews.rating}}<br>
@@ -104,5 +115,6 @@
                 
             </li>
         </ul>
+    </form>
     </div>
 </div>

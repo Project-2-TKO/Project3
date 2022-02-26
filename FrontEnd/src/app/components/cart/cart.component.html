@@ -10,16 +10,16 @@
     <mat-card class="cardInCart"> 
     <div class="pokemonInCart" *ngFor="let pokemon of pokemonList">
         <button class= "x"(click)="delete(pokemon)">X</button>
-        <h3 style="font-style: italic;">{{pokemon.name | titlecase}}</h3>
-        <h3 style="font-size: 25px;font-weight: bold;">${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
+        <h3 style="font-size: 20px;font-style: italic;">{{pokemon.name | titlecase}}</h3>
+        <h3 style="font-size: 18px;font-weight: bold;">${{(((pokemon.id * .01) * 543).toFixed(2))}}</h3>
         <img src="{{pokemon.sprites.front_default}}"/>
     </div>
     </mat-card>
     <mat-card class="cardInCart" > 
-        <div class="pokemonInCart" *ngFor="let bundle of bundleList">
+        <div class="bundleInCart" *ngFor="let bundle of bundleList">
             <!-- <button class= "x"(click)="delete(bundleList)">X</button> -->
-            <h3 style="font-style: italic;">Bundle Deal</h3>
-            <img src="{{bundle.images}}"/>
+            <h3 style="font-style: italic;">Bundle Deal <button class='x'(click)='deleteBundle(bundle)'>X</button></h3>
+            <img src="{{bundle.images}}" width='350' height='250'/>
         </div>
     </mat-card>
 </div>

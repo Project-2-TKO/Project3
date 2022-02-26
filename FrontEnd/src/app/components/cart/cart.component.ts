@@ -48,17 +48,26 @@ export class CartComponent {
           this.pokemonList.splice(i , 1);
           
           break
-          
           }
-        
-          
-
-        
-        
     }
-   
+  }
 
-    
+  deleteBundle(bundle: any) : void {
+    console.log(bundle.ids);
+    for(let i = 0 ; i < this.bundleList.length; i++){
+      console.log(this.bundleList[i].ids);
+      if(bundle.ids == this.bundleList[i].ids){
+        this.ps.totalCost = this.totalCost -= 300;
+
+        this.bundleList.splice(i, 1);
+
+        break;
+      }
+    }
+    // console.log(this.bundleList);
+    // for(let i = 0; i<this.bundleList.length; i++) {
+    //   console.log(this.bundleList[i]);
+    // }
   }
 
 

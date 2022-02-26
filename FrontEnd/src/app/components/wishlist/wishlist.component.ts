@@ -53,7 +53,7 @@ user:any;
     this.wishlist.splice(wishid,1);
     let response=this._http.delete("http://localhost:3000/delete/"+ wishid )
     .subscribe( (data: any)=>{console.log(this.wishlist);});
-    // location.reload();
+
     console.log(this.wishlist)
   }
 
@@ -61,12 +61,12 @@ user:any;
   {
     console.log(pokemon)
     this.ps.pokemonList.push(pokemon.pokeInfo);
-    let price: number = (((pokemon.pokeInfo.id * .01) * 543) * .5);
+    let price: number = (((pokemon.pokeInfo.id * .01) * 543));
     this.ps.totalCost += price; 
     this.wishlist.splice(pokemon.wishlistid,1);
     let response=this._http.delete("http://localhost:3000/delete/"+ pokemon.wishlistid )
     .subscribe( (data: any)=>{console.log(data);});
-    // location.reload();
+    
   }
 
   addPokemon(pokemon: Pokemon){

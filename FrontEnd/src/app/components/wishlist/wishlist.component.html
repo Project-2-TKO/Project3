@@ -10,8 +10,8 @@
         <h3 style="font-style: italic;">{{wish.pokeInfo.name | titlecase}}</h3>
         <h3 style="font-size: 16px;font-weight: bold;">${{(((wish.pokeInfo.id * .01) * 543).toFixed(2))}}</h3>
         <img src="{{wish.pokeInfo.sprites.front_default}}"/> <br/>
-        <button (click)="addToCart(wish)"  class="btn btn-success col-sm-12"><b>Add to Cart</b></button><br>
-        <button (click)="removeWishlist(wish.wishlistid)"  class="btn btn-danger col-sm-12"><b>Remove Item</b></button>
+        <button (click)="addToCart(wish)"  class="btn btn-success col-sm-12" [routerLink]="['/cart']"><b>Add to Cart</b></button><br>
+        <button (click)="removeWishlist(wish.wishlistid)"  class="btn btn-danger col-sm-12" [routerLink]="['/frontpage']"><b>Remove Item</b></button>
     </div>
     
     </mat-table>

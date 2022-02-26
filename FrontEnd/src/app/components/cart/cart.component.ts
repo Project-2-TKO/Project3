@@ -35,7 +35,8 @@ export class CartComponent {
 
     this.totalCost = this.ps.totalCost
     
-
+    console.log(this.ps.bundleList)
+    console.log(this.ps.pokemonList)
   }
   delete(mon: any): void{
     for(var i = 0; i < this.pokemonList.length; i++){

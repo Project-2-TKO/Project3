@@ -4,20 +4,22 @@
     <div class = 'login_container'>
         <h2>Pokemon <span>Black</span> Market</h2>
 
-        <form >
+        <form [formGroup]="signInForm" (ngSubmit)="Loginusr($event)">
+            
 
             <div>
                 <mat-card class='mat_container'>
 
                     <mat-form-field appearance='outline' id='field'>
-                        <input type="text" matInput placeholder='Username' name="usernamer" formController="username" [(ngModel)]="username">
+                        <input type="text" matInput placeholder='Username' name="usernamer" formControlName="username" >
                     </mat-form-field>
 
                     <mat-form-field appearance='outline' id='field'>
-                        <input type="password" matInput placeholder='Password' name="password" formController="password" [(ngModel)]="password">
+                        <input type="password" matInput placeholder='Password' name="password" formControlName="password" >
                     </mat-form-field>
 
-                    <button mat-raised-button color='primary' (click)=Loginusr() > Login </button>
+                    <button mat-raised-button color='primary' (click)=Loginusr($event) > Login </button>
+                  
                     <small class="text-danger">{{msgError}}</small>
                     <br/>
                     <br/>

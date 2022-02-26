@@ -154,6 +154,7 @@ reviews(id:number){
       this.rs.reviewsarray=data.body;
       this.rating=data.body.rating;
       console.log(this.rating)
+      
       //this.rating=data.body.rating;
      // console.log(data.body)
      // console.log(this.rs.reviewsarray)
@@ -169,12 +170,15 @@ reviews(id:number){
 // note we are pushing the pokemon id and user id to db
 addWishlist(pokemon: Pokemon){
   console.log(pokemon);
+  /*pokemon.wishListId=this.wishlistId;
+  this.ps.wishList.push(pokemon);
+  let price: number = (((pokemon.id * .01) * 543) * .5);
+  this.ps.totalCost += price; */
   console.log("user name and pokemon id " +this.username + "///"+pokemon.id);
   let response=this._http.post("http://localhost:3000/wishlist/"+ pokemon.id  +"/"+this.username ,null)
   .subscribe( (data: any)=>{console.log(data); 
 
     pokemon.wishListId=data;
-    console.log(pokemon)
   this.ps.wishList.push(pokemon);
   let price: number = (((pokemon.id * .01) * 543) * .5);
   this.ps.totalCost += price; 
@@ -182,4 +186,7 @@ addWishlist(pokemon: Pokemon){
     });
 
 }
+// saveWishlist(){
+//   this.wishlist
+// }
 }

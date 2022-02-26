@@ -112,18 +112,6 @@ export class CheckoutComponent implements OnInit
   
   inject(): void
   {
-    for(let i = 0 ; i<this.bundleList.length; i++){
-      console.log(this.bundleList[i].ids);
-      // let bundles = this.bundleList[i].ids;
-      this.delaying(i);
-      // for(let j = 0 ; j < bundles.length; j++){
-      //   this.pokemon_id = bundles[j];
-      //   this.insertPokemon(this.pokemon_id);
-      // }
-    }
-
-   console.log(this.ps.pokemonList)
-   
     for(var i = 0; i < this.pokemonList.length; i++)
     {   
      this.delaying(i)
@@ -131,8 +119,58 @@ export class CheckoutComponent implements OnInit
     
     this.ps.pokemonList = [];
     this.deleteCart();
-   
+    if (this.pokemonList.length==0 && this.bundleList.length>=1){
+      for(let i = 0 ; i<3; i++){
+        this.delaying2(i)
+      }
+      this.ps.bundleList = [];
+    }
+    if (this.pokemonList.length>0 && this.bundleList.length>=1){  
+    setTimeout (
+       () => {
+        for(let i = 0 ; i<3; i++){
+          this.delaying2(i)
+        }
+    
+       console.log(this.ps.pokemonList)
+        this.ps.bundleList = [];
+      }, 5000);}
+
+      if (this.pokemonList.length==0 && this.bundleList.length>1){
+      setTimeout (
+        () => {
+         for(let i = 0 ; i<3; i++){
+           this.delaying3(i)
+         }
+     
+        console.log(this.ps.pokemonList)
+         this.ps.bundleList = [];
+       }, 5000);}
+
+       if (this.pokemonList.length>0 && this.bundleList.length>1){
+        setTimeout (
+          () => {
+           for(let i = 0 ; i<3; i++){
+             this.delaying3(i)
+           }
+       
+          console.log(this.ps.pokemonList)
+           this.ps.bundleList = [];
+         }, 10000);}
   }
+
+  // inject2()
+  // {
+
+  //   for(let i = 0 ; i<3; i++){
+  //     this.delaying2(i)
+  //   }
+
+  //  console.log(this.ps.pokemonList)
+  //   this.ps.bundleList = [];
+   
+   
+  // }
 
   delaying(i:any){
         setTimeout(() =>{
@@ -142,6 +180,21 @@ export class CheckoutComponent implements OnInit
         }, 1000*i);
   }
   
+  delaying2(i:any){
+    setTimeout(() =>{
+      this.pokemon_id = this.bundleList[0].ids[i]
+      console.log(this.pokemon_id)
+      this.insertPokemon(i)
+    }, 1500*i);
+}
+
+delaying3(i:any){
+  setTimeout(() =>{
+    this.pokemon_id = this.bundleList[1].ids[i]
+    console.log(this.pokemon_id)
+    this.insertPokemon(i)
+  }, 1500*i);
+}
 
   insertPokemon(pokemon_id :any)
   {

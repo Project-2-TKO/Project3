@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { catchError} from 'rxjs';
 import { of } from 'rxjs';
 import { error } from '@angular/compiler/src/util';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthserviceService } from 'src/app/services/authservice.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 const httpOptions   = {
@@ -23,6 +26,9 @@ const httpOptions   = {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  signupForm!: FormGroup; //variable for data binding registration form
+  firebaseErrorMessage!: string; //if there is an error this message will show on home page
+
   username!: String;
   password!: String;
   passwordc!: String;
@@ -40,19 +46,40 @@ export class RegisterComponent implements OnInit {
   response : any ;
   msgError ="";
   Credentials = {withCredentials: true};
-  constructor(private _http : HttpClient, private router : Router) { }
+  constructor(private _http : HttpClient, private router : Router, private afAuth: AngularFireAuth, private authService: AuthserviceService) { 
+    this.firebaseErrorMessage = ''; 
+  }
 
   ngOnInit(): void {
+
+    this.signupForm = new FormGroup({
+      'address': new FormControl('', [Validators.required, Validators.email]), 
+      'password': new FormControl('', Validators.required),
+      'passwordc': new FormControl('', Validators.required),
+      'username': new FormControl('', Validators.required)
+    });//Form group controls for firebase
 
   }
 
 
-  registusr(){
+  registusr(e:any){
+    if(e){
+      e.preventDefault(); //prevents default form behavior
+    }
+    //this function will signup the User using firebase and send back an error message if the user isn't valid
+    this.authService.signupUser({email:this.signupForm.value.address, password:this.signupForm.value.password})
+    .then((result) => {
+      if(result == null) //null result value means success
+        console.log("Successfully created user in firebase!"); 
+      else if(result.isValid == false) //false result means an error
+        this.firebaseErrorMessage = result.message 
+    });
+    //Send password and email possibly username  to Google instead of to the database
     if(this.password == this.passwordc)
     {
-      let user = {username:      this.username,
-                  password:      this.password,
-                  email_address: this.email,
+      let user = {username:      this.signupForm.value.username,
+                  password:      this.signupForm.value.password,
+                  email_address: this.signupForm.value.address,
                   credit_card_name : "",
                   credit_card_number : "",
                   first_name: "",
@@ -66,7 +93,9 @@ export class RegisterComponent implements OnInit {
       let Credentials = {withCredentials: true};
       let response =this._http.post<any>("http://localhost:3000/user/",user ,httpOptions,).subscribe (
         {
-          next: (v) => this.router.navigate(['/']),  //console.log("reponse rcieved"),
+          
+          // next: (v) => this.router.navigate(['/']),  
+          //console.log("reponse rcieved"),
           error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
           complete: () => console.info('Complete')
         });

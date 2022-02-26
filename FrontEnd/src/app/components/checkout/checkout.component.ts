@@ -114,11 +114,12 @@ export class CheckoutComponent implements OnInit
   {
     for(let i = 0 ; i<this.bundleList.length; i++){
       console.log(this.bundleList[i].ids);
-      let bundles = this.bundleList[i].ids;
-      for(let j = 0 ; j < bundles.length; j++){
-        this.pokemon_id = bundles[j];
-        this.insertPokemon(this.pokemon_id);
-      }
+      // let bundles = this.bundleList[i].ids;
+      this.delaying(i);
+      // for(let j = 0 ; j < bundles.length; j++){
+      //   this.pokemon_id = bundles[j];
+      //   this.insertPokemon(this.pokemon_id);
+      // }
     }
 
    console.log(this.ps.pokemonList)

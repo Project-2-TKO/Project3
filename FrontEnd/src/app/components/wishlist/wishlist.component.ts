@@ -50,8 +50,8 @@ user:any;
 
   removeWishlist(pokemonid:number)
   {
-   
-    this.wishlist.pop();
+   console.log(pokemonid);
+    // this.wishlist.pop();
     let response=this._http.delete("http://localhost:3000/delete/"+ pokemonid )
     .subscribe( (data: any)=>{console.log(data);});
   

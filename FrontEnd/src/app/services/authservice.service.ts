@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/compat';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthserviceService {
   userLoggedIn!: boolean;
-
   constructor(private router: Router, private afAuth: AngularFireAuth) {
-
     this.userLoggedIn = false;
-
     this.afAuth.onAuthStateChanged((user) => {
       if(user){
         this.userLoggedIn = true;
@@ -22,7 +17,6 @@ export class AuthserviceService {
       }
     });
    }
-
    signupUser(user:any): Promise<any>{
     return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
     .then((result) => {
@@ -30,9 +24,7 @@ export class AuthserviceService {
       result.user?.sendEmailVerification(); //send user email verification
     });
    }
-
    loginUser(email: string, password: string): Promise<any> {
-
     //let fireAuth = this.afAuth.signInWithEmailAndPassword(email, password)
     this.afAuth.signInWithEmailAndPassword(email, password)
     .catch(function(error)
@@ -47,18 +39,17 @@ export class AuthserviceService {
     }
     console.log(error);
     });
-
     return this.afAuth.signInWithEmailAndPassword(email, password)
     .then(() => {
       console.log("Auth Service: login User successful");
     })
   }
 }
-
 function onSignIn(firebaseUser: { getAuthResponse: () => { (): any; new(): any; id_token: any; }; }){
   let id_token = firebaseUser.getAuthResponse().id_token;
 }
 function signInWithEmailAndPassword(auth: any, email: string, password: string) {
   throw new Error('Function not implemented.');
 }
+
 

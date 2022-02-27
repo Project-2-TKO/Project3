@@ -7,14 +7,12 @@ import { of } from 'rxjs';
 import { error } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
 import { AuthserviceService } from 'src/app/services/authservice.service';
-
 //firebase
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import firebase from 'firebase/compat/app';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { waitForAsync } from '@angular/core/testing';
 import { stringify } from 'querystring';
-
 const httpOptions   = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -24,17 +22,15 @@ const httpOptions   = {
   })
 };
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-
 })
 export class LoginComponent implements OnInit {
-
-  signInForm!:FormGroup;
-
+  signInForm!: FormGroup;
+  firebaseErrorMessage!: string;
+  email!:string;
   username!: string;
   password!:String;
   result!: boolean;
@@ -44,42 +40,24 @@ export class LoginComponent implements OnInit {
   //msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password";
   msgError ="";
   constructor(private _http : HttpClient, private router : Router,  public auth: AngularFireAuthModule, public _srvc : AuthserviceService) {
-  constructor(private _http : HttpClient, private router : Router,  public auth: AngularFireAuthModule) {
-
    }
 
-
   ngOnInit(): void{
-
+    //window.localStorage.clear();
+    // this.response=this._http.post("localhost:3000/login",this.user, this.Credentials );
     this.signInForm = new FormGroup({
-
-      'password': new FormControl('', Validators.required),
-
       'password': new FormControl('', Validators.required),
       'username': new FormControl('', Validators.required)
-    });//Form group controls for firebase
-    //window.localStorage.clear();
-   // this.response=this._http.post("localhost:3000/login",this.user, this.Credentials );
+    });
   }
-
   Loginusr(e: any){
-  Loginusr(e:any){
-    if(e){
-      e.preventDefault(); //prevents default form behavior
-    }
-
     let user = {username: this.signInForm.value.username,
                 password: this.signInForm.value.password};
-
     let Credentials = {withCredentials: true};
     //this.auth = new firebase.auth.GoogleAuthProvider();
     console.log(this.auth);
     console.log("before DB conn"+this.signInForm.value.username);
     console.log("before DB conn"+this.signInForm.value.password);
-    // this.auth = new firebase.auth.GoogleAuthProvider();
-    // console.log(this.auth);
-    console.log(this.username);
-    console.log(this.password);
     console.log(user);
     console.log(Credentials);
     delay(5000);
@@ -87,13 +65,11 @@ export class LoginComponent implements OnInit {
     let response = this._http.post<any>("http://localhost:3000/login", user, httpOptions ).subscribe (
       {
       next: (v) =>  this.getToken(e),//this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
-      next: (v) => this.router.navigate(['/frontpage']),  //console.log("reponse rcieved"),
       error: (e) => console.error(this.msgError="Invalid Credentials, Please Enter a Valid User Name And/or Password"),
       complete: () => window.localStorage.setItem("username",this.signInForm.value.username)//console.info('Complete')
     }
     );
   };
-
   getToken(e: any){
     console.log("We have acquired Token")
     if(e){
@@ -105,7 +81,6 @@ export class LoginComponent implements OnInit {
     console.log(passw);
     delay(5000);
     this.auth = new firebase.auth.GoogleAuthProvider();
-
     //this._srvc.loginUser({username:this.signInForm.value.username}, {password:this.signInForm.value.password})
     delay(5000);
     this._srvc.loginUser(email, passw)
@@ -121,12 +96,10 @@ export class LoginComponent implements OnInit {
     });
 
 
-
     this.router.navigate(['/frontpage'])
     //let id_token = googleUser.getAuthResponse().id_token;
 
-
   }
 
-
 }
+

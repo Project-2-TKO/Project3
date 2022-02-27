@@ -1,0 +1,12 @@
+
+
+    <!-- Login Elements Here -->
+    <div id="signupRow" class="row">
+        <h3>Please Enter your Review</h3>
+        <input id="rating" placeholder="Rating" class="col-sm-4" [(ngModel)]="rating"/>
+        <input id="discription"  placeholder="discription" class="col-sm-4" [(ngModel)]="disc"/>
+
+        <button id="submit" class="btn btn-primary col-sm-4" (click)="submitrev()">submit</button>
+        
+    </div>
+    <div class="text-center text-muted mt-5 mb-0" [innerHtml]="htmltoadd"></div>

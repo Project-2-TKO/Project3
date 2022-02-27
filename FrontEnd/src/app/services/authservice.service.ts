@@ -62,3 +62,4 @@ function signInWithEmailAndPassword(auth: any, email: string, password: string) 
   throw new Error('Function not implemented.');
 }
 
+}

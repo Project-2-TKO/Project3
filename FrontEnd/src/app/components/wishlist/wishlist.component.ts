@@ -24,7 +24,7 @@ const httpOptions   = {
 })
 export class WishlistComponent implements OnInit {
   obj:any = [];
-  wishlist: any = [];
+  public wishlist: any = [];
   mylist: any = [];
   //localStorage: LocalStorage;
    username= localStorage.getItem("username") ;
@@ -48,42 +48,44 @@ user:any;
 
 
 
-  removeWishlist(pokemonid:number)
+  removeWishlist(wishid:number)
   {
-   
-    this.wishlist.pop();
-    let response=this._http.delete("http://localhost:3000/delete/"+ pokemonid )
+    this.wishlist.splice(wishid,1);
+    let response=this._http.delete("http://localhost:3000/delete/"+ wishid )
+    .subscribe( (data: any)=>{console.log(this.wishlist);});
+
+    console.log(this.wishlist)
+  }
+
+  addToCart(pokemon:any)
+  {
+    console.log(pokemon)
+    this.ps.pokemonList.push(pokemon.pokeInfo);
+    let price: number = (((pokemon.pokeInfo.id * .01) * 543));
+    this.ps.totalCost += price; 
+    this.wishlist.splice(pokemon.wishlistid,1);
+    let response=this._http.delete("http://localhost:3000/delete/"+ pokemon.wishlistid )
     .subscribe( (data: any)=>{console.log(data);});
-  
+    
   }
 
   addPokemon(pokemon: Pokemon){
 
-    /*let response=this._http.post("http://localhost:3000/pokedex/"+ pokemon.id  +"/"+this.username ,null)
-    .subscribe( (data: any)=>{console.log(data); 
-  
-      pokemon.wishListId=data;
-    this.ps.wishList.push(pokemon);
-    let price: number = (((pokemon.id * .01) * 543) * .5);
-    this.ps.totalCost += price; */
-      
-    
     console.log(pokemon);
     
-   // this.ps.wishList.push(wlst);
+
     this.ps.pokemonList.push(pokemon);
     let price: number = (((pokemon.id * .01) * 543) * .5);
     this.ps.totalCost += price; 
     console.log(this.ps.totalCost)
     console.log(typeof this.ps.totalCost)
-    this.removeWishlist(pokemon.id);
   }
   
   ngOnInit(): void {
 
-    console.log(this.wishlist);
+    // console.log(this.wishlist);
     this.wishlist;
-  
+    
 
     this.getUserId(this.username).subscribe(
       (data:any) =>{

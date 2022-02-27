@@ -4,16 +4,10 @@ import { Pokedex, UserId } from 'src/app/models/pokedex';
 import { Observable } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
 import { PokeReviewService } from 'src/app/poke-review.service';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 
 
-const httpOptions   = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Access-Control-Allow-Headers': 'Content-type:application/json',
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Origin': '*'
-  })
-};
+
 
 @Component({
   selector: 'app-pokedex',
@@ -41,7 +35,17 @@ export class PokedexComponent implements OnInit {
   Credentials = {withCredentials: true};
   // public user = window.localStorage.getItem("username"); //might need to grab user_ID? unless its already saved in storage
 
-  constructor(private _http : HttpClient, private ps: PokeDataService,private rs:PokeReviewService) { }
+  constructor(private _http : HttpClient, private ps: PokeDataService,private rs:PokeReviewService, private _srvc:AuthserviceService) { }
+
+   httpOptions   = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Control-Allow-Headers': 'Content-type:application/json',
+      'Access-Control-Allow-Methods': 'GET',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': 'Firebase JWT' + this._srvc.userToken
+    })
+  };
 
   ngOnInit(): void {
     this.getUserId(this.user).subscribe(

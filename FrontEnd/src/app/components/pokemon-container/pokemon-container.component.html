@@ -45,7 +45,7 @@
                 <mat-card-subtitle id="sale"> 50% OFF ${{((((poke.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-actions id="action_buttons">
                     <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
-                    <button mat-raised-button (click)="addWishlist(poke)" color="primary" id="wishlistButton">To Wishlist</button>
+                    <!-- <button mat-raised-button (click)="addWishlist(poke)" color="primary" id="wishlistButton">To Wishlist</button> -->
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">
@@ -73,7 +73,7 @@
                 <mat-card-subtitle id="sale"> 50% OFF ${{((((poke.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
                 <mat-card-actions>
                     <button mat-raised-button (click)="addPokemon(poke)">Add to Cart</button>
-                    <button mat-raised-button (click)="addWishlist(poke)"color="primary" id="wishlistButton">To Wishlist</button>
+                    <!-- <button mat-raised-button (click)="addWishlist(poke)"color="primary" id="wishlistButton">To Wishlist</button> -->
                 </mat-card-actions>
                 <mat-card-content *ngIf="!collapsed">
                     <img mat-card-sm-image src="{{poke.sprites.back_default}}">
@@ -82,7 +82,7 @@
                     <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
                     <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button>
                 </mat-card-actions>
-                <mat-card-content>test</mat-card-content>
+
                 <mat-card-actions>
                   <button mat-raised-button (click)="reviews(poke.id)" [routerLink]="['/reviews/', poke.id]">Reviews</button>
               </mat-card-actions>

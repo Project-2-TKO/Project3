@@ -4,6 +4,7 @@ import { Pokedex, UserId, Wishlist } from 'src/app/models/pokedex';
 import { Observable, window } from 'rxjs';
 import { PokeDataService } from 'src/app/poke-data.service';
 import { LoginComponent } from '../login/login.component';
+import { Pokemon } from 'src/app/pokemon';
 //import { LocalStorage } from '@ngx-pwa/local-storage';
 
 
@@ -22,8 +23,8 @@ const httpOptions   = {
   styleUrls: ['./wishlist.component.css']
 })
 export class WishlistComponent implements OnInit {
-
-  wishlist: any = [];
+  obj:any = [];
+  public wishlist: any = [];
   mylist: any = [];
   //localStorage: LocalStorage;
    username= localStorage.getItem("username") ;
@@ -34,7 +35,7 @@ export class WishlistComponent implements OnInit {
   pokemon_id: any = [];
   public pid: string = '';
   // pokedexInventory: any = [];
-
+user:any;
   pokemonArray: any = [];
   pokemonArray2: any = [];
   //public lusername= window.localStorage.getItem("username");
@@ -47,44 +48,74 @@ export class WishlistComponent implements OnInit {
 
 
 
-  removeWishlist(pokemonid:number)
+  removeWishlist(wishid:number)
   {
-    this.wishlist.pop();
-    let response=this._http.delete("http://localhost:3000/delete/"+ pokemonid )
-    .subscribe( (data: any)=>{console.log(data);});
-  
-  }
-  ngOnInit(): void {
-    this.wishlist=this.ps.wishList;
-    for(let w of this.wishlist)
-      this.mylist.push( w.id);
-   /* this.getUserId(this.user).subscribe(
-      (data:any) => {
-        this.userInfo = data;
-        // console.log(this.userInfo);
-        for(let response of data.body){
-          this.userId = response.user_id;
-          this.getWishlistByUserId(this.userId).subscribe(
-            (data2:any) => {
-              this.wishlist = data2;
-              console.log(this.wishlist);
-              data2.body.forEach((result: {pokemon_id: string}) => {
-                // console.log(result.pokemon_id);
-                this.ps.getPokemonById(result.pokemon_id).subscribe(
-                  (res:any) => {
-                    
-                    this.pokemonArray.push(res.body);
-                    console.log(this.pokemonArray);
-                  }
+    this.wishlist.splice(wishid,1);
+    let response=this._http.delete("http://localhost:3000/delete/"+ wishid )
+    .subscribe( (data: any)=>{console.log(this.wishlist);});
 
-                )
-              })
-            }
-          )
+    console.log(this.wishlist)
+  }
+
+  addToCart(pokemon:any)
+  {
+    console.log(pokemon)
+    this.ps.pokemonList.push(pokemon.pokeInfo);
+    let price: number = (((pokemon.pokeInfo.id * .01) * 543));
+    this.ps.totalCost += price; 
+    this.wishlist.splice(pokemon.wishlistid,1);
+    let response=this._http.delete("http://localhost:3000/delete/"+ pokemon.wishlistid )
+    .subscribe( (data: any)=>{console.log(data);});
+    
+  }
+
+  addPokemon(pokemon: Pokemon){
+
+    console.log(pokemon);
+    
+
+    this.ps.pokemonList.push(pokemon);
+    let price: number = (((pokemon.id * .01) * 543) * .5);
+    this.ps.totalCost += price; 
+    console.log(this.ps.totalCost)
+    console.log(typeof this.ps.totalCost)
+  }
+  
+  ngOnInit(): void {
+
+    // console.log(this.wishlist);
+    this.wishlist;
+    
+
+    this.getUserId(this.username).subscribe(
+      (data:any) =>{
+        this.user = data.body;
+        let x = this.user.first_name;
+        for (let x of this.user){
+        this.userId = x.user_id;
+        this.getWishlistByUserId(this.userId).subscribe(
+          (data:any) =>{
+            this.user = data.body;
+            // console.log(this.user)
+            this.user.forEach((result: {pokemon_id: string, wishlist_id: string}) => {
+              this.ps.getPokemonById(result.pokemon_id).subscribe(
+                (res:any) => {
+                  const wish = {pokeInfo: res.body, wishlistid: result.wishlist_id};
+                  // console.log(wish);
+
+                  this.wishlist.push(wish);
+                }
+
+              )
+            })
+          }
+        );
+
         }
       }
-    )*/
-  }
+    );
+              }
+
   saveWishlist()
   {
     // console.log("user " + this.user +" user name " +this.username);
@@ -107,4 +138,6 @@ export class WishlistComponent implements OnInit {
 function arr(arg0: string, arr: any) {
   throw new Error('Function not implemented.');
 }
+
+
 

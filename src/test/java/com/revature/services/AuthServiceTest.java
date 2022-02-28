@@ -30,7 +30,7 @@ public class AuthServiceTest {
 	
 	@Before
 	public void setUp() {
-		test_User = new User("user1","password");
+	test_User = new User("Bon3837","Sparky2014!");
 		
 	}
 	

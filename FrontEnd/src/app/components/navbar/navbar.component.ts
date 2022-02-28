@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
+  }
   logout(): void {
     this.afAuth.signOut();
     // this.authenticated = false;

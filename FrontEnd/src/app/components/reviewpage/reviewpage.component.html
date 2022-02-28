@@ -1,18 +1,49 @@
 <app-navbar></app-navbar> 
+<div id="webcontainer">
 <div class="container">
+    <div class="searchcontainer">
     <div class="row inputarea">
         <!-- Two way binding this input field to a variable called input in pokedex.component.ts -->
         <input class="col-8" type="string" [(ngModel)] = "name" placeholder="search by pokemon id or name..."/>
         <!-- Event binding on this button to call the getPoke() function in pokedex.component.ts -->
         <button class=" btn btn-dark col-lg-4" (click)= "getPokemon()" [routerLink]="['/reviews/',pokeid]">Choose Pokemon</button>
     </div>
-    
+    <div class="pokeContainer" >
+        <mat-card class="pokemon_cards">
+            <div class='whitespace'>
+            <mat-card-title>{{this.pokemon.name | titlecase}}</mat-card-title>
+            <mat-card-subtitle>Pokemon ID: {{this.pokemon.id}}</mat-card-subtitle>
+            <mat-card-subtitle>{{this.pokemon.types[0].type.name}}
+            <span *ngIf="this.pokemon.types.length > 1"> & {{this.pokemon.types[1].type.name}}</span>
+            
+            </mat-card-subtitle>
+            </div>
+            <img mat-card-sm-image src="{{this.pokemon.sprites.front_default}}">
+            <!-- <mat-card-subtitle style="color:black; text-decoration:line-through">${{(((this.pokemon.id * .01) * 543).toFixed(2)) }}</mat-card-subtitle>
+            <mat-card-subtitle id="sale"> 50% OFF ${{((((this.pokemon.id * .01) * 543)*.50).toFixed(2)) }}</mat-card-subtitle>
+            <mat-card-actions id="action_buttons">
+                <button mat-raised-button >Add to Cart</button>
+                <button mat-raised-button  color="primary" id="wishlistButton">To Wishlist</button>
+            </mat-card-actions>
+             <mat-card-content *ngIf="!collapsed">
+                <img mat-card-sm-image src="{{this.pokemon.sprites.back_default}}">
+            </mat-card-content> -->
+            
+                <!-- <button mat-raised-button (click)="collapsed=false" color="primary">Show</button>
+                <button mat-raised-button (click)="collapsed=true" color="accent">Hide</button> -->
+                
+            
+        
+        </mat-card>
+    </div>
+</div>
     <div id="reviews" class="review-section">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h4 class="m-0">{{this.sum}} Reviews</h4>
             
         </div>
         <div class="row">
+
             <div class="col-md-6">
                 <table class="stars-counters">
                     <tbody>
@@ -94,8 +125,9 @@
                     </tbody>
                 </table>
             </div>
-           
+            
         </div>
+        
     </div>
 
     <div class="review-list" >
@@ -117,4 +149,5 @@
         </ul>
     </form>
     </div>
+</div>
 </div>

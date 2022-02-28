@@ -147,11 +147,12 @@ getRandomNum(){
 
 
 reviews(id:number){
-  
+  this.rs.pokeid=id;
   this.rs.getAllReviewByPokemonId(id).subscribe(
     (data:any) => {
       console.log(data.body)
       this.rs.reviewsarray=data.body;
+      
       this.rating=data.body.rating;
       console.log(this.rating)
       

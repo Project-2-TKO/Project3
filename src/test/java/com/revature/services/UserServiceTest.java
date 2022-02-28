@@ -56,13 +56,13 @@ public class UserServiceTest {
 	
     assertEquals(actualResult1,s.getUserByUserId(1));
 	}
-	@Test
-	public void TestUserByUsername() throws Exception {
-		
-	List<User> actualResult1 = s.getUserByUsername("Bon3837");
-	
-    assertEquals(actualResult1,s.getUserByUsername("Bon3837"));
-	}
+//	@Test
+//	public void TestUserByUsername() throws Exception {
+//		
+//	List<User> actualResult1 = s.getUserByUsername("Bon3837");
+//	
+//    assertEquals(actualResult1,s.getUserByUsername("Bon3837"));
+//	}
 	
 	@Test
 	public void TestUserByUsername() throws Exception {

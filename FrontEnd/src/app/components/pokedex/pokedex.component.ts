@@ -6,6 +6,15 @@ import { PokeDataService } from 'src/app/poke-data.service';
 import { PokeReviewService } from 'src/app/poke-review.service';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 
+const httpOptions   = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Access-Control-Allow-Headers': 'Content-type:application/json',
+    'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Origin': '*',
+    // 'Authorization': 'Firebase JWT' + this._srvc.userToken
+  })
+};
 
 
 
@@ -37,15 +46,7 @@ export class PokedexComponent implements OnInit {
 
   constructor(private _http : HttpClient, private ps: PokeDataService,private rs:PokeReviewService, private _srvc:AuthserviceService) { }
 
-   httpOptions   = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Headers': 'Content-type:application/json',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Firebase JWT' + this._srvc.userToken
-    })
-  };
+  
 
   ngOnInit(): void {
     this.getUserId(this.user).subscribe(

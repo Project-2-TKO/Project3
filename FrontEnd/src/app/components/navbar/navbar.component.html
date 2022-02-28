@@ -1,4 +1,3 @@
-
 <mat-toolbar class="nav customize" >
     
     <div id="margin_nav"> 
@@ -27,7 +26,7 @@
                 <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
                 {{user | titlecase}}
             </button>
-            <button mat-menu-item [routerLink]="['']" (click)="logout()">
+            <button mat-menu-item [routerLink]="['']" (click)=logout()>
                 <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
                 Sign Out
             </button>

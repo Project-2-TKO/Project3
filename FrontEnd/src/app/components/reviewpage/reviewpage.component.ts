@@ -27,17 +27,22 @@ export class ReviewpageComponent implements OnInit {
   name:string;
   isVisible: boolean = true;
   rating:number;
-  
+  pokeid2:string;
   constructor(private rs:PokeReviewService,private ps:PokeDataService,private router:Router) { }
 
   ngOnInit(): void {
     
     
-    
+    console.log(this.rs.pokeid)
     console.log(this.isVisible)
+    this.isVisible=false;
     setTimeout(() => {
+      
       this.rev=this.rs.reviewsarray
       console.log(this.rs.reviewsarray)
+      if(this.rs.reviewsarray === null){
+        this.isVisible=true;
+      }
       for(var i = 0; i < this.rev.length; ++i){
         if(this.rev[i].rating === 1)
             this.numof1++;
@@ -58,8 +63,12 @@ export class ReviewpageComponent implements OnInit {
       this.percentof3=this.numof3/this.sum*100;
       this.percentof4=this.numof4/this.sum*100;
       this.percentof5=this.numof5/this.sum*100;
-      console.log(this.percentof1)
-      console.log(this.sum)
+      this.ps.getPokemonFromApinum(this.rs.pokeid).subscribe(
+        (data:any)=>{
+          console.log(data.body)
+          this.pokemon=data.body;
+        }
+      )
     }, 250);
     
     
@@ -80,6 +89,7 @@ export class ReviewpageComponent implements OnInit {
         this.pokemon = data.body;
         //we may have to do something with sprites
         console.log(this.pokemon.id) //will be helpful for debugs
+        console.log(this.pokemon)
         this.pokeid=this.pokemon.id
         this.rs.getAllReviewByPokemonId(this.pokemon.id).subscribe(
           (data:any) => {

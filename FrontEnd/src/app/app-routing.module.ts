@@ -15,20 +15,24 @@ import { ReviewpageComponent } from './components/reviewpage/reviewpage.componen
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 import { WriterevComponent } from './components/writerev/writerev.component';
 
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'frontpage', component: FrontpageComponent },
-  { path: 'userprofile', component: UserprofileComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent},
-  { path: 'searchcontainer', component: SearchcontainerComponent },
+  { path: 'frontpage', component: FrontpageComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'userprofile', component: UserprofileComponent,  canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'cart', component: CartComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'checkout', component: CheckoutComponent,  canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }}, 
+  { path: 'searchcontainer', component: SearchcontainerComponent,  canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'resetpassword', component: ResetpasswordComponent},
-  { path: 'history', component: HistoryContainerComponent},
-  { path: 'wishlist', component: WishlistComponent},
-  { path: 'reviews/:id', component: ReviewpageComponent},
-  { path: 'dark', component: ThemeToggleComponent},
-  { path: 'writerev/:id', component: WriterevComponent},
+  { path: 'history', component: HistoryContainerComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'reviews/:id', component: ReviewpageComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'dark', component: ThemeToggleComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }}, 
+  { path: 'writerev/:id', component: WriterevComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin }},
 ];
 
 @NgModule({

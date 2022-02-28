@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       'address': new FormControl('', [Validators.required, Validators.email]), 
       'password': new FormControl('', Validators.required),
       'passwordc': new FormControl('', Validators.required),
-      'username': new FormControl('', Validators.required)
+      'email': new FormControl('', Validators.required)
     });//Form group controls for firebase
 
   }
@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
     //Send password and email possibly username  to Google instead of to the database
     if(this.password == this.passwordc)
     {
-      let user = {username:      this.signupForm.value.username,
+      let user = {username:      this.signupForm.value.email,
                   password:      this.signupForm.value.password,
                   email_address: this.signupForm.value.address,
                   credit_card_name : "",
@@ -94,8 +94,8 @@ export class RegisterComponent implements OnInit {
       let response =this._http.post<any>("http://localhost:3000/user/",user ,httpOptions,).subscribe (
         {
           
-          // next: (v) => this.router.navigate(['/']),  
-          //console.log("reponse rcieved"),
+          next: (v) => this.router.navigate(['/']),  
+          // console.log("reponse rcieved"),
           error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
           complete: () => console.info('Complete')
         });

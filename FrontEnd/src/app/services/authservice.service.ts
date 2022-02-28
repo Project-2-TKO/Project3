@@ -18,9 +18,8 @@ export class AuthserviceService {
      this.afAuth.onAuthStateChanged((user) => {
       if(user){
         this.userLoggedIn = true; 
-        user.getIdToken().then((token) => {//THIS LINE GETS JWT
-          this.userToken = token; //ASSIGN JWT TO USER TOKEN TO PASS TO HEADER IN LOGIN AND SIGNUP COMPONENTS
-          // console.log(this.userToken); //THIS WORKS!!!
+        user.getIdToken().then((token) => {
+          this.userToken = token; 
         })
       } else {
         this.userLoggedIn = false; 
@@ -50,34 +49,5 @@ export class AuthserviceService {
       console.log("this is the firebase JWT" + this.userToken); //this works
     })
   }
-  
 
-  //   //let fireAuth = this.afAuth.signInWithEmailAndPassword(email, password)
-  //   this.afAuth.signInWithEmailAndPassword(email, password)
-  //   .catch(function(error)
-  //   {
-  //     // Handle Errors here.
-  //     var errorCode = error.code;
-  //     var errorMessage = error.message;
-  //     if (errorCode === 'auth/wrong-password') {
-  //       alert('Wrong password.');
-  //     } else {
-  //     alert(errorMessage);
-  //   }
-  //   console.log(error);
-  //   });
-  //   return this.afAuth.signInWithEmailAndPassword(email, password)
-  //   .then(() => {
-  //     console.log("Auth Service: login User successful");
-  //   })
-  // }
-
-// function onSignIn(firebaseUser: { getAuthResponse: () => { (): any; new(): any; id_token: any; }; }){
-//   let id_token = firebaseUser.getAuthResponse().id_token;
-// }
-// function signInWithEmailAndPassword(auth: any, email: string, password: string) {
-//   throw new Error('Function not implemented.');
-// }
-
-  
 }

@@ -12,7 +12,11 @@
                 <mat-card class='mat_container'>
 
                     <mat-form-field appearance="outline" id='field'>
-                        <input  type="text" matInput placeholder='Username' name ="username" formControlName="username">
+                        <input  type="text" matInput placeholder='E-mail@address' name ="email" formControlName="email">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" id='field'>
+                        <input type="email"  matInput placeholder='Confirm E-mail' name ="email" formControlName="address" >
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" id='field'>
@@ -23,9 +27,7 @@
                         <input type="password"  matInput placeholder='Confirm Password' name ="passwordc" formControlName="passwordc" >
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" id='field'>
-                        <input type="email"  matInput placeholder='E-mail@address' name ="email" formControlName="address" >
-                    </mat-form-field>
+                   
                     <button mat-raised-button color='primary' type='submit' (click)=registusr($event)> Register </button>
                     <!-- (click)=registusr() PUT THIS BACK IF NECC-->
                     <!--<button mat-raised-button color='primary' type='submit' [routerLink]="['/login']"> Register </button>-->

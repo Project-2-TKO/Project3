@@ -29,12 +29,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  logout(): void {
-    this.afAuth.signOut();
-    // this.authenticated = false;
-    // this._http.post<any>("http://localhost:3000/login", user, httpOptions ).unsubscribe
-  this._servc.userLoggedIn = false;
 
+  logout(): void {
+    this.afAuth.signOut(); 
+    // this.authenticated = false; 
+    // this._http.post<any>("http://localhost:3000/login", user, httpOptions ).unsubscribe
+  this._servc.userLoggedIn = false; 
+   
     console.log("this is the logout JWT: " + this._servc.userToken);
   }
   // ngOnDestroy() {

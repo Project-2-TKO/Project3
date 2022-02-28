@@ -75,12 +75,17 @@ export class LoginComponent implements OnInit {
     if(e){
       e.preventDefault(); //prevents default form behavior
     }
+//-------------------------
+
+//-------------------------
+
     let email=this.signInForm.value.username;
     let passw= this.signInForm.value.password;
     console.log(email);
     console.log(passw);
     delay(5000);
     this.auth = new firebase.auth.GoogleAuthProvider();
+
     //this._srvc.loginUser({username:this.signInForm.value.username}, {password:this.signInForm.value.password})
     delay(5000);
     this._srvc.loginUser(email, passw)

@@ -27,8 +27,8 @@
                 <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
                 {{user | titlecase}}
             </button>
-            <button mat-menu-item [routerLink]="['']" (click)=logout()>
-                <mat-icon [ngStyle]="{'color':'white'}" >logout</mat-icon>
+            <button mat-menu-item [routerLink]="['']" (click)="logout()">
+                <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
                 Sign Out
             </button>
         </mat-menu>

@@ -15,12 +15,14 @@ import firebase from 'firebase/compat/app';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { waitForAsync } from '@angular/core/testing';
 import { stringify } from 'querystring';
-const httpOptions   = {
+
+const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': 'Content-type:application/json',
     'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    // 'Authorization': 'Firebase JWT' + this._srvc.userToken
   })
 };
 
@@ -45,15 +47,7 @@ export class LoginComponent implements OnInit {
   constructor(private _http : HttpClient, private router : Router,  public auth: AngularFireAuth, public _srvc : AuthserviceService) {
    }
 
-   httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-type:application/json',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Firebase JWT' + this._srvc.userToken
-    })
-  };
+  
 
   ngOnInit(): void{
     //window.localStorage.clear();

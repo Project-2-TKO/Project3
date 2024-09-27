@@ -14,6 +14,7 @@ export class CartComponent {
   pokemonCost: any = 0;
   finalCost: any = 0;
   pokemonList: any = [];
+  bundleList: any = [];
   message: string = "";
 
   subscription : Subscription = new Subscription();
@@ -28,13 +29,14 @@ export class CartComponent {
 
     this.pokemon = this.ps.pokemon
 
-    
+    this.bundleList = this.ps.bundleList
 
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost
     
-
+    console.log(this.ps.bundleList)
+    console.log(this.ps.pokemonList)
   }
   delete(mon: any): void{
     for(var i = 0; i < this.pokemonList.length; i++){
@@ -46,17 +48,26 @@ export class CartComponent {
           this.pokemonList.splice(i , 1);
           
           break
-          
           }
-        
-          
-
-        
-        
     }
-   
+  }
 
-    
+  deleteBundle(bundle: any) : void {
+    console.log(bundle.ids);
+    for(let i = 0 ; i < this.bundleList.length; i++){
+      console.log(this.bundleList[i].ids);
+      if(bundle.ids == this.bundleList[i].ids){
+        this.ps.totalCost = this.totalCost -= 300;
+
+        this.bundleList.splice(i, 1);
+
+        break;
+      }
+    }
+    // console.log(this.bundleList);
+    // for(let i = 0; i<this.bundleList.length; i++) {
+    //   console.log(this.bundleList[i]);
+    // }
   }
 
 

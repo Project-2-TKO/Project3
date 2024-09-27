@@ -32,6 +32,9 @@ export class PokeDataService{
   
   pokemonList: any = [];
 
+  bundleList: any = [];
+
+  wishList: any = [];
 
   counter: number = 0;
   
@@ -56,6 +59,9 @@ export class PokeDataService{
   //search for one specific pokemon with the name
   getPokemonFromApi(name:string):Observable<HttpResponse<Pokemon>>{
     return this.http.get("https://pokeapi.co/api/v2/pokemon/" + name + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
+  }
+  getPokemonFromApinum(id:number):Observable<HttpResponse<Pokemon>>{
+    return this.http.get("https://pokeapi.co/api/v2/pokemon/" + id + "/", {observe: "response"})as Observable<HttpResponse<Pokemon>>
   }
 
   //for my history

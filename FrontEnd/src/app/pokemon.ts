@@ -8,6 +8,7 @@ export interface Pokemon {
     types: Object,
     sprites: [],
     front_shiny:string,
+    wishListId:number
     
 }
 
@@ -17,4 +18,11 @@ export interface PokemonDetails {
     name: String,
     types: Object,
     sprites: Object,
+}
+
+//Bundle testing
+export interface BundleList {
+    // id:any,
+    // image: String,
+    // price: number
 }

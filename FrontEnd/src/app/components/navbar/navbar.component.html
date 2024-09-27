@@ -1,12 +1,11 @@
-
 <mat-toolbar class="nav customize" >
     
-    <div> 
+    <div id="margin_nav"> 
         <img src='../../../favicon.ico' height='30'/>
-        Pokemon Black Market </div>
+        CacheEmAll </div>
     <div class='navbar'>
         <!-- menu -->
-        <mat-menu #appMenu='matMenu' class='customize'>
+        <mat-menu #appMenu='matMenu' class='customize hamburger'>
             <button mat-menu-item [routerLink]="['/frontpage']">
                 <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
                 Home
@@ -19,11 +18,15 @@
                 <mat-icon [ngStyle]="{'color':'white'}">shopping_cart</mat-icon>
                 Cart
             </button>
+            <button mat-menu-item [routerLink]="['/wishlist']">
+                <mat-icon [ngStyle]="{'color':'white'}">search</mat-icon>
+                Wishlist
+            </button>
             <button mat-menu-item [matMenuTriggerFor]='submenu' >
                 <mat-icon [ngStyle]="{'color':'white'}">person</mat-icon>
                 {{user | titlecase}}
             </button>
-            <button mat-menu-item [routerLink]="['']">
+            <button mat-menu-item [routerLink]="['']" (click)=logout()>
                 <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
                 Sign Out
             </button>

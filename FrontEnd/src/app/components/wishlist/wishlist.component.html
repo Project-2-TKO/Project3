@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<!-- ONE METHOD OF ADDING WISHLIST TO DATABASE -->
+<!-- By placing it into an array and then clicking save to push array of wishlist pokemon to db -->
+<!-- Other method would be putting a post method on each add to wishlist button in front page and search component -->
+<div class="wishlist_container">   
+   
+    <mat-table class="wishlist_display"> 
+    <div class="wishlist_item" *ngFor="let wish of wishlist">
+        <h3 style="font-style: italic;">{{wish.pokeInfo.name | titlecase}}</h3>
+        <h3 style="font-size: 16px;font-weight: bold;">${{(((wish.pokeInfo.id * .01) * 543).toFixed(2))}}</h3>
+        <img src="{{wish.pokeInfo.sprites.front_default}}"/> <br/>
+        <button (click)="addToCart(wish)"  class="btn btn-success col-sm-12" [routerLink]="['/cart']"><b>Add to Cart</b></button><br>
+        <button (click)="removeWishlist(wish.wishlistid)"  class="btn btn-danger col-sm-12" [routerLink]="['/frontpage']"><b>Remove Item</b></button>
+    </div>
+    
+    </mat-table>
+    <div class="example-button-row">
+   
+        <!-- <button (click)="saveWishlist()" mat-raised-button color="accent">save wishlist</button> -->
+       
+       <!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>-->
+      </div>
+</div>
+<!-- <div> <button (click)="saveWishlist()">save my list</button></div> -->
+<app-footer></app-footer>

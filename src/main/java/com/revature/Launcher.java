@@ -1,5 +1,8 @@
 package com.revature;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.controllers.AuthController;
 import com.revature.controllers.PokeDexController;
 import com.revature.controllers.ReviewsController;
@@ -11,12 +14,16 @@ import io.javalin.Javalin;
 public class Launcher {
 	public static void main(String[] args) {
 		
+		
+		List<Integer> ll=new ArrayList<>(); ll.add(9); ll.add(89); ll.add(1,77);
+		System.out.println("add at 0 " +ll);
+		
 		AuthController ac = new AuthController();
 		PokeDexController pc = new PokeDexController();
 		WishListController wc = new WishListController();
 		ReviewsController rc = new ReviewsController();
 		UserController uc = new UserController();
-		
+		//test
 //		try (Session ses = HibernateUtil.getSession()){
 //			System.out.println("Connection Successful");
 //		}
@@ -53,6 +60,8 @@ public class Launcher {
 	        
 	        app.get("/wishlist", wc.getAllWishList);
 	        app.post("/wishlist", wc.insertWishList);
+	       // app.post("/wishlist/{w_id}/{u_name}", wc.insertWishListWithWishIdandUserName);
+	        app.post("/wishlist/{w_id}/{name}", wc.insertWishlistByWishIdandUserName);
 	        
 	        app.get("/wishlist/{wishlist_id}",wc.getWishListByWishListId);
 	        app.put("/wishlist/{wishlist_id}",wc.updateWishList);

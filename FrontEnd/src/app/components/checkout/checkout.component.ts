@@ -54,6 +54,7 @@ export class CheckoutComponent implements OnInit
   pokemon_id: any = 0;
   mon:any =0;
   pokemonList: any = [];
+  bundleList: any = [];
   message: string = "";
 
   subscription : Subscription = new Subscription();
@@ -71,8 +72,8 @@ export class CheckoutComponent implements OnInit
 
     this.pokemon = this.ps.pokemon
 
-
-
+    this.bundleList = this.ps.bundleList;
+    
     this.pokemonList = this.ps.pokemonList
 
     this.totalCost = this.ps.totalCost;
@@ -101,6 +102,7 @@ export class CheckoutComponent implements OnInit
             this.password=usr.password;
           }
         }
+        
       );
   }
 
@@ -110,8 +112,6 @@ export class CheckoutComponent implements OnInit
   
   inject(): void
   {
-   console.log(this.ps.pokemonList)
-   
     for(var i = 0; i < this.pokemonList.length; i++)
     {   
      this.delaying(i)
@@ -119,8 +119,58 @@ export class CheckoutComponent implements OnInit
     
     this.ps.pokemonList = [];
     this.deleteCart();
-   
+    if (this.pokemonList.length==0 && this.bundleList.length>=1){
+      for(let i = 0 ; i<3; i++){
+        this.delaying2(i)
+      }
+      this.ps.bundleList = [];
+    }
+    if (this.pokemonList.length>0 && this.bundleList.length>=1){  
+    setTimeout (
+       () => {
+        for(let i = 0 ; i<3; i++){
+          this.delaying2(i)
+        }
+    
+       console.log(this.ps.pokemonList)
+        this.ps.bundleList = [];
+      }, 5000);}
+
+      if (this.pokemonList.length==0 && this.bundleList.length>1){
+      setTimeout (
+        () => {
+         for(let i = 0 ; i<3; i++){
+           this.delaying3(i)
+         }
+     
+        console.log(this.ps.pokemonList)
+         this.ps.bundleList = [];
+       }, 5000);}
+
+       if (this.pokemonList.length>0 && this.bundleList.length>1){
+        setTimeout (
+          () => {
+           for(let i = 0 ; i<3; i++){
+             this.delaying3(i)
+           }
+       
+          console.log(this.ps.pokemonList)
+           this.ps.bundleList = [];
+         }, 10000);}
   }
+
+  // inject2()
+  // {
+
+  //   for(let i = 0 ; i<3; i++){
+  //     this.delaying2(i)
+  //   }
+
+  //  console.log(this.ps.pokemonList)
+  //   this.ps.bundleList = [];
+   
+   
+  // }
 
   delaying(i:any){
         setTimeout(() =>{
@@ -129,9 +179,22 @@ export class CheckoutComponent implements OnInit
           this.insertPokemon(this.pokemon_id)
         }, 1000*i);
   }
+  
+  delaying2(i:any){
+    setTimeout(() =>{
+      this.pokemon_id = this.bundleList[0].ids[i]
+      console.log(this.pokemon_id)
+      this.insertPokemon(i)
+    }, 1500*i);
+}
 
-
-
+delaying3(i:any){
+  setTimeout(() =>{
+    this.pokemon_id = this.bundleList[1].ids[i]
+    console.log(this.pokemon_id)
+    this.insertPokemon(i)
+  }, 1500*i);
+}
 
   insertPokemon(pokemon_id :any)
   {
@@ -170,6 +233,7 @@ console.log(pokedex);
   deleteCart(){
     
     this.ps.pokemonList = [];
+    this.ps.bundleList = [];
     this.ps.totalCost = 0;
     this.router.navigate(['/frontpage']);
 
